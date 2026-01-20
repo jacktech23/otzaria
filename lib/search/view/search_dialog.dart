@@ -514,12 +514,12 @@ class _SearchDialogState extends State<SearchDialog> {
                               setState(() {});
                             }
                           : null,
-                      tooltip: 'מילה קודמת',
+                      tooltip: AppLocalizations.of(context)?.t('auto.475') ?? 'מילה קודמת',
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
-                        isEnabled ? currentWord! : 'בחר מילה',
+                        isEnabled ? currentWord! : AppLocalizations.of(context)?.t('auto.474') ?? 'בחר מילה',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -557,7 +557,7 @@ class _SearchDialogState extends State<SearchDialog> {
                               setState(() {});
                             }
                           : null,
-                      tooltip: 'מילה הבאה',
+                      tooltip: AppLocalizations.of(context)?.t('auto.473') ?? 'מילה הבאה',
                     ),
                   ],
                 ),
@@ -587,7 +587,7 @@ class _SearchDialogState extends State<SearchDialog> {
                                     )
                                   : null,
                               decoration: InputDecoration(
-                                labelText: 'מרווח למילה הבאה',
+                                labelText: AppLocalizations.of(context)?.t('auto.472') ?? 'מרווח למילה הבאה',
                                 hintText: '0-30',
                                 border: const OutlineInputBorder(),
                                 contentPadding: const EdgeInsets.symmetric(
@@ -612,7 +612,7 @@ class _SearchDialogState extends State<SearchDialog> {
                                           ).clear();
                                         }
                                       : null,
-                                  tooltip: 'מחק מרווח',
+                                  tooltip: AppLocalizations.of(context)?.t('auto.471') ?? 'מחק מרווח',
                                 ),
                               ),
                               controller: wordIndex != null
@@ -661,8 +661,8 @@ class _SearchDialogState extends State<SearchDialog> {
                             controller: _alternativeWordController,
                             focusNode: _alternativeWordFocusNode,
                             decoration: InputDecoration(
-                              labelText: 'מילה חילופית',
-                              hintText: 'הקלד מילה...',
+                              labelText: AppLocalizations.of(context)?.t('auto.470') ?? 'מילה חילופית',
+                              hintText: AppLocalizations.of(context)?.t('auto.469') ?? 'הקלד מילה...',
                               border: const OutlineInputBorder(),
                               contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 12,
@@ -934,7 +934,7 @@ class _SearchDialogState extends State<SearchDialog> {
                     const SizedBox(width: 12),
                     Text(
                       widget.bookTitle != null
-                          ? 'חיפוש ב${widget.bookTitle}'
+                          ? AppLocalizations.of(context)?.t('auto.468') ?? 'חיפוש ב${widget.bookTitle}'
                           : 'חיפוש',
                       style: const TextStyle(
                           fontSize: 24, fontWeight: FontWeight.bold),
@@ -943,7 +943,7 @@ class _SearchDialogState extends State<SearchDialog> {
                     IconButton(
                       icon: const Icon(FluentIcons.dismiss_24_regular),
                       onPressed: () => Navigator.of(context).pop(),
-                      tooltip: 'סגור',
+                      tooltip: AppLocalizations.of(context)?.t('auto.467') ?? 'סגור',
                     ),
                   ],
                 ),
@@ -1043,7 +1043,7 @@ class _SearchDialogState extends State<SearchDialog> {
                                                           .search_24_filled,
                                                       size: 20,
                                                     ),
-                                                    tooltip: 'חפש',
+                                                    tooltip: AppLocalizations.of(context)?.t('auto.466') ?? 'חפש',
                                                     onPressed: _performSearch,
                                                     style: IconButton.styleFrom(
                                                       backgroundColor:
@@ -1082,7 +1082,7 @@ class _SearchDialogState extends State<SearchDialog> {
                                                       size: 24,
                                                     ),
                                                     tooltip:
-                                                        'היסטוריית חיפושים',
+                                                        AppLocalizations.of(context)?.t('auto.465') ?? 'היסטוריית חיפושים',
                                                     padding: EdgeInsets.zero,
                                                     constraints:
                                                         const BoxConstraints(),

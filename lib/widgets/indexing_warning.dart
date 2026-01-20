@@ -21,7 +21,7 @@ class IndexingWarning extends StatelessWidget {
           const SizedBox(width: 8),
           const Expanded(
             child: Text(
-              'אינדקס החיפוש בתהליך עדכון. יתכן שחלק מהספרים לא יוצגו בתוצאות החיפוש.',
+              AppLocalizations.of(context)?.t('auto.42') ?? 'אינדקס החיפוש בתהליך עדכון. יתכן שחלק מהספרים לא יוצגו בתוצאות החיפוש.',
               textAlign: TextAlign.right,
               style: TextStyle(color: Colors.black87),
             ),

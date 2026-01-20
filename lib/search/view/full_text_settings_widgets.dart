@@ -117,8 +117,8 @@ class _FuzzyDistanceState extends State<FuzzyDistance> {
             enabled: isEnabled,
             decoration: InputDecoration(
               labelText: hasCustomSpacing
-                  ? 'מרווח בין מילים (מושבת)'
-                  : 'מרווח בין מילים',
+                  ? AppLocalizations.of(context)?.t('auto.436') ?? 'מרווח בין מילים (מושבת)'
+                  : AppLocalizations.of(context)?.t('auto.435') ?? 'מרווח בין מילים',
               labelStyle: TextStyle(
                 color: hasCustomSpacing ? Colors.grey : null,
               ),
@@ -167,7 +167,7 @@ class NumOfResults extends StatelessWidget {
               min: 10,
               max: 10000,
               decoration: const InputDecoration(
-                labelText: 'מספר תוצאות',
+                labelText: AppLocalizations.of(context)?.t('auto.434') ?? 'מספר תוצאות',
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: 12.0,
                   vertical: 8.0,
@@ -452,7 +452,7 @@ class _SearchTermsDisplayState extends State<SearchTermsDisplay> {
   String _getDisplayText(String originalQuery) {
     // כרגע נציג את הטקסט המקורי
     // בעתיד נוסיף לוגיקה להצגת החלופות
-    // למשל: "מאימתי או מתי ו קורין או קוראין"
+    // למשל: AppLocalizations.of(context)?.t('auto.433') ?? 'מאימתי או מתי ו קורין או קוראין'
     return originalQuery;
   }
 
@@ -525,7 +525,7 @@ class OrderOfResults extends StatelessWidget {
             child: DropdownButtonFormField<ResultsOrder>(
               initialValue: state.sortBy,
               decoration: const InputDecoration(
-                labelText: 'מיון',
+                labelText: AppLocalizations.of(context)?.t('auto.432') ?? 'מיון',
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: 12.0,
@@ -535,11 +535,11 @@ class OrderOfResults extends StatelessWidget {
               items: const [
                 DropdownMenuItem(
                   value: ResultsOrder.relevance,
-                  child: Text('לפי רלוונטיות'),
+                  child: Text(AppLocalizations.of(context)?.t('auto.431') ?? 'לפי רלוונטיות'),
                 ),
                 DropdownMenuItem(
                   value: ResultsOrder.catalogue,
-                  child: Text('לפי סדר קטלוגי'),
+                  child: Text(AppLocalizations.of(context)?.t('auto.430') ?? 'לפי סדר קטלוגי'),
                 ),
               ],
               onChanged: (value) {

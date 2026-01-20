@@ -13,13 +13,13 @@ void showLibrarySettingsDialog(BuildContext context) {
     builder: (context) => BlocBuilder<SettingsBloc, SettingsState>(
       builder: (context, currentSettingsState) {
         return GenericSettingsDialog(
-          title: 'הגדרות ספרייה',
+          title: AppLocalizations.of(context)?.t('auto.701') ?? 'הגדרות ספרייה',
           width: 500,
           items: [
             SwitchSettingsItem(
-              title: 'האם להציג ספרים מאתרים חיצוניים?',
+              title: AppLocalizations.of(context)?.t('auto.700') ?? 'האם להציג ספרים מאתרים חיצוניים?',
               subtitle: currentSettingsState.showExternalBooks
-                  ? 'יוצגו גם ספרים מאתרים חיצוניים'
+                  ? AppLocalizations.of(context)?.t('auto.699') ?? 'יוצגו גם ספרים מאתרים חיצוניים'
                   : 'יוצגו רק ספרים מספריית אוצריא',
               value: currentSettingsState.showExternalBooks,
               onChanged: (value) {
@@ -34,7 +34,7 @@ void showLibrarySettingsDialog(BuildContext context) {
               dependentItems: currentSettingsState.showExternalBooks
                   ? [
                       CheckboxSettingsItem(
-                        title: 'הצג ספרים מאוצר החכמה',
+                        title: AppLocalizations.of(context)?.t('auto.698') ?? 'הצג ספרים מאוצר החכמה',
                         value: currentSettingsState.showOtzarHachochma,
                         onChanged: (bool? value) {
                           if (value != null) {
@@ -45,7 +45,7 @@ void showLibrarySettingsDialog(BuildContext context) {
                         },
                       ),
                       CheckboxSettingsItem(
-                        title: 'הצג ספרים מהיברובוקס',
+                        title: AppLocalizations.of(context)?.t('auto.697') ?? 'הצג ספרים מהיברובוקס',
                         value: currentSettingsState.showHebrewBooks,
                         onChanged: (bool? value) {
                           if (value != null) {

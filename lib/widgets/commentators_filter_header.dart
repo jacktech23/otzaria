@@ -19,7 +19,7 @@ class CommentatorsFilterHeader extends StatelessWidget {
         children: [
           IconButton(
             icon: const Icon(FluentIcons.arrow_right_24_regular),
-            tooltip: 'חזרה למפרשים',
+            tooltip: AppLocalizations.of(context)?.t('auto.32') ?? 'חזרה למפרשים',
             onPressed: onBack,
           ),
           const SizedBox(width: 8),

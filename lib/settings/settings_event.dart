@@ -307,3 +307,12 @@ class UpdateEnableHtmlLinks extends SettingsEvent {
   @override
   List<Object?> get props => [enableHtmlLinks];
 }
+
+class UpdateLocale extends SettingsEvent {
+  final Locale locale;
+
+  const UpdateLocale(this.locale);
+
+  @override
+  List<Object?> get props => [locale];
+}

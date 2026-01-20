@@ -325,7 +325,7 @@ class _AboutScreenState extends State<AboutScreen> {
       children: [
         // קטגוריה ראשונה: 10 ספרים ומעלה
         Text(
-          'מהדירים שההדירו 10 ספרים ומעלה',
+          AppLocalizations.of(context)?.t('auto.188') ?? 'מהדירים שההדירו 10 ספרים ומעלה',
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
@@ -338,7 +338,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
         // קטגוריה שנייה: 5-10 ספרים
         Text(
-          'מהדירים שההדירו בין 5 ל-10 ספרים',
+          AppLocalizations.of(context)?.t('auto.187') ?? 'מהדירים שההדירו בין 5 ל-10 ספרים',
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
@@ -386,7 +386,7 @@ class _AboutScreenState extends State<AboutScreen> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildCompactInfoItem('גרסת תוכנה', appVersion ?? 'לא ידוע'),
+              _buildCompactInfoItem(AppLocalizations.of(context)?.t('auto.186') ?? 'גרסת תוכנה', appVersion ?? AppLocalizations.of(context)?.t('auto.185') ?? 'לא ידוע'),
               const SizedBox(height: 8),
               _buildCompactInfoItem('גרסת ספרייה', libraryVersion ?? 'לא ידוע'),
               const SizedBox(height: 8),
@@ -399,7 +399,7 @@ class _AboutScreenState extends State<AboutScreen> {
           spacing: 30,
           runSpacing: 8,
           children: [
-            _buildCompactInfoItem('גרסת תוכנה', appVersion ?? 'לא ידוע'),
+            _buildCompactInfoItem(AppLocalizations.of(context)?.t('auto.184') ?? 'גרסת תוכנה', appVersion ?? AppLocalizations.of(context)?.t('auto.183') ?? 'לא ידוע'),
             _buildCompactInfoItem('גרסת ספרייה', libraryVersion ?? 'לא ידוע'),
             _buildCompactInfoItem('מספר ספרים', '${bookCount ?? 'לא ידוע'}'),
           ],
@@ -665,7 +665,7 @@ class _AboutScreenState extends State<AboutScreen> {
     if (sitePath == null) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('לא נמצאה תיקיית otzaria-site')),
+        const SnackBar(content: Text(AppLocalizations.of(context)?.t('auto.182') ?? 'לא נמצאה תיקיית otzaria-site')),
       );
       return;
     }
@@ -674,7 +674,7 @@ class _AboutScreenState extends State<AboutScreen> {
     if (!await htmlFile.exists()) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('הקובץ $fileName לא נמצא')),
+        SnackBar(content: Text(AppLocalizations.of(context)?.t('auto.181') ?? 'הקובץ $fileName לא נמצא')),
       );
       return;
     }
@@ -694,7 +694,7 @@ class _AboutScreenState extends State<AboutScreen> {
       builder: (dialogContext) => Directionality(
         textDirection: TextDirection.rtl,
         child: AlertDialog(
-          title: const Text('יומן שינויים בתוכנה'),
+          title: const Text(AppLocalizations.of(context)?.t('auto.180') ?? 'יומן שינויים בתוכנה'),
           content: SizedBox(
             width: 600,
             height: 400,
@@ -705,7 +705,7 @@ class _AboutScreenState extends State<AboutScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(dialogContext),
-              child: const Text('סגור'),
+              child: const Text(AppLocalizations.of(context)?.t('auto.179') ?? 'סגור'),
             ),
           ],
         ),
@@ -718,7 +718,7 @@ class _AboutScreenState extends State<AboutScreen> {
     if (libraryPath.isEmpty) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('נתיב הספרייה לא מוגדר')),
+        const SnackBar(content: Text(AppLocalizations.of(context)?.t('auto.178') ?? 'נתיב הספרייה לא מוגדר')),
       );
       return;
     }
@@ -730,7 +730,7 @@ class _AboutScreenState extends State<AboutScreen> {
     if (await file.exists()) {
       changelog = await file.readAsString();
     } else {
-      changelog = 'קובץ יומן השינויים לא נמצא';
+      changelog = AppLocalizations.of(context)?.t('auto.177') ?? 'קובץ יומן השינויים לא נמצא';
     }
 
     if (!context.mounted) return;
@@ -739,7 +739,7 @@ class _AboutScreenState extends State<AboutScreen> {
       builder: (dialogContext) => Directionality(
         textDirection: TextDirection.rtl,
         child: AlertDialog(
-          title: const Text('יומן שינויים בספרייה'),
+          title: const Text(AppLocalizations.of(context)?.t('auto.176') ?? 'יומן שינויים בספרייה'),
           content: SizedBox(
             width: 600,
             height: 400,
@@ -750,7 +750,7 @@ class _AboutScreenState extends State<AboutScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(dialogContext),
-              child: const Text('סגור'),
+              child: const Text(AppLocalizations.of(context)?.t('auto.175') ?? 'סגור'),
             ),
           ],
         ),
@@ -776,7 +776,7 @@ class _AboutScreenState extends State<AboutScreen> {
               const SizedBox(width: 8),
               const Expanded(
                 child: Text(
-                  'אוצריא מתגייסת לעזרת לומדי התורה',
+                  AppLocalizations.of(context)?.t('auto.174') ?? 'אוצריא מתגייסת לעזרת לומדי התורה',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -788,7 +788,7 @@ class _AboutScreenState extends State<AboutScreen> {
           ),
           const SizedBox(height: 12),
           const Text(
-            'קווי חירום וארגוני סיוע ללומדי תורה',
+            AppLocalizations.of(context)?.t('auto.173') ?? 'קווי חירום וארגוני סיוע ללומדי תורה',
             style: TextStyle(fontSize: 14),
           ),
           const SizedBox(height: 16),
@@ -800,7 +800,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   context: context,
                   barrierDismissible: true,
                   builder: (context) => const AdPopupDialog(
-                    title: 'אוצריא מתגייסת לעזרת לומדי התורה',
+                    title: AppLocalizations.of(context)?.t('auto.172') ?? 'אוצריא מתגייסת לעזרת לומדי התורה',
                   ),
                 );
               },
@@ -809,7 +809,7 @@ class _AboutScreenState extends State<AboutScreen> {
                 foregroundColor: Colors.white,
               ),
               icon: const Icon(FluentIcons.shield_task_24_filled, size: 18),
-              label: const Text('לחץ לפרטים'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.171') ?? 'לחץ לפרטים'),
             ),
           ),
         ],
@@ -834,7 +834,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   color: Colors.grey[600]!, size: 24),
               const SizedBox(width: 8),
               Text(
-                'תרום לפרויקט',
+                AppLocalizations.of(context)?.t('auto.170') ?? 'תרום לפרויקט',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -845,7 +845,7 @@ class _AboutScreenState extends State<AboutScreen> {
           ),
           const SizedBox(height: 12),
           const Text(
-            'תרומתך תעזור לנו להמשיך לפתח ולשפר את אוצריא עבור כלל הציבור.',
+            AppLocalizations.of(context)?.t('auto.169') ?? 'תרומתך תעזור לנו להמשיך לפתח ולשפר את אוצריא עבור כלל הציבור.',
             style: TextStyle(fontSize: 14),
           ),
           const SizedBox(height: 16),
@@ -879,7 +879,7 @@ class _AboutScreenState extends State<AboutScreen> {
                                 size: 18),
                       ),
                       label:
-                          const Text('נדרים+', style: TextStyle(fontSize: 12)),
+                          const Text(AppLocalizations.of(context)?.t('auto.168') ?? 'נדרים+', style: TextStyle(fontSize: 12)),
                     ),
                     const SizedBox(height: 8),
                     ElevatedButton.icon(
@@ -891,7 +891,7 @@ class _AboutScreenState extends State<AboutScreen> {
                       ),
                       icon:
                           const Icon(FluentIcons.payment_24_regular, size: 18),
-                      label: const Text('אחר', style: TextStyle(fontSize: 12)),
+                      label: const Text(AppLocalizations.of(context)?.t('auto.167') ?? 'אחר', style: TextStyle(fontSize: 12)),
                     ),
                   ],
                 );
@@ -922,7 +922,7 @@ class _AboutScreenState extends State<AboutScreen> {
                                 size: 18),
                       ),
                       label:
-                          const Text('נדרים+', style: TextStyle(fontSize: 12)),
+                          const Text(AppLocalizations.of(context)?.t('auto.166') ?? 'נדרים+', style: TextStyle(fontSize: 12)),
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -936,7 +936,7 @@ class _AboutScreenState extends State<AboutScreen> {
                       ),
                       icon:
                           const Icon(FluentIcons.payment_24_regular, size: 18),
-                      label: const Text('אחר', style: TextStyle(fontSize: 12)),
+                      label: const Text(AppLocalizations.of(context)?.t('auto.165') ?? 'אחר', style: TextStyle(fontSize: 12)),
                     ),
                   ),
                 ],
@@ -986,14 +986,14 @@ class _AboutScreenState extends State<AboutScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'אוצריא',
+                          AppLocalizations.of(context)?.t('auto.164') ?? 'אוצריא',
                           style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          'מאגר תורני חינמי',
+                          AppLocalizations.of(context)?.t('auto.163') ?? 'מאגר תורני חינמי',
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.grey[600],
@@ -1017,7 +1017,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
                 // כארדים תורמים
                 const Text(
-                  'תורמים',
+                  AppLocalizations.of(context)?.t('auto.162') ?? 'תורמים',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -1029,7 +1029,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
                 // רשימת מפתחים
                 const Text(
-                  'מפתחים',
+                  AppLocalizations.of(context)?.t('auto.161') ?? 'מפתחים',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -1041,7 +1041,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
                 // רשימת מהדירי ספרים
                 const Text(
-                  'מהדירי ספרים',
+                  AppLocalizations.of(context)?.t('auto.160') ?? 'מהדירי ספרים',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -1053,7 +1053,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
                 // פרטים טכניים
                 const Text(
-                  'פרטים טכניים',
+                  AppLocalizations.of(context)?.t('auto.159') ?? 'פרטים טכניים',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -1073,12 +1073,12 @@ class _AboutScreenState extends State<AboutScreen> {
                       ElevatedButton.icon(
                         onPressed: () => _showChangelogDialog(context),
                         icon: const Icon(FluentIcons.history_24_regular),
-                        label: const Text('יומן שינויים בתוכנה'),
+                        label: const Text(AppLocalizations.of(context)?.t('auto.158') ?? 'יומן שינויים בתוכנה'),
                       ),
                       ElevatedButton.icon(
                         onPressed: () => _showLibraryChangelogDialog(context),
                         icon: const Icon(FluentIcons.library_24_regular),
-                        label: const Text('יומן שינויים בספרייה'),
+                        label: const Text(AppLocalizations.of(context)?.t('auto.157') ?? 'יומן שינויים בספרייה'),
                       ),
                     ],
                   ),
@@ -1104,20 +1104,20 @@ class _AboutScreenState extends State<AboutScreen> {
                     _buildSupportCard(context),
                     const SizedBox(height: 20),
                     _buildActionCard(
-                      title: 'אודות התוכנה',
+                      title: AppLocalizations.of(context)?.t('auto.156') ?? 'אודות התוכנה',
                       description:
-                          'מידע נוסף על התוכנה, תכונות, ומדריכים לשימוש.',
-                      buttonText: 'אודות התוכנה',
+                          AppLocalizations.of(context)?.t('auto.155') ?? 'מידע נוסף על התוכנה, תכונות, ומדריכים לשימוש.',
+                      buttonText: AppLocalizations.of(context)?.t('auto.154') ?? 'אודות התוכנה',
                       icon: FluentIcons.info_24_regular,
                       color: Colors.grey[600]!,
                       onTap: () => _openLocalHtmlFile('index.html'),
                     ),
                     const SizedBox(height: 20),
                     _buildActionCard(
-                      title: 'הצטרף לפיתוח!',
+                      title: AppLocalizations.of(context)?.t('auto.153') ?? 'הצטרף לפיתוח!',
                       description:
-                          'מפתחים מוזמנים להצטרף לפיתוח אוצריא ולתרום לקהילה התורנית.',
-                      buttonText: 'הצטרף עכשיו',
+                          AppLocalizations.of(context)?.t('auto.152') ?? 'מפתחים מוזמנים להצטרף לפיתוח אוצריא ולתרום לקהילה התורנית.',
+                      buttonText: AppLocalizations.of(context)?.t('auto.151') ?? 'הצטרף עכשיו',
                       icon: FluentIcons.code_24_regular,
                       color: Colors.grey[600]!,
                       showGitHubIcon: true,
@@ -1126,10 +1126,10 @@ class _AboutScreenState extends State<AboutScreen> {
                     ),
                     const SizedBox(height: 20),
                     _buildActionCard(
-                      title: 'הצטרף לצוות העריכה',
+                      title: AppLocalizations.of(context)?.t('auto.150') ?? 'הצטרף לצוות העריכה',
                       description:
-                          'עזור לנו להוסיף ספרים חדשים לספריית אוצריא ולהרחיב את המאגר התורני.',
-                      buttonText: 'הצטרף לעריכה',
+                          AppLocalizations.of(context)?.t('auto.149') ?? 'עזור לנו להוסיף ספרים חדשים לספריית אוצריא ולהרחיב את המאגר התורני.',
+                      buttonText: AppLocalizations.of(context)?.t('auto.148') ?? 'הצטרף לעריכה',
                       icon: FluentIcons.edit_24_regular,
                       color: Colors.grey[600]!,
                       onTap: () => _openLocalHtmlFile('tutorial-dicta.html'),
@@ -1161,26 +1161,26 @@ class _AboutScreenState extends State<AboutScreen> {
 
           // תיאור
           const Text(
-            'מאגר תורני רחב עם ממשק מודרני ומהיר, לשימוד תורה בקלות ובנוחות בכל מקום.',
+            AppLocalizations.of(context)?.t('auto.147') ?? 'מאגר תורני רחב עם ממשק מודרני ומהיר, לשימוד תורה בקלות ובנוחות בכל מקום.',
             style: TextStyle(fontSize: 14, height: 1.5),
           ),
           const SizedBox(height: 24),
 
           // כארדים של פעולות (למעלה במסכים קטנים)
           _buildActionCard(
-            title: 'אודות התוכנה',
-            description: 'מידע נוסף על התוכנה, תכונות, ומדריכים לשימוש.',
-            buttonText: 'אודות התוכנה',
+            title: AppLocalizations.of(context)?.t('auto.146') ?? 'אודות התוכנה',
+            description: AppLocalizations.of(context)?.t('auto.145') ?? 'מידע נוסף על התוכנה, תכונות, ומדריכים לשימוש.',
+            buttonText: AppLocalizations.of(context)?.t('auto.144') ?? 'אודות התוכנה',
             icon: FluentIcons.info_24_regular,
             color: Colors.grey[600]!,
             onTap: () => _openLocalHtmlFile('index.html'),
           ),
           const SizedBox(height: 16),
           _buildActionCard(
-            title: 'הצטרף לפיתוח!',
+            title: AppLocalizations.of(context)?.t('auto.143') ?? 'הצטרף לפיתוח!',
             description:
-                'מפתחים מוזמנים להצטרף לפיתוח אוצריא ולתרום לקהילה התורנית.',
-            buttonText: 'הצטרף עכשיו',
+                AppLocalizations.of(context)?.t('auto.142') ?? 'מפתחים מוזמנים להצטרף לפיתוח אוצריא ולתרום לקהילה התורנית.',
+            buttonText: AppLocalizations.of(context)?.t('auto.141') ?? 'הצטרף עכשיו',
             icon: FluentIcons.code_24_regular,
             color: Colors.grey[600]!,
             showGitHubIcon: true,
@@ -1188,10 +1188,10 @@ class _AboutScreenState extends State<AboutScreen> {
           ),
           const SizedBox(height: 16),
           _buildActionCard(
-            title: 'הצטרף לצוות העריכה',
+            title: AppLocalizations.of(context)?.t('auto.140') ?? 'הצטרף לצוות העריכה',
             description:
-                'עזור לנו להוסיף ספרים חדשים לספריית אוצריא ולהרחיב את המאגר התורני.',
-            buttonText: 'הצטרף לעריכה',
+                AppLocalizations.of(context)?.t('auto.139') ?? 'עזור לנו להוסיף ספרים חדשים לספריית אוצריא ולהרחיב את המאגר התורני.',
+            buttonText: AppLocalizations.of(context)?.t('auto.138') ?? 'הצטרף לעריכה',
             icon: FluentIcons.edit_24_regular,
             color: Colors.grey[600]!,
             onTap: () => _openLocalHtmlFile('tutorial-dicta.html'),
@@ -1202,7 +1202,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
           // תורמים
           const Text(
-            'תורמים',
+            AppLocalizations.of(context)?.t('auto.137') ?? 'תורמים',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
@@ -1211,7 +1211,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
           // מפתחים
           const Text(
-            'מפתחים',
+            AppLocalizations.of(context)?.t('auto.136') ?? 'מפתחים',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
@@ -1220,7 +1220,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
           // מהדירי ספרים
           const Text(
-            'מהדירי ספרים',
+            AppLocalizations.of(context)?.t('auto.135') ?? 'מהדירי ספרים',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
@@ -1229,7 +1229,7 @@ class _AboutScreenState extends State<AboutScreen> {
 
           // פרטים טכניים
           const Text(
-            'פרטים טכניים',
+            AppLocalizations.of(context)?.t('auto.134') ?? 'פרטים טכניים',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 12),
@@ -1244,12 +1244,12 @@ class _AboutScreenState extends State<AboutScreen> {
               ElevatedButton.icon(
                 onPressed: () => _showChangelogDialog(context),
                 icon: const Icon(FluentIcons.history_24_regular),
-                label: const Text('יומן שינויים בתוכנה'),
+                label: const Text(AppLocalizations.of(context)?.t('auto.133') ?? 'יומן שינויים בתוכנה'),
               ),
               ElevatedButton.icon(
                 onPressed: () => _showLibraryChangelogDialog(context),
                 icon: const Icon(FluentIcons.library_24_regular),
-                label: const Text('יומן שינויים בספרייה'),
+                label: const Text(AppLocalizations.of(context)?.t('auto.132') ?? 'יומן שינויים בספרייה'),
               ),
             ],
           ),
@@ -1275,14 +1275,14 @@ class _AboutScreenState extends State<AboutScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'אוצריא',
+                    AppLocalizations.of(context)?.t('auto.131') ?? 'אוצריא',
                     style: TextStyle(
                       fontSize: isVerySmall ? 20 : 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    'מאגר תורני חינמי',
+                    AppLocalizations.of(context)?.t('auto.130') ?? 'מאגר תורני חינמי',
                     style: TextStyle(
                       fontSize: isVerySmall ? 12 : 14,
                       color: Colors.grey[600],

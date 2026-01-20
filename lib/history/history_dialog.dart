@@ -8,7 +8,7 @@ class HistoryDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReusableItemsDialog(
-      title: 'היסטוריה',
+      title: AppLocalizations.of(context)?.t('auto.66') ?? 'היסטוריה',
       child: const HistoryView(),
     );
   }

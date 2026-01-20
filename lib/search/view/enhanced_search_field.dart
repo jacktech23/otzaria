@@ -382,8 +382,8 @@ class _EnhancedSearchFieldState extends State<EnhancedSearchField> {
                       },
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),
-                        hintText: "חפש כאן...",
-                        labelText: "לחיפוש הקש אנטר או לחץ על סמל החיפוש",
+                        hintText: AppLocalizations.of(context)?.t('auto.480') ?? 'חפש כאן...',
+                        labelText: AppLocalizations.of(context)?.t('auto.479') ?? 'לחיפוש הקש אנטר או לחץ על סמל החיפוש',
                         prefixIcon: IconButton(
                           onPressed: _performSearch,
                           icon: const Icon(FluentIcons.search_24_regular),

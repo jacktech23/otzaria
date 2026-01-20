@@ -209,7 +209,7 @@ class _OutlineViewState extends State<OutlineView>
     final outline = widget.outline;
     if (outline == null || outline.isEmpty) {
       return const Center(
-        child: Text('אין תוכן עניינים'),
+        child: Text(AppLocalizations.of(context)?.t('auto.542') ?? 'אין תוכן עניינים'),
       );
     }
 
@@ -226,7 +226,7 @@ class _OutlineViewState extends State<OutlineView>
               widget.focusNode.requestFocus();
             },
             decoration: InputDecoration(
-              hintText: 'חיפוש סימניה...',
+              hintText: AppLocalizations.of(context)?.t('auto.541') ?? 'חיפוש סימניה...',
               prefixIcon: const Icon(FluentIcons.search_24_regular),
               suffixIcon: searchController.text.isNotEmpty
                   ? IconButton(

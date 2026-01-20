@@ -66,7 +66,7 @@ class _SelectedLineLinksViewState extends State<SelectedLineLinksView> {
                   RtlTextField(
                     controller: _searchController,
                     decoration: InputDecoration(
-                      hintText: 'חפש בתוך הקישורים המוצגים...',
+                      hintText: AppLocalizations.of(context)?.t('auto.276') ?? 'חפש בתוך הקישורים המוצגים...',
                       prefixIcon: const Icon(FluentIcons.search_24_regular),
                       suffixIcon: _searchQuery.isNotEmpty
                           ? IconButton(
@@ -103,7 +103,7 @@ class _SelectedLineLinksViewState extends State<SelectedLineLinksView> {
                               });
                             },
                           ),
-                          const Text('חפש גם בתוכן הקישורים'),
+                          const Text(AppLocalizations.of(context)?.t('auto.275') ?? 'חפש גם בתוכן הקישורים'),
                         ],
                       ),
                     ),
@@ -131,7 +131,7 @@ class _SelectedLineLinksViewState extends State<SelectedLineLinksView> {
         child: Padding(
           padding: EdgeInsets.all(16.0),
           child: Text(
-            'לא נמצאו קישורים לקטע הנבחר',
+            AppLocalizations.of(context)?.t('auto.274') ?? 'לא נמצאו קישורים לקטע הנבחר',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16,
@@ -305,7 +305,7 @@ class _SelectedLineLinksViewState extends State<SelectedLineLinksView> {
                     BlocBuilder<SettingsBloc, SettingsState>(
                   builder: (context, settingsState) {
                     return Text(
-                      'שגיאה בטעינת התוכן: $error',
+                      AppLocalizations.of(context)?.t('auto.273') ?? 'שגיאה בטעינת התוכן: $error',
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.error,
                         fontSize: settingsState.commentatorsFontSize,
@@ -325,7 +325,7 @@ class _SelectedLineLinksViewState extends State<SelectedLineLinksView> {
       return BlocBuilder<SettingsBloc, SettingsState>(
         builder: (context, settingsState) {
           return Text(
-            'אין תוכן זמין',
+            AppLocalizations.of(context)?.t('auto.272') ?? 'אין תוכן זמין',
             style: TextStyle(
               color: Theme.of(context).colorScheme.onSurface.withAlpha(150),
               fontSize: settingsState.commentatorsFontSize,

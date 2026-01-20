@@ -80,12 +80,12 @@ class _SearchPaneBaseState extends State<SearchPaneBase> {
                       if (widget.onAdvancedSearch != null)
                         IconButton(
                           icon: const Icon(FluentIcons.settings_24_regular),
-                          tooltip: 'חיפוש מתקדם',
+                          tooltip: AppLocalizations.of(context)?.t('auto.10') ?? 'חיפוש מתקדם',
                           onPressed: widget.onAdvancedSearch,
                         ),
                       if (value.text.isNotEmpty)
                         IconButton(
-                          tooltip: 'נקה',
+                          tooltip: AppLocalizations.of(context)?.t('auto.9') ?? 'נקה',
                           onPressed: () {
                             widget.searchController.clear();
                             widget.onSearchTextChanged?.call('');
@@ -125,7 +125,7 @@ class _SearchPaneBaseState extends State<SearchPaneBase> {
         const SizedBox(height: 4),
         Expanded(
           child: widget.isNoResults
-              ? const Center(child: Text('אין תוצאות'))
+              ? const Center(child: Text(AppLocalizations.of(context)?.t('auto.8') ?? 'אין תוצאות'))
               : widget.resultsWidget,
         ),
       ],

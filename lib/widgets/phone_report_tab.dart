@@ -108,7 +108,7 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'הוראות לדיווח טלפוני:',
+              AppLocalizations.of(context)?.t('auto.31') ?? 'הוראות לדיווח טלפוני:',
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -117,8 +117,8 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
             ),
             const SizedBox(height: 8),
             Text(
-              '1. סמן את הטקסט שבו נמצאת הטעות  •  '
-              '2. בחר את סוג השגיאה   •  '
+              AppLocalizations.of(context)?.t('auto.30') ?? '1. סמן את הטקסט שבו נמצאת הטעות  •  '
+              AppLocalizations.of(context)?.t('auto.29') ?? '2. בחר את סוג השגיאה   •  '
               '3. השתמש במספרים המוצגים למטה כשתתקשר',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -136,7 +136,7 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'סמן את הטקסט שבו נמצאת הטעות:',
+          AppLocalizations.of(context)?.t('auto.28') ?? 'סמן את הטקסט שבו נמצאת הטעות:',
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -234,7 +234,7 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'הטקסט שנבחר:',
+                  AppLocalizations.of(context)?.t('auto.27') ?? 'הטקסט שנבחר:',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -261,7 +261,7 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'בחר סוג שגיאה:',
+          AppLocalizations.of(context)?.t('auto.26') ?? 'בחר סוג שגיאה:',
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -343,7 +343,7 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'אי אפשר להתקדם... עדיין לא מילאתם בטופס...',
+                    AppLocalizations.of(context)?.t('auto.25') ?? 'אי אפשר להתקדם... עדיין לא מילאתם בטופס...',
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.onErrorContainer,
@@ -416,7 +416,7 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
                       ),
                       child: TextButton(
                         onPressed: widget.onCancel,
-                        child: const Text('ביטול הדיווח'),
+                        child: const Text(AppLocalizations.of(context)?.t('auto.24') ?? 'ביטול הדיווח'),
                       ),
                     ),
                   ],
@@ -441,7 +441,7 @@ class _PhoneReportTabState extends State<PhoneReportTab> {
       children: [
         TextButton(
           onPressed: widget.onCancel,
-          child: const Text('ביטול הדיווח'),
+          child: const Text(AppLocalizations.of(context)?.t('auto.23') ?? 'ביטול הדיווח'),
         ),
       ],
     );

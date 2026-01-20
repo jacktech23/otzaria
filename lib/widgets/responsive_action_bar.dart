@@ -180,7 +180,7 @@ class _ResponsiveActionBarState extends State<ResponsiveActionBar> {
       builder: (context) {
         return PopupMenuButton<ActionButtonData>(
           icon: const Icon(FluentIcons.more_vertical_24_regular),
-          tooltip: 'עוד פעולות',
+          tooltip: AppLocalizations.of(context)?.t('auto.43') ?? 'עוד פעולות',
           // הוספת offset כדי למקם את התפריט מתחת לכפתור
           offset: const Offset(0, 40.0),
           onSelected: (action) {

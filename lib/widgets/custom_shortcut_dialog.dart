@@ -72,7 +72,7 @@ class _CustomShortcutDialogState extends State<CustomShortcutDialog> {
       },
       child: AlertDialog(
         title: const Text(
-          'הגדרת קיצור מקשים מותאם אישית',
+          AppLocalizations.of(context)?.t('auto.41') ?? 'הגדרת קיצור מקשים מותאם אישית',
           textAlign: TextAlign.right,
         ),
         content: SizedBox(
@@ -82,7 +82,7 @@ class _CustomShortcutDialogState extends State<CustomShortcutDialog> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Text(
-                'לחץ על "התחל הקלטה" ואז לחץ על צירוף המקשים הרצוי',
+                'לחץ על AppLocalizations.of(context)?.t('auto.40') ?? 'התחל הקלטה' ואז לחץ על צירוף המקשים הרצוי',
                 textAlign: TextAlign.right,
                 style: TextStyle(fontSize: 14),
               ),

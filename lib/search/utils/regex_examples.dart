@@ -19,11 +19,11 @@ class RegexExamples {
     
     // פיצול למילים
     final words = text.split(SearchRegexPatterns.wordSplitter);
-    debugPrint('מילים: $words'); // ['שלום', 'עולם!', 'איך', 'הולך?']
+    debugPrint('מילים: $words'); // ['שלום', AppLocalizations.of(context)?.t('auto.486') ?? 'עולם!', AppLocalizations.of(context)?.t('auto.485') ?? 'איך', AppLocalizations.of(context)?.t('auto.484') ?? 'הולך?']
     
     // ניקוי טקסט
     final cleanText = SearchRegexPatterns.cleanText(text);
-    debugPrint('טקסט נקי: $cleanText'); // 'שלום עולם איך הולך'
+    debugPrint(AppLocalizations.of(context)?.t('auto.483') ?? 'טקסט נקי: $cleanText'); // AppLocalizations.of(context)?.t('auto.482') ?? 'שלום עולם איך הולך'
     
     // בדיקת שפה
     debugPrint('עברית: ${SearchRegexPatterns.isHebrew(text)}'); // true

@@ -49,11 +49,11 @@ class BookmarkView extends StatelessWidget {
           },
           onClearAll: (ctx) {
             ctx.read<BookmarkBloc>().clearBookmarks();
-            UiSnack.show('כל הסימניות נמחקו');
+            UiSnack.show(AppLocalizations.of(context)?.t('auto.840') ?? 'כל הסימניות נמחקו');
           },
-          hintText: 'חפש בסימניות...',
-          emptyText: 'אין סימניות',
-          notFoundText: 'לא נמצאו תוצאות',
+          hintText: AppLocalizations.of(context)?.t('auto.839') ?? 'חפש בסימניות...',
+          emptyText: AppLocalizations.of(context)?.t('auto.838') ?? 'אין סימניות',
+          notFoundText: AppLocalizations.of(context)?.t('auto.837') ?? 'לא נמצאו תוצאות',
           clearAllText: 'מחק את כל הסימניות',
           leadingIconBuilder: (item) => item.book is PdfBook
               ? const Icon(FluentIcons.document_pdf_24_regular)

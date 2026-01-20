@@ -142,7 +142,7 @@ class CommentatorsListViewState extends State<CommentatorsListView> {
       builder: (context, state) {
       if (state.availableCommentators.isEmpty) {
         return const Center(
-          child: Text("אין מפרשים"),
+          child: Text(AppLocalizations.of(context)?.t('auto.270') ?? 'אין מפרשים'),
         );
       }
       if (commentatorsList.isEmpty) _update(context, state);
@@ -202,7 +202,7 @@ class CommentatorsListViewState extends State<CommentatorsListView> {
                   child: RtlTextField(
                     controller: searchController,
                     decoration: InputDecoration(
-                      hintText: "סינון מפרשים...",
+                      hintText: AppLocalizations.of(context)?.t('auto.269') ?? 'סינון מפרשים...',
                       prefixIcon: const Icon(FluentIcons.search_24_regular),
                       suffixIcon: searchController.text.isNotEmpty
                           ? IconButton(
@@ -226,7 +226,7 @@ class CommentatorsListViewState extends State<CommentatorsListView> {
                 if (commentatorsList.isNotEmpty)
                   CheckboxListTile(
                     title:
-                        const Text('הצג את כל המפרשים'), // שמרתי את השינוי שלך
+                        const Text(AppLocalizations.of(context)?.t('auto.268') ?? 'הצג את כל המפרשים'), // שמרתי את השינוי שלך
                     value: commentatorsList
                         .where((e) =>
                             !e.startsWith('__TITLE_') &&
@@ -262,7 +262,7 @@ class CommentatorsListViewState extends State<CommentatorsListView> {
                         final allActive = _torahShebichtav
                             .every(state.activeCommentators.contains);
                         return CheckboxListTile(
-                          title: const Text('הצג את כל התורה שבכתב'),
+                          title: const Text(AppLocalizations.of(context)?.t('auto.267') ?? 'הצג את כל התורה שבכתב'),
                           value: allActive,
                           onChanged: (checked) {
                             final current =

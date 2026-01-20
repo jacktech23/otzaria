@@ -21,7 +21,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
     context: context,
     builder: (context) => StatefulBuilder(
       builder: (context, setDialogState) => AlertDialog(
-        title: const Text('הגדרות חיפוש גימטריה', textAlign: TextAlign.right),
+        title: const Text(AppLocalizations.of(context)?.t('auto.683') ?? 'הגדרות חיפוש גימטריה', textAlign: TextAlign.right),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -29,7 +29,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
             children: [
               const Align(
                 alignment: Alignment.centerRight,
-                child: Text('מספר תוצאות מקסימלי:'),
+                child: Text(AppLocalizations.of(context)?.t('auto.682') ?? 'מספר תוצאות מקסימלי:'),
               ),
               const SizedBox(height: 8),
               DropdownButton<int>(
@@ -54,7 +54,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
               ),
               const SizedBox(height: 16),
               CheckboxListTile(
-                title: const Text('סינון תוצאות כפולות',
+                title: const Text(AppLocalizations.of(context)?.t('auto.681') ?? 'סינון תוצאות כפולות',
                     textAlign: TextAlign.right),
                 value: filterDuplicates,
                 onChanged: (value) {
@@ -67,7 +67,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
                 contentPadding: EdgeInsets.zero,
               ),
               CheckboxListTile(
-                title: const Text('חיפוש פסוק שלם בלבד',
+                title: const Text(AppLocalizations.of(context)?.t('auto.680') ?? 'חיפוש פסוק שלם בלבד',
                     textAlign: TextAlign.right),
                 value: wholeVerseOnly,
                 onChanged: (value) {
@@ -81,7 +81,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
               ),
               CheckboxListTile(
                 title:
-                    const Text('חיפוש בתורה בלבד', textAlign: TextAlign.right),
+                    const Text(AppLocalizations.of(context)?.t('auto.679') ?? 'חיפוש בתורה בלבד', textAlign: TextAlign.right),
                 value: torahOnly,
                 onChanged: (value) {
                   torahOnly = value ?? false;
@@ -95,13 +95,13 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
               const Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  'שיטת חישוב גימטריה:',
+                  AppLocalizations.of(context)?.t('auto.678') ?? 'שיטת חישוב גימטריה:',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 8),
               CheckboxListTile(
-                title: const Text('גימטריה קטנה', textAlign: TextAlign.right),
+                title: const Text(AppLocalizations.of(context)?.t('auto.677') ?? 'גימטריה קטנה', textAlign: TextAlign.right),
                 value: useSmallGematria,
                 onChanged: (value) {
                   useSmallGematria = value ?? false;
@@ -118,7 +118,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
                 contentPadding: EdgeInsets.zero,
               ),
               CheckboxListTile(
-                title: const Text('אותיות סופיות שונות',
+                title: const Text(AppLocalizations.of(context)?.t('auto.676') ?? 'אותיות סופיות שונות',
                     textAlign: TextAlign.right),
                 value: useFinalLetters,
                 onChanged: (value) {
@@ -135,7 +135,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
                 contentPadding: EdgeInsets.zero,
               ),
               CheckboxListTile(
-                title: const Text('עם הכולל', textAlign: TextAlign.right),
+                title: const Text(AppLocalizations.of(context)?.t('auto.675') ?? 'עם הכולל', textAlign: TextAlign.right),
                 value: useWithKolel,
                 onChanged: (value) {
                   useWithKolel = value ?? false;
@@ -154,7 +154,7 @@ Future<void> showGematriaSettingsDialog(BuildContext context) async {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: const Text('סגור'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.674') ?? 'סגור'),
           ),
         ],
       ),

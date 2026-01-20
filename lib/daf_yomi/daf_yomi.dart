@@ -30,7 +30,7 @@ class DafYomi extends StatelessWidget {
             children: [
               // חלק הטקסטים - פותח את הדף היומי
               Tooltip(
-                message: 'פתח דף יומי',
+                message: AppLocalizations.of(context)?.t('auto.710') ?? 'פתח דף יומי',
                 child: InkWell(
                   onTap: () => onDafYomiTap(
                     tractate,
@@ -83,7 +83,7 @@ class DafYomi extends StatelessWidget {
 
               // אייקון לוח שנה - פותח את הלוח שנה
               Tooltip(
-                message: 'פתח לוח שנה',
+                message: AppLocalizations.of(context)?.t('auto.709') ?? 'פתח לוח שנה',
                 child: InkWell(
                   onTap: onCalendarTap,
                   borderRadius: const BorderRadius.only(

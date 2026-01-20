@@ -877,7 +877,7 @@ class _CommentatorPickerDialogState extends State<_CommentatorPickerDialog> {
               child: RtlTextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: "חיפוש מפרש...",
+                  hintText: AppLocalizations.of(context)?.t('auto.235') ?? 'חיפוש מפרש...',
                   prefixIcon: const Icon(FluentIcons.search_24_regular),
                   suffixIcon: _searchController.text.isNotEmpty
                       ? IconButton(
@@ -909,12 +909,12 @@ class _CommentatorPickerDialogState extends State<_CommentatorPickerDialog> {
                 children: [
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(),
-                    child: const Text('ביטול'),
+                    child: const Text(AppLocalizations.of(context)?.t('auto.234') ?? 'ביטול'),
                   ),
                   const SizedBox(width: 8),
                   TextButton(
                     onPressed: () => Navigator.of(context).pop('__NONE__'),
-                    child: const Text('ללא מפרש'),
+                    child: const Text(AppLocalizations.of(context)?.t('auto.233') ?? 'ללא מפרש'),
                   ),
                 ],
               ),
@@ -968,7 +968,7 @@ class _CommentatorPickerDialogState extends State<_CommentatorPickerDialog> {
   Widget _buildFilteredList() {
     if (_filteredCommentators.isEmpty) {
       return const Center(
-        child: Text('לא נמצאו מפרשים'),
+        child: Text(AppLocalizations.of(context)?.t('auto.232') ?? 'לא נמצאו מפרשים'),
       );
     }
 

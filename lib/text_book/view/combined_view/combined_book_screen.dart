@@ -148,7 +148,7 @@ class _CombinedViewState extends State<CombinedView> {
       return ctx.ContextMenu(
         entries: [
           ctx.MenuItem(
-            label: const Text('העתק'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.260') ?? 'העתק'),
             icon: const Icon(FluentIcons.copy_24_regular),
             enabled: _savedSelectedText != null &&
                 _savedSelectedText!.trim().isNotEmpty,
@@ -165,17 +165,17 @@ class _CombinedViewState extends State<CombinedView> {
       maxHeight: screenHeight * 0.9,
       entries: [
         ctx.MenuItem(
-            label: const Text('חיפוש'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.259') ?? 'חיפוש'),
             icon: const Icon(FluentIcons.search_24_regular),
             onSelected: (_) => widget.openLeftPaneTab(1)),
         ctx.MenuItem(
-          label: const Text('מפרשים'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.258') ?? 'מפרשים'),
           icon: const Icon(FluentIcons.book_24_regular),
           enabled: state.availableCommentators.isNotEmpty,
           onSelected: (_) => widget.openLeftPaneTab(0),
         ),
         ctx.MenuItem(
-          label: const Text('קישורים'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.257') ?? 'קישורים'),
           icon: const Icon(FluentIcons.link_24_regular),
           enabled: state.visibleLinks.isNotEmpty,
           onSelected: (_) => widget.openLeftPaneTab(1),
@@ -183,55 +183,55 @@ class _CombinedViewState extends State<CombinedView> {
         const ctx.MenuDivider(),
         // הערות אישיות
         ctx.MenuItem(
-          label: const Text('הוסף הערה אישית '),
+          label: const Text(AppLocalizations.of(context)?.t('auto.256') ?? 'הוסף הערה אישית '),
           icon: const Icon(FluentIcons.note_add_24_regular),
           onSelected: (_) => _createNoteForCurrentLine(),
         ),
         const ctx.MenuDivider(),
         // העתקה
         ctx.MenuItem(
-          label: const Text('העתק'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.255') ?? 'העתק'),
           icon: const Icon(FluentIcons.copy_24_regular),
           enabled: _savedSelectedText != null &&
               _savedSelectedText!.trim().isNotEmpty,
           onSelected: (_) => _copyFormattedText(),
         ),
         ctx.MenuItem(
-          label: const Text('העתק את כל הפסקה'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.254') ?? 'העתק את כל הפסקה'),
           icon: const Icon(FluentIcons.document_copy_24_regular),
           enabled: paragraphIndex >= 0 && paragraphIndex < widget.data.length,
           onSelected: (_) => _copyParagraphByIndex(paragraphIndex),
         ),
         ctx.MenuItem(
-          label: const Text('העתק את הטקסט המוצג'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.253') ?? 'העתק את הטקסט המוצג'),
           icon: const Icon(FluentIcons.copy_select_24_regular),
           onSelected: (_) => _copyVisibleText(),
         ),
         const ctx.MenuDivider(),
         // העתק קישור לספר זה - כפריט נפרד
         ctx.MenuItem(
-          label: const Text('העתק קישור לספר זה'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.252') ?? 'העתק קישור לספר זה'),
           icon: const Icon(FluentIcons.share_24_regular),
           onSelected: (_) => _shareBookLink(),
         ),
         const ctx.MenuDivider(),
         // תת-תפריט שיתוף קישורים ישירים
         ctx.MenuItem.submenu(
-          label: const Text('שתף קישור ישיר'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.251') ?? 'שתף קישור ישיר'),
           icon: const Icon(FluentIcons.share_24_regular),
           items: [
             ctx.MenuItem(
-              label: const Text('העתק קישור ישיר לספר זה'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.250') ?? 'העתק קישור ישיר לספר זה'),
               icon: const Icon(FluentIcons.book_24_regular),
               onSelected: (_) => _shareBookLinkDirect(),
             ),
             ctx.MenuItem(
-              label: const Text('העתק קישור ישיר למקטע זה'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.249') ?? 'העתק קישור ישיר למקטע זה'),
               icon: const Icon(FluentIcons.document_24_regular),
               onSelected: (_) => _shareSectionLinkForIndex(paragraphIndex),
             ),
             ctx.MenuItem(
-              label: const Text('העתק קישור ישיר למקטע זה עם הדגשת טקסט'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.248') ?? 'העתק קישור ישיר למקטע זה עם הדגשת טקסט'),
               icon: const Icon(FluentIcons.highlight_24_regular),
               onSelected: (_) => _shareTextHighlightLinkForIndex(paragraphIndex),
             ),
@@ -240,7 +240,7 @@ class _CombinedViewState extends State<CombinedView> {
         const ctx.MenuDivider(),
         // Edit paragraph option
         ctx.MenuItem(
-          label: const Text('ערוך פסקה זו'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.247') ?? 'ערוך פסקה זו'),
           icon: const Icon(FluentIcons.edit_24_regular),
           onSelected: (_) => _editParagraph(paragraphIndex),
         ),

@@ -178,7 +178,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                     ),
                     titleSpacing: 0,
                     centerTitle: true,
-                    title: const Text('עיון'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.65') ?? 'עיון'),
                     actions: [
                       // כפתור מסך מלא
                       BlocBuilder<SettingsBloc, SettingsState>(
@@ -191,7 +191,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                               size: 18,
                             ),
                             tooltip: settingsState.isFullscreen
-                                ? 'צא ממסך מלא'
+                                ? AppLocalizations.of(context)?.t('auto.64') ?? 'צא ממסך מלא'
                                 : 'מסך מלא',
                             onPressed: () async {
                               final newFullscreenState =
@@ -206,7 +206,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                       // כפתור הגדרות ישיר
                       IconButton(
                         icon: const Icon(FluentIcons.settings_24_regular, size: 18),
-                        tooltip: 'הגדרות תצוגת הספרים',
+                        tooltip: AppLocalizations.of(context)?.t('auto.63') ?? 'הגדרות תצוגת הספרים',
                         onPressed: () => showReadingSettingsDialog(context),
                         style: _kIconButtonStyle,
                       ),
@@ -219,7 +219,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                         const Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Text(
-                            'לא נבחרו ספרים',
+                            AppLocalizations.of(context)?.t('auto.62') ?? 'לא נבחרו ספרים',
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
@@ -232,7 +232,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                                   );
                             },
                             icon: const Icon(FluentIcons.library_24_regular),
-                            label: const Text('דפדף בספרייה'),
+                            label: const Text(AppLocalizations.of(context)?.t('auto.61') ?? 'דפדף בספרייה'),
                           ),
                         ),
                       ],
@@ -380,7 +380,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                             size: 18,
                           ),
                           tooltip: settingsState.isFullscreen
-                              ? 'צא ממסך מלא'
+                              ? AppLocalizations.of(context)?.t('auto.60') ?? 'צא ממסך מלא'
                               : 'מסך מלא',
                           onPressed: () async {
                             final newFullscreenState =
@@ -396,7 +396,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                     // כפתור הגדרות ישיר
                     IconButton(
                       icon: const Icon(FluentIcons.settings_24_regular, size: 18),
-                      tooltip: 'הגדרות תצוגת הספרים',
+                      tooltip: AppLocalizations.of(context)?.t('auto.59') ?? 'הגדרות תצוגת הספרים',
                       onPressed: () => showReadingSettingsDialog(context),
                       style: _kIconButtonStyle,
                     ),
@@ -510,22 +510,22 @@ class _ReadingScreenState extends State<ReadingScreen>
           maxHeight: 400,
           entries: <ContextMenuEntry>[
             MenuItem(
-              label: Text(tab.isPinned ? 'בטל הצמדת כרטיסיה' : 'הצמד כרטיסיה'),
+              label: Text(tab.isPinned ? AppLocalizations.of(context)?.t('auto.58') ?? 'בטל הצמדת כרטיסיה' : AppLocalizations.of(context)?.t('auto.57') ?? 'הצמד כרטיסיה'),
               onSelected: (_) =>
                   context.read<TabsBloc>().add(TogglePinTab(tab)),
             ),
             MenuItem(
-                label: const Text('סגור'),
+                label: const Text(AppLocalizations.of(context)?.t('auto.56') ?? 'סגור'),
                 onSelected: (_) => closeTab(tab, context)),
             MenuItem(
-                label: const Text('סגור הכל'),
+                label: const Text(AppLocalizations.of(context)?.t('auto.55') ?? 'סגור הכל'),
                 onSelected: (_) => closeAllTabs(state, context)),
             MenuItem(
-              label: const Text('סגור את האחרים'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.54') ?? 'סגור את האחרים'),
               onSelected: (_) => closeAllTabsButCurrent(state, context),
             ),
             MenuItem(
-              label: const Text('שיכפול'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.53') ?? 'שיכפול'),
               onSelected: (_) => context.read<TabsBloc>().add(CloneTab(tab)),
             ),
             const MenuDivider(),
@@ -533,7 +533,7 @@ class _ReadingScreenState extends State<ReadingScreen>
             if (tab is! CombinedTab)
               if (state.tabs.length > 1)
                 MenuItem.submenu(
-                  label: const Text('הצג לצד'),
+                  label: const Text(AppLocalizations.of(context)?.t('auto.52') ?? 'הצג לצד'),
                   items: state.tabs
                       .where((t) => t != tab && t is! CombinedTab)
                       .map((otherTab) => MenuItem(
@@ -551,32 +551,32 @@ class _ReadingScreenState extends State<ReadingScreen>
                 )
               else
                 MenuItem(
-                  label: const Text('הצג לצד'),
+                  label: const Text(AppLocalizations.of(context)?.t('auto.51') ?? 'הצג לצד'),
                   enabled: false,
                   onSelected: (_) {},
                 ),
             // אפשרויות לטאב משולב
             if (tab is CombinedTab) ...[
               MenuItem(
-                label: const Text('החלף צדדים'),
+                label: const Text(AppLocalizations.of(context)?.t('auto.50') ?? 'החלף צדדים'),
                 onSelected: (_) =>
                     context.read<TabsBloc>().add(const SwapSideBySideTabs()),
               ),
               MenuItem(
-                label: const Text('חזרה לתצוגה רגילה'),
+                label: const Text(AppLocalizations.of(context)?.t('auto.49') ?? 'חזרה לתצוגה רגילה'),
                 onSelected: (_) =>
                     context.read<TabsBloc>().add(const DisableSideBySideMode()),
               ),
             ],
             const MenuDivider(),
             MenuItem(
-              label: const Text('העתק קישור לספר זה'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.48') ?? 'העתק קישור לספר זה'),
               onSelected: (_) => _shareBookLink(tab),
             ),
             const MenuDivider(),
             // הוסרת אפשרות הצמדה לדף הבית לאחר הסרת דף הבית
             MenuItem.submenu(
-              label: const Text('רשימת הכרטיסיות '),
+              label: const Text(AppLocalizations.of(context)?.t('auto.47') ?? 'רשימת הכרטיסיות '),
               items: _getMenuItems(state.tabs, context),
             )
           ],

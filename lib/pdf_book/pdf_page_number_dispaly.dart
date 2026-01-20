@@ -88,7 +88,7 @@ class _PageNumberDisplayState extends State<PageNumberDisplay> {
               ),
             )
           : Tooltip(
-              message: "הזן מספר דף",
+              message: AppLocalizations.of(context)?.t('auto.549') ?? 'הזן מספר דף',
               child: InkWell(
                   mouseCursor: SystemMouseCursors.click,
                   child: TextButton(

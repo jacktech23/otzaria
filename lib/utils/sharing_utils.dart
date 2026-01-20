@@ -82,7 +82,7 @@ class SharingUtils {
       await Clipboard.setData(ClipboardData(text: link));
       showSnackBar(successMessage);
     } catch (e) {
-      showErrorSnackBar('שגיאה ביצירת קישור: $e');
+      showErrorSnackBar(AppLocalizations.of(context)?.t('auto.757') ?? 'שגיאה ביצירת קישור: $e');
     }
   }
 

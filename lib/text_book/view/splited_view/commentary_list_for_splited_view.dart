@@ -123,7 +123,7 @@ class _CommentaryListState extends State<CommentaryList> {
                   child: RtlTextField(
                     controller: _searchController,
                     decoration: InputDecoration(
-                      hintText: 'חפש בתוך המפרשים המוצגים...',
+                      hintText: AppLocalizations.of(context)?.t('auto.266') ?? 'חפש בתוך המפרשים המוצגים...',
                       prefixIcon: const Icon(FluentIcons.search_24_regular),
                       suffixIcon: _searchQuery.isNotEmpty
                           ? Row(
@@ -248,7 +248,7 @@ class _CommentaryListState extends State<CommentaryList> {
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (thisLinksSnapshot.data!.isEmpty) {
-                  return const Center(child: Text("לא נמצאו מפרשים להצגה"));
+                  return const Center(child: Text(AppLocalizations.of(context)?.t('auto.265') ?? 'לא נמצאו מפרשים להצגה'));
                 }
 
                 // יצירת מפתח ייחודי לאינדקסים הנוכחיים

@@ -115,7 +115,7 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
                 child: RtlTextField(
                   controller: _searchController,
                   decoration: InputDecoration(
-                    hintText: 'חפש בהערות...',
+                    hintText: AppLocalizations.of(context)?.t('auto.378') ?? 'חפש בהערות...',
                     prefixIcon: const Icon(FluentIcons.search_24_regular),
                     suffixIcon: _searchQuery.isNotEmpty
                         ? IconButton(
@@ -142,7 +142,7 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
               ),
               const SizedBox(width: 8),
               IconButton(
-                tooltip: 'רענן',
+                tooltip: AppLocalizations.of(context)?.t('auto.377') ?? 'רענן',
                 onPressed: () {
                   context
                       .read<PersonalNotesBloc>()
@@ -175,7 +175,7 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'הצג רק הערות לטקסט הנראה',
+                          AppLocalizations.of(context)?.t('auto.376') ?? 'הצג רק הערות לטקסט הנראה',
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
@@ -216,7 +216,7 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
 
     if (state.locatedNotes.isEmpty && state.missingNotes.isEmpty) {
       return const Center(
-        child: Text('אין עדיין הערות על ספר זה'),
+        child: Text(AppLocalizations.of(context)?.t('auto.375') ?? 'אין עדיין הערות על ספר זה'),
       );
     }
 
@@ -256,8 +256,8 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
       final message = _showOnlyVisible && visibleIndices.isNotEmpty
           ? 'אין הערות לטקסט הנראה במסך'
           : (_searchQuery.isNotEmpty
-              ? 'לא נמצאו הערות התואמות לחיפוש'
-              : 'אין עדיין הערות על ספר זה');
+              ? AppLocalizations.of(context)?.t('auto.374') ?? 'לא נמצאו הערות התואמות לחיפוש'
+              : AppLocalizations.of(context)?.t('auto.373') ?? 'אין עדיין הערות על ספר זה');
       return Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -293,7 +293,7 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Text(
-                'הערות חסרות מיקום',
+                AppLocalizations.of(context)?.t('auto.372') ?? 'הערות חסרות מיקום',
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: Theme.of(context)
                           .colorScheme
@@ -327,7 +327,7 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
     final result = await showDialog<String>(
       context: context,
       builder: (context) => PersonalNoteEditorDialog(
-        title: 'ערוך הערה',
+        title: AppLocalizations.of(context)?.t('auto.371') ?? 'ערוך הערה',
         controller: controller,
         referenceText: note.displayTitle,
         icon: FluentIcons.edit_24_regular,
@@ -348,9 +348,9 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
     final bloc = context.read<PersonalNotesBloc>();
     final shouldDelete = await showConfirmationDialog(
       context: context,
-      title: 'מחיקת הערה',
-      content: 'האם למחוק את ההערה לצמיתות?',
-      confirmText: 'מחק',
+      title: AppLocalizations.of(context)?.t('auto.370') ?? 'מחיקת הערה',
+      content: AppLocalizations.of(context)?.t('auto.369') ?? 'האם למחוק את ההערה לצמיתות?',
+      confirmText: AppLocalizations.of(context)?.t('auto.368') ?? 'מחק',
       isDangerous: true,
     );
 
@@ -370,12 +370,12 @@ class _PersonalNotesSidebarState extends State<PersonalNotesSidebar> {
 
     final result = await showInputDialog(
       context: context,
-      title: 'שחזור מיקום הערה',
+      title: AppLocalizations.of(context)?.t('auto.367') ?? 'שחזור מיקום הערה',
       subtitle: note.lastKnownLineNumber != null
-          ? 'המיקום האחרון הידוע: שורה ${note.lastKnownLineNumber}'
+          ? AppLocalizations.of(context)?.t('auto.366') ?? 'המיקום האחרון הידוע: שורה ${note.lastKnownLineNumber}'
           : null,
-      labelText: 'שורה חדשה',
-      hintText: 'הקלד מספר שורה',
+      labelText: AppLocalizations.of(context)?.t('auto.365') ?? 'שורה חדשה',
+      hintText: AppLocalizations.of(context)?.t('auto.364') ?? 'הקלד מספר שורה',
       initialValue: note.lastKnownLineNumber?.toString() ?? '',
       keyboardType: TextInputType.number,
     );
@@ -527,7 +527,7 @@ class _MissingNoteTileState extends State<_MissingNoteTile> {
               children: [
                 Expanded(
                   child: Text(
-                    'הערה ללא מיקום',
+                    AppLocalizations.of(context)?.t('auto.363') ?? 'הערה ללא מיקום',
                     style: Theme.of(context)
                         .textTheme
                         .titleSmall
@@ -544,7 +544,7 @@ class _MissingNoteTileState extends State<_MissingNoteTile> {
                     });
                   },
                   extraAction: IconButton(
-                    tooltip: 'מיקום מחדש',
+                    tooltip: AppLocalizations.of(context)?.t('auto.362') ?? 'מיקום מחדש',
                     icon: const Icon(FluentIcons.location_24_regular, size: 18),
                     iconSize: 18,
                     padding: const EdgeInsets.all(8),
@@ -578,7 +578,7 @@ class _MissingNoteTileState extends State<_MissingNoteTile> {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: Text(
-                              'שורה קודמת: ${widget.note.lastKnownLineNumber}',
+                              AppLocalizations.of(context)?.t('auto.361') ?? 'שורה קודמת: ${widget.note.lastKnownLineNumber}',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -642,7 +642,7 @@ class _NoteActions extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         IconButton(
-          tooltip: 'עריכה',
+          tooltip: AppLocalizations.of(context)?.t('auto.360') ?? 'עריכה',
           icon: const Icon(FluentIcons.edit_24_regular, size: 18),
           iconSize: 18,
           padding: const EdgeInsets.all(8),
@@ -654,7 +654,7 @@ class _NoteActions extends StatelessWidget {
         ),
         if (extraAction != null) extraAction!,
         IconButton(
-          tooltip: 'מחיקה',
+          tooltip: AppLocalizations.of(context)?.t('auto.359') ?? 'מחיקה',
           icon: const Icon(FluentIcons.delete_24_regular, size: 18),
           iconSize: 18,
           padding: const EdgeInsets.all(8),
@@ -665,7 +665,7 @@ class _NoteActions extends StatelessWidget {
           onPressed: onDelete,
         ),
         IconButton(
-          tooltip: isExpanded ? 'סגור' : 'פתח',
+          tooltip: isExpanded ? AppLocalizations.of(context)?.t('auto.358') ?? 'סגור' : AppLocalizations.of(context)?.t('auto.357') ?? 'פתח',
           icon: AnimatedRotation(
             turns: isExpanded ? 0.5 : 0.0,
             duration: const Duration(milliseconds: 200),

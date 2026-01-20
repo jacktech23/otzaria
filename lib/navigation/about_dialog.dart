@@ -20,7 +20,7 @@ class AboutDialogWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'אודות התוכנה',
+                  AppLocalizations.of(context)?.t('auto.84') ?? 'אודות התוכנה',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,

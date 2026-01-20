@@ -37,14 +37,14 @@ Widget hebrewFlatChip({
       child: TextButton.icon(
         onPressed: openDialog,
         icon: const Icon(FluentIcons.arrow_download_24_regular),
-        label: const Text('עדכון זמין'),
+        label: const Text(AppLocalizations.of(context)?.t('auto.729') ?? 'עדכון זמין'),
       ),
     );
   }
 
   if (UpdatStatus.downloading == status) {
     return Tooltip(
-      message: 'אנא המתן...',
+      message: AppLocalizations.of(context)?.t('auto.728') ?? 'אנא המתן...',
       child: TextButton.icon(
         onPressed: () {},
         icon: const SizedBox(
@@ -54,18 +54,18 @@ Widget hebrewFlatChip({
             strokeWidth: 2,
           ),
         ),
-        label: const Text('מוריד...'),
+        label: const Text(AppLocalizations.of(context)?.t('auto.727') ?? 'מוריד...'),
       ),
     );
   }
 
   if (UpdatStatus.readyToInstall == status) {
     return Tooltip(
-      message: 'לחץ להתקנה',
+      message: AppLocalizations.of(context)?.t('auto.726') ?? 'לחץ להתקנה',
       child: TextButton.icon(
         onPressed: launchInstaller,
         icon: const Icon(FluentIcons.checkmark_circle_24_regular),
-        label: const Text('מוכן להתקנה'),
+        label: const Text(AppLocalizations.of(context)?.t('auto.725') ?? 'מוכן להתקנה'),
       ),
     );
   }
@@ -78,11 +78,11 @@ Widget hebrewFlatChip({
       return Container();
     }
     return Tooltip(
-      message: 'אירעה שגיאה בעדכון. אנא נסה שוב.',
+      message: AppLocalizations.of(context)?.t('auto.724') ?? 'אירעה שגיאה בעדכון. אנא נסה שוב.',
       child: TextButton.icon(
         onPressed: startUpdate,
         icon: const Icon(FluentIcons.warning_24_regular),
-        label: const Text('שגיאה בחיבור לרשת במהלך בדיקת עדכונים'),
+        label: const Text(AppLocalizations.of(context)?.t('auto.723') ?? 'שגיאה בחיבור לרשת במהלך בדיקת עדכונים'),
       ),
     );
   }
@@ -116,7 +116,7 @@ Widget hebrewFloatingExtendedChipWithSilentDownload({
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "מוריד עדכון...",
+              AppLocalizations.of(context)?.t('auto.722') ?? 'מוריד עדכון...',
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
@@ -134,7 +134,7 @@ Widget hebrewFloatingExtendedChipWithSilentDownload({
                   child: CircularProgressIndicator(strokeWidth: 2),
                 ),
                 SizedBox(width: 10),
-                Text("אנא המתן..."),
+                Text(AppLocalizations.of(context)?.t('auto.721') ?? 'אנא המתן...'),
               ],
             ),
           ],
@@ -152,7 +152,7 @@ Widget hebrewFloatingExtendedChipWithSilentDownload({
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "עדכון מוכן",
+              AppLocalizations.of(context)?.t('auto.720') ?? 'עדכון מוכן',
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
@@ -162,12 +162,12 @@ Widget hebrewFloatingExtendedChipWithSilentDownload({
             ),
             const SizedBox(height: 8),
             Text(
-              "אתה משתמש כרגע בגרסה $appVersion.",
+              AppLocalizations.of(context)?.t('auto.719') ?? 'אתה משתמש כרגע בגרסה $appVersion.',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 8),
             Text(
-              "עדכן כעת כדי לקבל את התכונות והתיקונים החדשים.",
+              AppLocalizations.of(context)?.t('auto.718') ?? 'עדכן כעת כדי לקבל את התכונות והתיקונים החדשים.',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 15),
@@ -177,13 +177,13 @@ Widget hebrewFloatingExtendedChipWithSilentDownload({
               children: [
                 TextButton(
                   onPressed: dismissUpdate,
-                  child: const Text('מאוחר יותר'),
+                  child: const Text(AppLocalizations.of(context)?.t('auto.717') ?? 'מאוחר יותר'),
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton.icon(
                   onPressed: startUpdate,
                   icon: const Icon(FluentIcons.desktop_arrow_down_24_regular),
-                  label: const Text('התקן כעת'),
+                  label: const Text(AppLocalizations.of(context)?.t('auto.716') ?? 'התקן כעת'),
                 ),
               ],
             ),
@@ -218,20 +218,20 @@ void hebrewDefaultDialog({
             Theme.of(context).useMaterial3 ? Axis.vertical : Axis.horizontal,
         children: const [
           Icon(FluentIcons.arrow_sync_24_regular),
-          Text('עדכון זמין'),
+          Text(AppLocalizations.of(context)?.t('auto.715') ?? 'עדכון זמין'),
         ],
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('גרסה חדשה של האפליקציה זמינה.'),
+          const Text(AppLocalizations.of(context)?.t('auto.714') ?? 'גרסה חדשה של האפליקציה זמינה.'),
           const SizedBox(width: 10),
           Text('גרסה חדשה: ${latestVersion!.toString()}'),
           const SizedBox(height: 10),
           if (status == UpdatStatus.availableWithChangelog) ...[
             Text(
-              'יומן שינויים:',
+              AppLocalizations.of(context)?.t('auto.713') ?? 'יומן שינויים:',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -245,7 +245,7 @@ void hebrewDefaultDialog({
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text('מאוחר יותר'),
+          child: const Text(AppLocalizations.of(context)?.t('auto.712') ?? 'מאוחר יותר'),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -255,7 +255,7 @@ void hebrewDefaultDialog({
             Navigator.pop(context);
             startUpdate();
           },
-          child: const Text('עדכן כעת'),
+          child: const Text(AppLocalizations.of(context)?.t('auto.711') ?? 'עדכן כעת'),
         ),
       ],
     ),

@@ -316,13 +316,13 @@ class _TantivySearchResultsState extends State<TantivySearchResults> {
       return const Center(child: CircularProgressIndicator());
     }
     if (state.searchQuery.isEmpty) {
-      return const Center(child: Text("לא בוצע חיפוש"));
+      return const Center(child: Text(AppLocalizations.of(context)?.t('auto.464') ?? 'לא בוצע חיפוש'));
     }
     if (state.results.isEmpty) {
       return const Center(
           child: Padding(
         padding: EdgeInsets.all(8.0),
-        child: Text('אין תוצאות'),
+        child: Text(AppLocalizations.of(context)?.t('auto.463') ?? 'אין תוצאות'),
       ));
     }
 
@@ -361,7 +361,7 @@ class _TantivySearchResultsState extends State<TantivySearchResults> {
                     : const Icon(FluentIcons.arrow_download_24_regular),
                 label: Text(
                   state.isLoading
-                      ? 'טוען...'
+                      ? AppLocalizations.of(context)?.t('auto.462') ?? 'טוען...'
                       : 'טען תוצאות נוספות (${state.totalResults - state.results.length} נותרו)',
                 ),
                 style: ElevatedButton.styleFrom(

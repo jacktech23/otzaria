@@ -85,7 +85,7 @@ class TextFileSearchScreenState extends State<TextFileSearchScreen>
 
   InputDecoration buildSearchDecoration(bool isSearching) {
     return InputDecoration(
-      hintText: "הקלד את הטקסט והקש אנטר או לחץ על סמל החיפוש",
+      hintText: AppLocalizations.of(context)?.t('auto.478') ?? 'הקלד את הטקסט והקש אנטר או לחץ על סמל החיפוש',
       suffixIcon: isSearching
           ? Row(
               mainAxisSize: MainAxisSize.min,
@@ -147,7 +147,7 @@ class TextFileSearchScreenState extends State<TextFileSearchScreen>
         children: [
           const Padding(
             padding: EdgeInsets.all(15.0),
-            child: Text("רשימת הספרים לחיפוש:"),
+            child: Text(AppLocalizations.of(context)?.t('auto.477') ?? 'רשימת הספרים לחיפוש:'),
           ),
           Expanded(
               child: FileTreeViewScreen(
@@ -206,7 +206,7 @@ class TextFileSearchScreenState extends State<TextFileSearchScreen>
         ? const Expanded(
             child: Center(
               child: Text(
-                "אין תוצאות חיפוש",
+                AppLocalizations.of(context)?.t('auto.476') ?? 'אין תוצאות חיפוש',
                 style: TextStyle(
                   fontSize: 20.0,
                 ),

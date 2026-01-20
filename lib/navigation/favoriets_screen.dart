@@ -26,13 +26,13 @@ class _FavouritesScreenState extends State<FavouritesScreen>
         appBar: TabBar(
           tabs: [
             Tab(
-              text: 'סימניות',
+              text: AppLocalizations.of(context)?.t('auto.87') ?? 'סימניות',
               icon: Icon(
                 FluentIcons.bookmark_24_regular,
               ),
             ),
             Tab(
-              text: 'היסטוריה',
+              text: AppLocalizations.of(context)?.t('auto.86') ?? 'היסטוריה',
               icon: Icon(
                 FluentIcons.history_24_regular,
               ),

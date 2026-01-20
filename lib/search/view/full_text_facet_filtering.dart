@@ -89,7 +89,7 @@ class _SearchFacetFilteringState extends State<SearchFacetFiltering>
       child: RtlTextField(
         controller: _filterQuery,
         decoration: InputDecoration(
-          hintText: 'איתור ספר…',
+          hintText: AppLocalizations.of(context)?.t('auto.445') ?? 'איתור ספר…',
           prefixIcon: const Icon(FluentIcons.filter_24_regular),
           suffixIcon: IconButton(
             onPressed: _clearFilter,
@@ -192,7 +192,7 @@ class _SearchFacetFilteringState extends State<SearchFacetFiltering>
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),
-          child: Text('לא נמצאו ספרים'),
+          child: Text(AppLocalizations.of(context)?.t('auto.444') ?? 'לא נמצאו ספרים'),
         ),
       );
     }

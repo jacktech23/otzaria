@@ -79,7 +79,7 @@ class _ThumbnailsViewState extends State<ThumbnailsView>
   Widget build(BuildContext context) {
     super.build(context);
     return Container(
-      color: Theme.of(context).colorScheme.surface, // צבע הרקע בכרטיסיית 'דפים' בתפריט הצידי
+      color: Theme.of(context).colorScheme.surface, // צבע הרקע בכרטיסיית AppLocalizations.of(context)?.t('auto.487') ?? 'דפים' בתפריט הצידי
       child: widget.documentRef == null
           ? null
           : PdfDocumentViewBuilder(

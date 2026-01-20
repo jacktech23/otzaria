@@ -433,7 +433,7 @@ class CommentaryListBaseState extends State<CommentaryListBase> {
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         hasAnyCommentaryLinks
-                            ? 'לא נמצאו מפרשים מהנבחרים לקטע זה'
+                            ? AppLocalizations.of(context)?.t('auto.245') ?? 'לא נמצאו מפרשים מהנבחרים לקטע זה'
                             : 'לא נמצאו מפרשים לקטע הנבחר',
                         style: TextStyle(
                           fontSize: widget.fontSize * 0.7,
@@ -567,7 +567,7 @@ class CommentaryListBaseState extends State<CommentaryListBase> {
                         child: RtlTextField(
                           controller: _searchController,
                           decoration: InputDecoration(
-                            hintText: 'חפש בתוך המפרשים המוצגים...',
+                            hintText: AppLocalizations.of(context)?.t('auto.244') ?? 'חפש בתוך המפרשים המוצגים...',
                             prefixIcon:
                                 const Icon(FluentIcons.search_24_regular),
                             suffixIcon: _searchQuery.isNotEmpty
@@ -663,7 +663,7 @@ class CommentaryListBaseState extends State<CommentaryListBase> {
                                 : FluentIcons.arrow_expand_all_24_regular,
                           ),
                           tooltip: _allExpanded
-                              ? 'סגור את כל המפרשים'
+                              ? AppLocalizations.of(context)?.t('auto.243') ?? 'סגור את כל המפרשים'
                               : 'פתח את כל המפרשים',
                           onPressed: () {
                             setState(() {
@@ -739,7 +739,7 @@ class CommentaryListBaseState extends State<CommentaryListBase> {
                               : FluentIcons.arrow_expand_all_24_regular,
                         ),
                         tooltip: _allExpanded
-                            ? 'סגור את כל המפרשים'
+                            ? AppLocalizations.of(context)?.t('auto.242') ?? 'סגור את כל המפרשים'
                             : 'פתח את כל המפרשים',
                         onPressed: () {
                           setState(() {

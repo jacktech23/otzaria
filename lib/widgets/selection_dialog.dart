@@ -90,7 +90,7 @@ class _SelectionDialogState<T> extends State<SelectionDialog<T>> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('ביטול'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.39') ?? 'ביטול'),
           ),
         ],
       );

@@ -155,16 +155,16 @@ class _MySettingsScreenState extends State<MySettingsScreen>
       key: _networkModeTileKey,
       child: _SettingsTile(
         leading: const Icon(FluentIcons.globe_24_regular),
-        title: 'מצב חיבור לרשת',
+        title: AppLocalizations.of(context)?.t('auto.656') ?? 'מצב חיבור לרשת',
         subtitle: isOffline
-            ? 'התוכנה מנותקת לגמרי מהרשת, כל התכונות המקוונות מושבתות'
-            : 'התוכנה יכולה להתחבר לרשת',
+            ? AppLocalizations.of(context)?.t('auto.655') ?? 'התוכנה מנותקת לגמרי מהרשת, כל התכונות המקוונות מושבתות'
+            : AppLocalizations.of(context)?.t('auto.654') ?? 'התוכנה יכולה להתחבר לרשת',
         trailing: SegmentedButton<bool>(
           segments: [
             ButtonSegment<bool>(
               value: false,
               label: const Text(
-                'מקוון',
+                AppLocalizations.of(context)?.t('auto.653') ?? 'מקוון',
                 style: TextStyle(fontSize: 14, letterSpacing: 0),
               ),
               icon: const Icon(FluentIcons.wifi_1_24_regular),
@@ -172,7 +172,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
             ButtonSegment<bool>(
               value: true,
               label: const Text(
-                'מנותק',
+                AppLocalizations.of(context)?.t('auto.652') ?? 'מנותק',
                 style: TextStyle(fontSize: 14, letterSpacing: 0),
               ),
               icon: const Icon(FluentIcons.wifi_off_24_regular),
@@ -281,11 +281,11 @@ class _MySettingsScreenState extends State<MySettingsScreen>
             ),
             child: Center(
               child: SettingsScreen(
-                title: 'הגדרות',
+                title: AppLocalizations.of(context)?.t('auto.651') ?? 'הגדרות',
                 children: [
                   SettingsGroup(
                     titleAlignment: Alignment.centerRight,
-                    title: 'הגדרות עיצוב',
+                    title: AppLocalizations.of(context)?.t('auto.650') ?? 'הגדרות עיצוב',
                     titleTextStyle: const TextStyle(fontSize: 25),
                     children: <Widget>[
                       _buildColumns(3, [
@@ -293,8 +293,8 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                           BlocBuilder<SettingsBloc, SettingsState>(
                             builder: (context, settingsState) {
                               return SimpleSettingsTile(
-                                title: 'מסך מלא',
-                                subtitle: 'החלף מצב מסך מלא',
+                                title: AppLocalizations.of(context)?.t('auto.649') ?? 'מסך מלא',
+                                subtitle: AppLocalizations.of(context)?.t('auto.648') ?? 'החלף מצב מסך מלא',
                                 leading: Icon(settingsState.isFullscreen
                                     ? FluentIcons
                                         .full_screen_minimize_24_regular
@@ -311,9 +311,9 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                           ),
                         SwitchSettingsTile(
                           settingKey: 'key-dark-mode',
-                          title: 'מצב כהה',
-                          enabledLabel: 'מופעל',
-                          disabledLabel: 'לא מופעל',
+                          title: AppLocalizations.of(context)?.t('auto.647') ?? 'מצב כהה',
+                          enabledLabel: AppLocalizations.of(context)?.t('auto.646') ?? 'מופעל',
+                          disabledLabel: AppLocalizations.of(context)?.t('auto.645') ?? 'לא מופעל',
                           leading:
                               const Icon(FluentIcons.weather_moon_24_regular),
                           onChange: (value) {
@@ -326,7 +326,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                         ColorPickerSettingsTile(
                           key: ValueKey(
                               'color-picker-${state.isDarkMode ? 'dark' : 'light'}'),
-                          title: 'צבע בסיס',
+                          title: AppLocalizations.of(context)?.t('auto.644') ?? 'צבע בסיס',
                           leading: const Icon(FluentIcons.color_24_regular),
                           settingKey: state.isDarkMode
                               ? 'key-dark-swatch-color'
@@ -351,18 +351,18 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                       ? const SizedBox.shrink()
                       : SettingsGroup(
                           titleAlignment: Alignment.centerRight,
-                          title: "קיצורי מקשים",
+                          title: AppLocalizations.of(context)?.t('auto.643') ?? 'קיצורי מקשים',
                           titleTextStyle: const TextStyle(fontSize: 25),
                           children: [
                             SimpleSettingsTile(
-                              title: 'איפוס קיצורי מקשים',
-                              subtitle: 'החזר את כל קיצורי המקשים לברירת מחדל',
+                              title: AppLocalizations.of(context)?.t('auto.642') ?? 'איפוס קיצורי מקשים',
+                              subtitle: AppLocalizations.of(context)?.t('auto.641') ?? 'החזר את כל קיצורי המקשים לברירת מחדל',
                               leading: const Icon(
                                   FluentIcons.arrow_reset_24_regular),
                               onTap: () async {
                                 final confirmed = await showConfirmationDialog(
                                   context: context,
-                                  title: 'איפוס קיצורי מקשים?',
+                                  title: AppLocalizations.of(context)?.t('auto.640') ?? 'איפוס קיצורי מקשים?',
                                   content:
                                       'כל קיצורי המקשים המותאמים אישית יאופסו לברירת המחדל. האם להמשיך?',
                                   isDangerous: true,
@@ -382,7 +382,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                             const Padding(
                               padding: EdgeInsets.only(bottom: 8.0, right: 8.0),
                               child: Text(
-                                'ניווט כללי',
+                                AppLocalizations.of(context)?.t('auto.639') ?? 'ניווט כללי',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -394,7 +394,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ShortcutDropDownTile(
                                 selected: 'ctrl+l',
                                 settingKey: 'key-shortcut-open-library-browser',
-                                title: 'ספרייה',
+                                title: AppLocalizations.of(context)?.t('auto.638') ?? 'ספרייה',
                                 allShortcuts: shortcuctsList,
                                 leading:
                                     const Icon(FluentIcons.library_24_regular),
@@ -402,7 +402,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ShortcutDropDownTile(
                                 selected: 'ctrl+o',
                                 settingKey: 'key-shortcut-open-find-ref',
-                                title: 'איתור',
+                                title: AppLocalizations.of(context)?.t('auto.637') ?? 'איתור',
                                 allShortcuts: shortcuctsList,
                                 leading: const Icon(
                                     FluentIcons.book_search_24_regular),
@@ -410,7 +410,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ShortcutDropDownTile(
                                 selected: 'ctrl+r',
                                 settingKey: 'key-shortcut-open-reading-screen',
-                                title: 'עיון',
+                                title: AppLocalizations.of(context)?.t('auto.636') ?? 'עיון',
                                 leading:
                                     const Icon(FluentIcons.book_open_24_regular),
                                 allShortcuts: shortcuctsList,
@@ -418,14 +418,14 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ShortcutDropDownTile(
                                 selected: 'ctrl+q',
                                 settingKey: 'key-shortcut-open-new-search',
-                                title: 'חלון חיפוש חדש',
+                                title: AppLocalizations.of(context)?.t('auto.635') ?? 'חלון חיפוש חדש',
                                 leading:
                                     const Icon(FluentIcons.search_24_regular),
                                 allShortcuts: shortcuctsList,
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-open-settings',
-                                title: 'הגדרות',
+                                title: AppLocalizations.of(context)?.t('auto.634') ?? 'הגדרות',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+comma',
                                 leading:
@@ -433,7 +433,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-open-more',
-                                title: 'כלים',
+                                title: AppLocalizations.of(context)?.t('auto.633') ?? 'כלים',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+m',
                                 leading:
@@ -441,7 +441,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-open-bookmarks',
-                                title: 'סימניות',
+                                title: AppLocalizations.of(context)?.t('auto.632') ?? 'סימניות',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+shift+b',
                                 leading:
@@ -449,7 +449,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-open-history',
-                                title: 'היסטוריה',
+                                title: AppLocalizations.of(context)?.t('auto.631') ?? 'היסטוריה',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+h',
                                 leading:
@@ -457,7 +457,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-switch-workspace',
-                                title: 'החלף שולחן עבודה',
+                                title: AppLocalizations.of(context)?.t('auto.630') ?? 'החלף שולחן עבודה',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+k',
                                 leading:
@@ -468,7 +468,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                             const Padding(
                               padding: EdgeInsets.only(bottom: 8.0, right: 8.0),
                               child: Text(
-                                'תצוגת ספר',
+                                AppLocalizations.of(context)?.t('auto.629') ?? 'תצוגת ספר',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -479,7 +479,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                             _buildColumns(3, [
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-search-in-book',
-                                title: 'חיפוש בספר',
+                                title: AppLocalizations.of(context)?.t('auto.628') ?? 'חיפוש בספר',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+f',
                                 leading:
@@ -487,7 +487,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-edit-section',
-                                title: 'עריכת קטע',
+                                title: AppLocalizations.of(context)?.t('auto.627') ?? 'עריכת קטע',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+e',
                                 leading: const Icon(
@@ -495,7 +495,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-print',
-                                title: 'הדפסה',
+                                title: AppLocalizations.of(context)?.t('auto.626') ?? 'הדפסה',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+p',
                                 leading:
@@ -503,7 +503,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-add-bookmark',
-                                title: 'הוספת סימניה',
+                                title: AppLocalizations.of(context)?.t('auto.625') ?? 'הוספת סימניה',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+b',
                                 leading:
@@ -511,7 +511,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                               ShortcutDropDownTile(
                                 settingKey: 'key-shortcut-add-note',
-                                title: 'הוספת הערה',
+                                title: AppLocalizations.of(context)?.t('auto.624') ?? 'הוספת הערה',
                                 allShortcuts: shortcuctsList,
                                 selected: 'ctrl+n',
                                 leading:
@@ -520,7 +520,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ShortcutDropDownTile(
                                 selected: 'ctrl+w',
                                 settingKey: 'key-shortcut-close-tab',
-                                title: 'סגור ספר נוכחי',
+                                title: AppLocalizations.of(context)?.t('auto.623') ?? 'סגור ספר נוכחי',
                                 allShortcuts: shortcuctsList,
                                 leading: const Icon(
                                     FluentIcons.dismiss_circle_24_regular),
@@ -528,7 +528,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ShortcutDropDownTile(
                                 selected: 'ctrl+shift+w',
                                 settingKey: 'key-shortcut-close-all-tabs',
-                                title: 'סגור כל הספרים',
+                                title: AppLocalizations.of(context)?.t('auto.622') ?? 'סגור כל הספרים',
                                 allShortcuts: shortcuctsList,
                                 leading:
                                     const Icon(FluentIcons.dismiss_24_regular),
@@ -538,15 +538,15 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                         ),
                   const SizedBox(height: 24),
                   SettingsGroup(
-                    title: 'הגדרות ממשק',
+                    title: AppLocalizations.of(context)?.t('auto.621') ?? 'הגדרות ממשק',
                     titleAlignment: Alignment.centerRight,
                     titleTextStyle: const TextStyle(fontSize: 25),
                     children: [
                       SwitchSettingsTile(
                         settingKey: 'key-replace-holy-names',
-                        title: 'הסתרת שמות הקודש',
-                        enabledLabel: 'השמות הקדושים יוחלפו מפאת קדושתם',
-                        disabledLabel: 'השמות הקדושים יוצגו ככתיבתם',
+                        title: AppLocalizations.of(context)?.t('auto.620') ?? 'הסתרת שמות הקודש',
+                        enabledLabel: AppLocalizations.of(context)?.t('auto.619') ?? 'השמות הקדושים יוחלפו מפאת קדושתם',
+                        disabledLabel: AppLocalizations.of(context)?.t('auto.618') ?? 'השמות הקדושים יוצגו ככתיבתם',
                         leading: const Icon(FluentIcons.eye_off_24_regular),
                         defaultValue: state.replaceHolyNames,
                         onChange: (value) {
@@ -566,19 +566,19 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                           children: [
                             _buildSettingsCard(
                               context: context,
-                              title: 'הגדרות מסך ספרייה',
+                              title: AppLocalizations.of(context)?.t('auto.617') ?? 'הגדרות מסך ספרייה',
                               icon: FluentIcons.library_24_regular,
                               onTap: () => showLibrarySettingsDialog(context),
                             ),
                             _buildSettingsCard(
                               context: context,
-                              title: 'הגדרות תצוגת הספרים',
+                              title: AppLocalizations.of(context)?.t('auto.616') ?? 'הגדרות תצוגת הספרים',
                               icon: FluentIcons.book_24_regular,
                               onTap: () => showReadingSettingsDialog(context),
                             ),
                             _buildSettingsCard(
                               context: context,
-                              title: 'הגדרות לוח שנה',
+                              title: AppLocalizations.of(context)?.t('auto.615') ?? 'הגדרות לוח שנה',
                               icon: Icons.calendar_month_outlined,
                               onTap: () => showCalendarSettingsDialog(context),
                             ),
@@ -588,7 +588,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               // ignore: dead_code
                               _buildSettingsCard(
                                 context: context,
-                                title: 'הגדרות זכור ושמור',
+                                title: AppLocalizations.of(context)?.t('auto.614') ?? 'הגדרות זכור ושמור',
                                 icon: FluentIcons.book_24_regular,
                                 onTap: () {
                                   // יוסף בעתיד
@@ -596,7 +596,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                               ),
                             _buildSettingsCard(
                               context: context,
-                              title: 'הגדרות גימטריות',
+                              title: AppLocalizations.of(context)?.t('auto.613') ?? 'הגדרות גימטריות',
                               icon: FluentIcons.calculator_24_regular,
                               onTap: () => showGematriaSettingsDialog(context),
                             ),
@@ -609,14 +609,14 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                   _BackupSettingsSection(),
                   const SizedBox(height: 24),
                   SettingsGroup(
-                    title: 'כללי',
+                    title: AppLocalizations.of(context)?.t('auto.612') ?? 'כללי',
                     titleAlignment: Alignment.centerRight,
                     titleTextStyle: const TextStyle(fontSize: 25),
                     children: [
                       // הצגת ההגדרה רק אם מצב אופליין לא מופעל
                       if (!state.isOfflineMode)
                         SwitchSettingsTile(
-                          title: 'סינכרון הספרייה באופן אוטומטי',
+                          title: AppLocalizations.of(context)?.t('auto.611') ?? 'סינכרון הספרייה באופן אוטומטי',
                           leading: Icon(FluentIcons.arrow_sync_24_regular),
                           settingKey: SettingsRepository.keyAutoSync,
                           defaultValue: true,
@@ -629,9 +629,9 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                       _buildColumns(2, [
                         SwitchSettingsTile(
                           settingKey: 'key-use-fast-search',
-                          title: 'חיפוש מהיר באמצעות אינדקס',
-                          enabledLabel: 'חיפוש מהיר יותר, נדרש ליצור אינדקס',
-                          disabledLabel: 'חיפוש איטי יותר, לא נדרש אינדקס',
+                          title: AppLocalizations.of(context)?.t('auto.610') ?? 'חיפוש מהיר באמצעות אינדקס',
+                          enabledLabel: AppLocalizations.of(context)?.t('auto.609') ?? 'חיפוש מהיר יותר, נדרש ליצור אינדקס',
+                          disabledLabel: AppLocalizations.of(context)?.t('auto.608') ?? 'חיפוש איטי יותר, לא נדרש אינדקס',
                           leading: const Icon(FluentIcons.search_24_regular),
                           defaultValue: state.useFastSearch,
                           onChange: (value) {
@@ -642,7 +642,7 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                           activeColor: Theme.of(context).cardColor,
                         ),
                         SwitchSettingsTile(
-                          title: 'עדכון אינדקס אוטומטי',
+                          title: AppLocalizations.of(context)?.t('auto.607') ?? 'עדכון אינדקס אוטומטי',
                           leading: const Icon(
                               FluentIcons.arrow_clockwise_24_regular),
                           settingKey: 'key-auto-index-update',
@@ -662,18 +662,18 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                         BlocBuilder<IndexingBloc, IndexingState>(
                           builder: (context, indexingState) {
                             return SimpleSettingsTile(
-                              title: "אינדקס חיפוש",
+                              title: AppLocalizations.of(context)?.t('auto.606') ?? 'אינדקס חיפוש',
                               subtitle: indexingState is IndexingInProgress
-                                  ? "התקדמות האינדקס: ${indexingState.booksProcessed}/${indexingState.totalBooks}"
+                                  ? AppLocalizations.of(context)?.t('auto.605') ?? 'התקדמות האינדקס: ${indexingState.booksProcessed}/${indexingState.totalBooks}'
                                   : indexingState is IndexingComplete
-                                      ? "האינדקס מעודכן"
-                                      : "האינדקס לא מעודכן",
+                                      ? AppLocalizations.of(context)?.t('auto.604') ?? 'האינדקס מעודכן'
+                                      : AppLocalizations.of(context)?.t('auto.603') ?? 'האינדקס לא מעודכן',
                               leading: const Icon(FluentIcons.table_24_regular),
                               onTap: () async {
                                 if (indexingState is IndexingInProgress) {
                                   final result = await showConfirmationDialog(
                                     context: context,
-                                    title: 'עצירת עדכון',
+                                    title: AppLocalizations.of(context)?.t('auto.602') ?? 'עצירת עדכון',
                                     content:
                                         'האם לעצור את תהליך עדכון האינדקס?',
                                   );
@@ -699,15 +699,15 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                           },
                         ),
                         SimpleSettingsTile(
-                          title: "איפוס אינדקס",
-                          subtitle: "מחק את אינדקס החיפוש",
+                          title: AppLocalizations.of(context)?.t('auto.601') ?? 'איפוס אינדקס',
+                          subtitle: AppLocalizations.of(context)?.t('auto.600') ?? 'מחק את אינדקס החיפוש',
                           leading: const Icon(FluentIcons.delete_24_regular),
                           onTap: () async {
                             final result = await showConfirmationDialog(
                               context: context,
-                              title: 'איפוס אינדקס',
+                              title: AppLocalizations.of(context)?.t('auto.599') ?? 'איפוס אינדקס',
                               content:
-                                  'האם למחוק את אינדקס החיפוש? תצטרך לבנות אותו מחדש כדי להשתמש בחיפוש.',
+                                  AppLocalizations.of(context)?.t('auto.598') ?? 'האם למחוק את אינדקס החיפוש? תצטרך לבנות אותו מחדש כדי להשתמש בחיפוש.',
                             );
                             if (!context.mounted) return;
                             if (result == true) {
@@ -720,10 +720,10 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                       const SizedBox(height: 16),
                       _buildColumns(2, [
                         SimpleSettingsTile(
-                          title: 'מיקום הספרייה',
+                          title: AppLocalizations.of(context)?.t('auto.597') ?? 'מיקום הספרייה',
                             subtitle:
                                 Settings.getValue<String>(SettingsRepository.keyLibraryPath) ??
-                                    'לא קיים',
+                                    AppLocalizations.of(context)?.t('auto.596') ?? 'לא קיים',
                             leading: const Icon(FluentIcons.folder_24_regular),
                             onTap: () async {
                               String? path =
@@ -742,12 +742,12 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                             },
                           ),
                           Tooltip(
-                            message: 'במידה וקיימים ברשותך ספרים ממאגר זה',
+                            message: AppLocalizations.of(context)?.t('auto.595') ?? 'במידה וקיימים ברשותך ספרים ממאגר זה',
                             child: SimpleSettingsTile(
-                              title: 'מיקום ספרי היברובוקס',
+                              title: AppLocalizations.of(context)?.t('auto.594') ?? 'מיקום ספרי היברובוקס',
                               subtitle: Settings.getValue<String>(
                                       SettingsRepository.keyHebrewBooksPath) ??
-                                  'לא קיים',
+                                  AppLocalizations.of(context)?.t('auto.593') ?? 'לא קיים',
                               leading:
                                   const Icon(FluentIcons.folder_24_regular),
                               onTap: () async {
@@ -773,27 +773,58 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                         if (!state.isOfflineMode)
                           SwitchSettingsTile(
                             settingKey: 'key-dev-channel',
-                            title: 'עדכון לגרסאות מפתחים',
+                            title: AppLocalizations.of(context)?.t('auto.592') ?? 'עדכון לגרסאות מפתחים',
                             enabledLabel:
                                 'קבלת עדכונים על גרסאות בדיקה, ייתכנו באגים וחוסר יציבות',
-                            disabledLabel: 'קבלת עדכונים על גרסאות יציבות בלבד',
+                            disabledLabel: AppLocalizations.of(context)?.t('auto.591') ?? 'קבלת עדכונים על גרסאות יציבות בלבד',
                             leading: const Icon(FluentIcons.bug_24_regular),
                             activeColor: Theme.of(context).cardColor,
                           ),
                       // הגדרת מצב אופליין - תמיד מוצגת
                       _buildNetworkModeTile(context, state),
                       SimpleSettingsTile(
-                        title: 'איפוס הגדרות',
+                        title: AppLocalizations.of(context)?.t('auto.590') ?? 'שפה',
+                        subtitle: AppLocalizations.of(context)?.t('auto.589') ?? 'בחר שפה לתצוגת האפליקציה',
+                        leading: const Icon(FluentIcons.locale_24_regular),
+                        onTap: () async {
+                          final selectedLocale = await showDialog<Locale>(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text(AppLocalizations.of(context)?.t('auto.588') ?? 'בחר שפה'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    title: const Text(AppLocalizations.of(context)?.t('auto.587') ?? 'עברית'),
+                                    leading: const Icon(Icons.language),
+                                    onTap: () => Navigator.of(context).pop(const Locale('he', 'IL')),
+                                  ),
+                                  ListTile(
+                                    title: const Text('English'),
+                                    leading: const Icon(Icons.language),
+                                    onTap: () => Navigator.of(context).pop(const Locale('en', 'US')),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                          if (selectedLocale != null && context.mounted) {
+                            context.read<SettingsBloc>().add(UpdateLocale(selectedLocale));
+                          }
+                        },
+                      ),
+                      SimpleSettingsTile(
+                        title: AppLocalizations.of(context)?.t('auto.586') ?? 'איפוס הגדרות',
                         subtitle:
-                            'פעולה זו תמחק את כל ההגדרות ותחזיר את התוכנה למצב ההתחלתי',
+                            AppLocalizations.of(context)?.t('auto.585') ?? 'פעולה זו תמחק את כל ההגדרות ותחזיר את התוכנה למצב ההתחלתי',
                         leading: const Icon(FluentIcons.arrow_reset_24_regular),
                         onTap: () async {
                           // דיאלוג לאישור המשתמש
                           final confirmed = await showConfirmationDialog(
                             context: context,
-                            title: 'איפוס הגדרות?',
+                            title: AppLocalizations.of(context)?.t('auto.584') ?? 'איפוס הגדרות?',
                             content:
-                                'כל ההגדרות האישיות שלך ימחקו. פעולה זו אינה הפיכה. האם להמשיך?',
+                                AppLocalizations.of(context)?.t('auto.583') ?? 'כל ההגדרות האישיות שלך ימחקו. פעולה זו אינה הפיכה. האם להמשיך?',
                             isDangerous: true,
                           );
 
@@ -805,14 +836,14 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                                 context: context,
                                 barrierDismissible: false,
                                 builder: (context) => AlertDialog(
-                                        title: const Text('ההגדרות אופסו'),
+                                        title: const Text(AppLocalizations.of(context)?.t('auto.582') ?? 'ההגדרות אופסו'),
                                         content: const Text(
-                                            'יש לסגור ולהפעיל מחדש את התוכנה כדי שהשינויים יכנסו לתוקף.'),
+                                            AppLocalizations.of(context)?.t('auto.581') ?? 'יש לסגור ולהפעיל מחדש את התוכנה כדי שהשינויים יכנסו לתוקף.'),
                                         actions: [
                                           TextButton(
                                               onPressed: () => exit(0),
                                               child:
-                                                  const Text('סגור את התוכנה'))
+                                                  const Text(AppLocalizations.of(context)?.t('auto.580') ?? 'סגור את התוכנה'))
                                         ]));
                           }
                         },
@@ -1228,7 +1259,7 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
         .pickFiles(
           type: FileType.custom,
           allowedExtensions: ['json'],
-          dialogTitle: 'בחר קובץ גיבוי',
+          dialogTitle: AppLocalizations.of(context)?.t('auto.579') ?? 'בחר קובץ גיבוי',
         )
         .then((result) => result?.files.single.path);
 
@@ -1237,8 +1268,8 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
     if (!mounted) return;
     final confirmed = await showConfirmationDialog(
       context: context,
-      title: 'שחזור מגיבוי?',
-      content: 'פעולה זו תחליף את הנתונים הקיימים בנתונים מהגיבוי. האם להמשיך?',
+      title: AppLocalizations.of(context)?.t('auto.578') ?? 'שחזור מגיבוי?',
+      content: AppLocalizations.of(context)?.t('auto.577') ?? 'פעולה זו תחליף את הנתונים הקיימים בנתונים מהגיבוי. האם להמשיך?',
       isDangerous: true,
     );
 
@@ -1252,8 +1283,8 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
         context: context,
         barrierDismissible: false,
         builder: (context) => AlertDialog(
-          title: const Text('השחזור הושלם'),
-          content: const Text('הנתונים שוחזרו בהצלחה. יש להפעיל מחדש את התוכנה.'),
+          title: const Text(AppLocalizations.of(context)?.t('auto.576') ?? 'השחזור הושלם'),
+          content: const Text(AppLocalizations.of(context)?.t('auto.575') ?? 'הנתונים שוחזרו בהצלחה. יש להפעיל מחדש את התוכנה.'),
           actions: [
             TextButton(
               onPressed: () {
@@ -1263,7 +1294,7 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
                   windowManager.close();
                 }
               },
-              child: const Text('סגור את התוכנה'),
+              child: const Text(AppLocalizations.of(context)?.t('auto.574') ?? 'סגור את התוכנה'),
             ),
           ],
         ),
@@ -1284,48 +1315,48 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
       children: [
         SwitchSettingsTile(
           settingKey: _keyBackupSettings,
-          title: 'הגדרות',
-          subtitle: 'כולל את כלל הגדרות התוכנה',
+          title: AppLocalizations.of(context)?.t('auto.573') ?? 'הגדרות',
+          subtitle: AppLocalizations.of(context)?.t('auto.572') ?? 'כולל את כלל הגדרות התוכנה',
           leading: const Icon(FluentIcons.settings_24_regular),
           defaultValue: true,
           activeColor: Theme.of(context).cardColor,
         ),
         SwitchSettingsTile(
           settingKey: _keyBackupBookmarks,
-          title: 'סימניות',
-          subtitle: 'כל הסימניות שנשמרו',
+          title: AppLocalizations.of(context)?.t('auto.571') ?? 'סימניות',
+          subtitle: AppLocalizations.of(context)?.t('auto.570') ?? 'כל הסימניות שנשמרו',
           leading: const Icon(FluentIcons.bookmark_24_regular),
           defaultValue: true,
           activeColor: Theme.of(context).cardColor,
         ),
         SwitchSettingsTile(
           settingKey: _keyBackupHistory,
-          title: 'היסטוריה',
-          subtitle: 'היסטוריית הלימוד',
+          title: AppLocalizations.of(context)?.t('auto.569') ?? 'היסטוריה',
+          subtitle: AppLocalizations.of(context)?.t('auto.568') ?? 'היסטוריית הלימוד',
           leading: const Icon(FluentIcons.history_24_regular),
           defaultValue: true,
           activeColor: Theme.of(context).cardColor,
         ),
         SwitchSettingsTile(
           settingKey: _keyBackupNotes,
-          title: 'הערות אישיות',
-          subtitle: 'כל ההערות האישיות שלך',
+          title: AppLocalizations.of(context)?.t('auto.567') ?? 'הערות אישיות',
+          subtitle: AppLocalizations.of(context)?.t('auto.566') ?? 'כל ההערות האישיות שלך',
           leading: const Icon(FluentIcons.note_24_regular),
           defaultValue: true,
           activeColor: Theme.of(context).cardColor,
         ),
         SwitchSettingsTile(
           settingKey: _keyBackupWorkspaces,
-          title: 'שולחנות עבודה',
-          subtitle: 'כל שולחנות העבודה',
+          title: AppLocalizations.of(context)?.t('auto.565') ?? 'שולחנות עבודה',
+          subtitle: AppLocalizations.of(context)?.t('auto.564') ?? 'כל שולחנות העבודה',
           leading: const Icon(FluentIcons.grid_24_regular),
           defaultValue: true,
           activeColor: Theme.of(context).cardColor,
         ),
         SwitchSettingsTile(
           settingKey: _keyBackupShamorZachor,
-          title: 'זכור ושמור',
-          subtitle: 'ספרים ומעקב לימוד',
+          title: AppLocalizations.of(context)?.t('auto.563') ?? 'זכור ושמור',
+          subtitle: AppLocalizations.of(context)?.t('auto.562') ?? 'ספרים ומעקב לימוד',
           leading: const Icon(FluentIcons.book_24_regular),
           defaultValue: true,
           activeColor: Theme.of(context).cardColor,
@@ -1348,7 +1379,7 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
             ListTile(
               leading: const Icon(FluentIcons.calendar_clock_24_regular),
               title: Text(
-                'גיבוי אוטומטי',
+                AppLocalizations.of(context)?.t('auto.561') ?? 'גיבוי אוטומטי',
                 style: const TextStyle(
                   fontSize: 16,
                   letterSpacing: 0,
@@ -1373,15 +1404,15 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
                 segments: const [
                   ButtonSegment<String>(
                     value: 'none',
-                    label: Text('ללא'),
+                    label: Text(AppLocalizations.of(context)?.t('auto.560') ?? 'ללא'),
                   ),
                   ButtonSegment<String>(
                     value: 'weekly',
-                    label: Text('כל שבוע'),
+                    label: Text(AppLocalizations.of(context)?.t('auto.559') ?? 'כל שבוע'),
                   ),
                   ButtonSegment<String>(
                     value: 'monthly',
-                    label: Text('כל חודש'),
+                    label: Text(AppLocalizations.of(context)?.t('auto.558') ?? 'כל חודש'),
                   ),
                 ],
                 selected: {autoBackupFrequency},
@@ -1400,8 +1431,8 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
           children: [
             Expanded(
               child: SimpleSettingsTile(
-                title: 'צור גיבוי עכשיו',
-                subtitle: 'שמור גיבוי של הנתונים שנבחרו',
+                title: AppLocalizations.of(context)?.t('auto.557') ?? 'צור גיבוי עכשיו',
+                subtitle: AppLocalizations.of(context)?.t('auto.556') ?? 'שמור גיבוי של הנתונים שנבחרו',
                 leading: const Icon(FluentIcons.arrow_upload_24_regular),
                 onTap: _createBackup,
               ),
@@ -1409,8 +1440,8 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
             const SizedBox(width: 16),
             Expanded(
               child: SimpleSettingsTile(
-                title: 'שחזר מגיבוי',
-                subtitle: 'בחר קובץ גיבוי לשחזור',
+                title: AppLocalizations.of(context)?.t('auto.555') ?? 'שחזר מגיבוי',
+                subtitle: AppLocalizations.of(context)?.t('auto.554') ?? 'בחר קובץ גיבוי לשחזור',
                 leading: const Icon(FluentIcons.arrow_download_24_regular),
                 onTap: _restoreBackup,
               ),
@@ -1427,7 +1458,7 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
     final cardColor = Theme.of(context).cardColor;
 
     return SettingsGroup(
-      title: 'גיבוי',
+      title: AppLocalizations.of(context)?.t('auto.553') ?? 'גיבוי',
       titleAlignment: Alignment.centerRight,
       titleTextStyle: const TextStyle(fontSize: 25),
       children: [
@@ -1438,7 +1469,7 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
             ListTile(
               leading: const Icon(FluentIcons.options_24_regular),
               title: Text(
-                'בחר מה לגבות',
+                AppLocalizations.of(context)?.t('auto.552') ?? 'בחר מה לגבות',
                 style: TextStyle(
                   fontSize: 16,
                   letterSpacing: -0.1, // רווח בין אותיות - 0 = רגיל, שלילי = צפוף יותר
@@ -1463,12 +1494,12 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
                 segments: const [
                   ButtonSegment<_BackupMode>(
                     value: _BackupMode.all,
-                    label: Text('גבה הכל'),
+                    label: Text(AppLocalizations.of(context)?.t('auto.551') ?? 'גבה הכל'),
                     icon: Icon(FluentIcons.checkmark_circle_24_regular),
                   ),
                   ButtonSegment<_BackupMode>(
                     value: _BackupMode.custom,
-                    label: Text('מותאם אישית'),
+                    label: Text(AppLocalizations.of(context)?.t('auto.550') ?? 'מותאם אישית'),
                     icon: Icon(FluentIcons.options_24_regular),
                   ),
                 ],

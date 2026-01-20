@@ -62,7 +62,7 @@ class _WorkspaceSwitcherDialogState extends State<WorkspaceSwitcherDialog> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'שולחנות עבודה',
+                  AppLocalizations.of(context)?.t('auto.830') ?? 'שולחנות עבודה',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -83,7 +83,7 @@ class _WorkspaceSwitcherDialogState extends State<WorkspaceSwitcherDialog> {
                   }
 
                   if (state.error != null) {
-                    return Center(child: Text('שגיאה: ${state.error}'));
+                    return Center(child: Text(AppLocalizations.of(context)?.t('auto.829') ?? 'שגיאה: ${state.error}'));
                   }
 
                   return GridView.builder(
@@ -147,7 +147,7 @@ class _WorkspaceSwitcherDialogState extends State<WorkspaceSwitcherDialog> {
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  'שולחן עבודה חדש',
+                  AppLocalizations.of(context)?.t('auto.828') ?? 'שולחן עבודה חדש',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),

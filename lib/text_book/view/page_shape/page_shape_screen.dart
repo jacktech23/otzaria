@@ -156,7 +156,7 @@ class _PageShapeScreenState extends State<PageShapeScreen> {
             ElevatedButton.icon(
               onPressed: onSelectCommentator,
               icon: const Icon(Icons.book_outlined),
-              label: const Text('בחר מפרש'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.238') ?? 'בחר מפרש'),
               style: ElevatedButton.styleFrom(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -166,7 +166,7 @@ class _PageShapeScreenState extends State<PageShapeScreen> {
             TextButton.icon(
               onPressed: onHideColumn,
               icon: const Icon(Icons.visibility_off_outlined, size: 18),
-              label: const Text('הסתר טור זה'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.237') ?? 'הסתר טור זה'),
               style: TextButton.styleFrom(
                 foregroundColor: Theme.of(context)
                     .colorScheme
@@ -702,7 +702,7 @@ class _CommentaryPaneState extends State<_CommentaryPane> {
         color: Theme.of(context).colorScheme.surfaceContainerHighest,
         child: Center(
           child: Text(
-            'לא ניתן לטעון את ${widget.commentatorName}',
+            AppLocalizations.of(context)?.t('auto.236') ?? 'לא ניתן לטעון את ${widget.commentatorName}',
             style: const TextStyle(fontSize: 14),
           ),
         ),

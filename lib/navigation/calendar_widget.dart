@@ -1588,7 +1588,7 @@ class CalendarWidget extends StatelessWidget {
         return StatefulBuilder(
           builder: (builderContext, setState) {
             return AlertDialog(
-              title: const Text('קפוץ לתאריך'),
+              title: const Text(AppLocalizations.of(context)?.t('auto.129') ?? 'קפוץ לתאריך'),
               content: SizedBox(
                 width: 350,
                 height: 450,
@@ -1600,8 +1600,8 @@ class CalendarWidget extends StatelessWidget {
                       autofocus: true,
                       textInputAction: TextInputAction.done,
                       decoration: const InputDecoration(
-                        labelText: 'הזן תאריך',
-                        hintText: 'דוגמאות: 15/3/2025, כ״ה אדר תשפ״ה',
+                        labelText: AppLocalizations.of(context)?.t('auto.128') ?? 'הזן תאריך',
+                        hintText: AppLocalizations.of(context)?.t('auto.127') ?? 'דוגמאות: 15/3/2025, כ״ה אדר תשפ״ה',
                         border: OutlineInputBorder(),
                         helperText:
                             'ניתן להזין תאריך לועזי (יום/חודש/שנה) או עברי',
@@ -1632,7 +1632,7 @@ class CalendarWidget extends StatelessWidget {
 
                     const Divider(),
                     const Text(
-                      'או בחר בלוח השנה:',
+                      AppLocalizations.of(context)?.t('auto.126') ?? 'או בחר בלוח השנה:',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
@@ -1659,7 +1659,7 @@ class CalendarWidget extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(dialogContext).pop(),
-                  child: const Text('ביטול'),
+                  child: const Text(AppLocalizations.of(context)?.t('auto.125') ?? 'ביטול'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -1684,7 +1684,7 @@ class CalendarWidget extends StatelessWidget {
                     context.read<CalendarCubit>().jumpToDate(dateToJump);
                     Navigator.of(dialogContext).pop();
                   },
-                  child: const Text('קפוץ'),
+                  child: const Text(AppLocalizations.of(context)?.t('auto.124') ?? 'קפוץ'),
                 ),
               ],
             );
@@ -1803,7 +1803,7 @@ class CalendarWidget extends StatelessWidget {
         return StatefulBuilder(
           builder: (context, setState) {
             return AlertDialog(
-              title: Text(isEditMode ? 'ערוך אירוע' : 'צור אירוע חדש'),
+              title: Text(isEditMode ? AppLocalizations.of(context)?.t('auto.123') ?? 'ערוך אירוע' : AppLocalizations.of(context)?.t('auto.122') ?? 'צור אירוע חדש'),
               content: SizedBox(
                 width: 450,
                 child: SingleChildScrollView(
@@ -1815,7 +1815,7 @@ class CalendarWidget extends StatelessWidget {
                         autofocus: true,
                         textInputAction: TextInputAction.done,
                         decoration: const InputDecoration(
-                          labelText: 'כותרת האירוע',
+                          labelText: AppLocalizations.of(context)?.t('auto.121') ?? 'כותרת האירוע',
                           border: OutlineInputBorder(),
                         ),
                         onSubmitted: (_) {
@@ -1861,7 +1861,7 @@ class CalendarWidget extends StatelessWidget {
                       RtlTextField(
                         controller: descriptionController,
                         decoration: const InputDecoration(
-                          labelText: 'תיאור (אופציונלי)',
+                          labelText: AppLocalizations.of(context)?.t('auto.120') ?? 'תיאור (אופציונלי)',
                           border: OutlineInputBorder(),
                         ),
                         maxLines: 3,
@@ -1896,7 +1896,7 @@ class CalendarWidget extends StatelessWidget {
 
                       // אירוע חוזר
                       SwitchListTile(
-                        title: const Text('אירוע חוזר'),
+                        title: const Text(AppLocalizations.of(context)?.t('auto.119') ?? 'אירוע חוזר'),
                         value: isRecurring,
                         onChanged: (value) =>
                             setState(() => isRecurring = value),
@@ -1910,13 +1910,13 @@ class CalendarWidget extends StatelessWidget {
                               DropdownButtonFormField<RecurrenceType>(
                                 initialValue: selectedRecurrenceType,
                                 decoration: const InputDecoration(
-                                  labelText: 'חזור לפי',
+                                  labelText: AppLocalizations.of(context)?.t('auto.118') ?? 'חזור לפי',
                                   border: OutlineInputBorder(),
                                 ),
                                 items: [
                                   const DropdownMenuItem(
                                     value: RecurrenceType.weekly,
-                                    child: Text('שבועי'),
+                                    child: Text(AppLocalizations.of(context)?.t('auto.117') ?? 'שבועי'),
                                   ),
                                   DropdownMenuItem(
                                     value: RecurrenceType.monthlyHebrew,
@@ -1946,9 +1946,9 @@ class CalendarWidget extends StatelessWidget {
                               const SizedBox(height: 16),
 
                               // --- כאן נמצא השינוי המרכזי ---
-                              // הוספנו תיבת סימון לבחירת "תמיד"
+                              // הוספנו תיבת סימון לבחירת AppLocalizations.of(context)?.t('auto.116') ?? 'תמיד'
                               CheckboxListTile(
-                                title: const Text('חזרה ללא הגבלה (תמיד)'),
+                                title: const Text(AppLocalizations.of(context)?.t('auto.115') ?? 'חזרה ללא הגבלה (תמיד)'),
                                 value: recurForever,
                                 onChanged: (value) {
                                   setState(() {
@@ -1971,8 +1971,8 @@ class CalendarWidget extends StatelessWidget {
                                 keyboardType: TextInputType.number,
                                 enabled: !recurForever, // <-- החלק החשוב
                                 decoration: InputDecoration(
-                                  labelText: 'חזור למשך (שנים)',
-                                  hintText: 'לדוגמה: 5',
+                                  labelText: AppLocalizations.of(context)?.t('auto.114') ?? 'חזור למשך (שנים)',
+                                  hintText: AppLocalizations.of(context)?.t('auto.113') ?? 'לדוגמה: 5',
                                   border: const OutlineInputBorder(),
                                   filled: !recurForever ? false : true,
                                   fillColor: !recurForever
@@ -1993,7 +1993,7 @@ class CalendarWidget extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(dialogContext).pop(),
-                  child: const Text('ביטול'),
+                  child: const Text(AppLocalizations.of(context)?.t('auto.112') ?? 'ביטול'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -2036,7 +2036,7 @@ class CalendarWidget extends StatelessWidget {
                     }
                     Navigator.of(dialogContext).pop();
                   },
-                  child: Text(isEditMode ? 'שמור שינויים' : 'צור'),
+                  child: Text(isEditMode ? AppLocalizations.of(context)?.t('auto.111') ?? 'שמור שינויים' : AppLocalizations.of(context)?.t('auto.110') ?? 'צור'),
                 ),
               ],
             );
@@ -2279,13 +2279,13 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                   icon: Icon(FluentIcons.calendar_clock_24_regular, size: 18),
                   iconMargin: EdgeInsets.only(bottom: 2),
                   height: 48,
-                  child: Text('זמני היום', style: TextStyle(fontSize: 12)),
+                  child: Text(AppLocalizations.of(context)?.t('auto.109') ?? 'זמני היום', style: TextStyle(fontSize: 12)),
                 ),
                 Tab(
                   icon: Icon(FluentIcons.calendar_ltr_24_regular, size: 18),
                   iconMargin: EdgeInsets.only(bottom: 2),
                   height: 48,
-                  child: Text('אירועים', style: TextStyle(fontSize: 12)),
+                  child: Text(AppLocalizations.of(context)?.t('auto.108') ?? 'אירועים', style: TextStyle(fontSize: 12)),
                 ),
               ],
               labelColor: Theme.of(context).colorScheme.primary,
@@ -2327,7 +2327,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                         child: Column(
                           children: [
                             Text(
-                              'אין לסמוך על הזמנים כלל!',
+                              AppLocalizations.of(context)?.t('auto.107') ?? 'אין לסמוך על הזמנים כלל!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
@@ -2347,7 +2347,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                                       onTap: () =>
                                           _openCalendarCalculationPage(context),
                                       child: Text(
-                                        'הזמנים שונים',
+                                        AppLocalizations.of(context)?.t('auto.106') ?? 'הזמנים שונים',
                                         style: TextStyle(
                                           fontSize: 12,
                                           color: Theme.of(context).primaryColor,
@@ -2382,13 +2382,13 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                     children: [
                       Row(
                         children: [
-                          // כפתור "צור אירוע" בצד ימין
+                          // כפתור AppLocalizations.of(context)?.t('auto.105') ?? 'צור אירוע' בצד ימין
                           ElevatedButton.icon(
                             onPressed: () => widget.showCreateEventDialog(
                                 context, widget.state),
                             icon: const Icon(FluentIcons.add_24_regular,
                                 size: 16),
-                            label: const Text('צור אירוע'),
+                            label: const Text(AppLocalizations.of(context)?.t('auto.104') ?? 'צור אירוע'),
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 12, vertical: 8),
@@ -2409,7 +2409,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                               size: 16,
                             ),
                             label: Text(widget.state.showAllEvents
-                                ? 'הצג יום נוכחי'
+                                ? AppLocalizations.of(context)?.t('auto.103') ?? 'הצג יום נוכחי'
                                 : 'הצג הכל'),
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(
@@ -2425,7 +2425,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                             .read<CalendarCubit>()
                             .setEventSearchQuery(query),
                         decoration: InputDecoration(
-                          hintText: 'חפש אירועים...',
+                          hintText: AppLocalizations.of(context)?.t('auto.102') ?? 'חפש אירועים...',
                           prefixIcon: const Icon(FluentIcons.search_24_regular),
                           suffixIcon: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -2434,7 +2434,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                                 IconButton(
                                   icon: const Icon(
                                       FluentIcons.dismiss_24_regular),
-                                  tooltip: 'נקה חיפוש',
+                                  tooltip: AppLocalizations.of(context)?.t('auto.101') ?? 'נקה חיפוש',
                                   onPressed: () {
                                     context
                                         .read<CalendarCubit>()
@@ -2446,7 +2446,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
                                     ? FluentIcons.document_text_24_regular
                                     : FluentIcons.text_t_24_regular),
                                 tooltip: widget.state.searchInDescriptions
-                                    ? 'חפש רק בכותרת'
+                                    ? AppLocalizations.of(context)?.t('auto.100') ?? 'חפש רק בכותרת'
                                     : 'חפש גם בתיאור',
                                 onPressed: () => context
                                     .read<CalendarCubit>()
@@ -2478,7 +2478,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
     if (libraryPath == null || libraryPath.isEmpty) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('לא נמצאה תיקיית הספרייה')),
+        const SnackBar(content: Text(AppLocalizations.of(context)?.t('auto.99') ?? 'לא נמצאה תיקיית הספרייה')),
       );
       return;
     }
@@ -2489,7 +2489,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
     if (!await otzariaSitePath.exists()) {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('לא נמצאה תיקיית otzaria-site')),
+        const SnackBar(content: Text(AppLocalizations.of(context)?.t('auto.98') ?? 'לא נמצאה תיקיית otzaria-site')),
       );
       return;
     }
@@ -2500,7 +2500,7 @@ class _TimesAndEventsTabViewState extends State<_TimesAndEventsTabView>
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text('הקובץ calendar-calculation.html לא נמצא')),
+            content: Text(AppLocalizations.of(context)?.t('auto.97') ?? 'הקובץ calendar-calculation.html לא נמצא')),
       );
       return;
     }
@@ -2566,12 +2566,12 @@ class _ZmanAlertDialogState extends State<_ZmanAlertDialog> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'כמה זמן לפני זמן ${widget.zmanName} ברצונך לקבל התראה?',
+            AppLocalizations.of(context)?.t('auto.96') ?? 'כמה זמן לפני זמן ${widget.zmanName} ברצונך לקבל התראה?',
             textDirection: TextDirection.rtl,
           ),
           const SizedBox(height: 8),
           Text(
-            'הזמן: ${widget.timeLabel}',
+            AppLocalizations.of(context)?.t('auto.95') ?? 'הזמן: ${widget.timeLabel}',
             style: Theme.of(context).textTheme.bodySmall,
             textDirection: TextDirection.rtl,
           ),
@@ -2585,7 +2585,7 @@ class _ZmanAlertDialogState extends State<_ZmanAlertDialog> {
                   value: hours.toDouble(),
                   decimals: 0,
                   step: 1,
-                  decoration: const InputDecoration(labelText: 'שעות'),
+                  decoration: const InputDecoration(labelText: AppLocalizations.of(context)?.t('auto.94') ?? 'שעות'),
                   onChanged: (v) => setState(() => hours = v.toInt()),
                 ),
               ),
@@ -2597,7 +2597,7 @@ class _ZmanAlertDialogState extends State<_ZmanAlertDialog> {
                   value: minutes.toDouble(),
                   decimals: 0,
                   step: 1,
-                  decoration: const InputDecoration(labelText: 'דקות'),
+                  decoration: const InputDecoration(labelText: AppLocalizations.of(context)?.t('auto.93') ?? 'דקות'),
                   onChanged: (v) => setState(() => minutes = v.toInt()),
                 ),
               ),
@@ -2611,11 +2611,11 @@ class _ZmanAlertDialogState extends State<_ZmanAlertDialog> {
             onPressed: () => Navigator.of(context).pop(
               const _ZmanAlertDialogResult(minutesBefore: 0, cancelAlert: true),
             ),
-            child: const Text('בטל התראה'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.92') ?? 'בטל התראה'),
           ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('ביטול'),
+          child: const Text(AppLocalizations.of(context)?.t('auto.91') ?? 'ביטול'),
         ),
         FilledButton(
           onPressed: () {
@@ -2626,7 +2626,7 @@ class _ZmanAlertDialogState extends State<_ZmanAlertDialog> {
               ),
             );
           },
-          child: Text(widget.isEnabled ? 'עדכן' : 'הפעל'),
+          child: Text(widget.isEnabled ? AppLocalizations.of(context)?.t('auto.90') ?? 'עדכן' : AppLocalizations.of(context)?.t('auto.89') ?? 'הפעל'),
         ),
       ],
     );
@@ -2684,7 +2684,7 @@ class _DayExtras extends StatelessWidget {
   }
 
   static String _numberToHebrewLetter(int n) {
-    const letters = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח'];
+    const letters = [AppLocalizations.of(context)?.t('auto.88') ?? 'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח'];
     if (n > 0 && n <= letters.length) {
       return letters[n - 1];
     }

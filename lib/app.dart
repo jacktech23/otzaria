@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otzaria/core/scaffold_messenger.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:otzaria/l10n/app_localizations.dart';
 import 'package:otzaria/settings/settings_bloc.dart';
 import 'package:otzaria/settings/settings_state.dart';
 import 'package:otzaria/navigation/main_window_screen.dart';
@@ -54,15 +55,17 @@ class App extends StatelessWidget {
         return MaterialApp(
           scaffoldMessengerKey: scaffoldMessengerKey,
           localizationsDelegates: const [
+            AppLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
           supportedLocales: const [
-            Locale("he", "IL"),
+            Locale('en', 'US'),
+            Locale('he', 'IL'),
           ],
-          locale: const Locale("he", "IL"),
-          title: 'אוצריא',
+          locale: state.locale,
+          title: AppLocalizations.of(context)?.t('app.title') ?? 'אוצריא',
           theme: state.isDarkMode
               ? ThemeData.dark(useMaterial3: true).copyWith(
                   scaffoldBackgroundColor: AppColors.darkScaffold,

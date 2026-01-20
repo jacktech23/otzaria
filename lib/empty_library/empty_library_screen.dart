@@ -57,7 +57,7 @@ class _EmptyLibraryView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          'לא נמצאה ספרייה',
+          AppLocalizations.of(context)?.t('auto.708') ?? 'לא נמצאה ספרייה',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
@@ -78,7 +78,7 @@ class _EmptyLibraryView extends StatelessWidget {
               : () => BlocProvider.of<EmptyLibraryBloc>(context)
                   .add(PickDirectoryRequested()),
           icon: const Icon(FluentIcons.folder_open_24_regular),
-          label: const Text('בחר תיקייה'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.707') ?? 'בחר תיקייה'),
         ),
         const SizedBox(height: 32),
         if (Platform.isAndroid)
@@ -88,10 +88,10 @@ class _EmptyLibraryView extends StatelessWidget {
                 : () => BlocProvider.of<EmptyLibraryBloc>(context)
                     .add(PickAndExtractZipRequested()),
             icon: const Icon(FluentIcons.folder_zip_24_regular),
-            label: const Text('בחר קובץ ZIP מהמכשיר'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.706') ?? 'בחר קובץ ZIP מהמכשיר'),
           ),
         const Text(
-          'או',
+          AppLocalizations.of(context)?.t('auto.705') ?? 'או',
           style: TextStyle(fontSize: 18),
         ),
         const SizedBox(height: 32),
@@ -104,7 +104,7 @@ class _EmptyLibraryView extends StatelessWidget {
                 : () => BlocProvider.of<EmptyLibraryBloc>(context)
                     .add(DownloadLibraryRequested()),
             icon: const Icon(FluentIcons.arrow_download_24_regular),
-            label: const Text('הורד את הספרייה מהאינטרנט (1.5GB)'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.704') ?? 'הורד את הספרייה מהאינטרנט (1.5GB)'),
           ),
       ],
     );
@@ -136,7 +136,7 @@ class _DownloadProgress extends StatelessWidget {
             foregroundColor: Colors.white,
           ),
           icon: const Icon(FluentIcons.stop_24_regular),
-          label: Text(state.isCancelling ? 'מבטל...' : 'בטל'),
+          label: Text(state.isCancelling ? AppLocalizations.of(context)?.t('auto.703') ?? 'מבטל...' : AppLocalizations.of(context)?.t('auto.702') ?? 'בטל'),
         ),
       ],
     );

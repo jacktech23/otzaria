@@ -150,19 +150,19 @@ class _PdfCommentaryPanelState extends State<PdfCommentaryPanel>
     return ctx.ContextMenu(
       entries: [
         ctx.MenuItem(
-          label: const Text('העתק'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.540') ?? 'העתק'),
           icon: const Icon(FluentIcons.copy_24_regular),
           enabled: _savedSelectedText != null &&
               _savedSelectedText!.trim().isNotEmpty,
           onSelected: (_) => _copyFormattedText(),
         ),
         ctx.MenuItem(
-          label: const Text('העתק את כל הטקסט'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.539') ?? 'העתק את כל הטקסט'),
           icon: const Icon(FluentIcons.document_copy_24_regular),
           onSelected: (_) => _copyAllVisibleText(),
         ),
         ctx.MenuItem(
-          label: const Text('בחר את כל הטקסט'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.538') ?? 'בחר את כל הטקסט'),
           icon: const Icon(FluentIcons.select_all_on_24_regular),
           onSelected: (_) =>
               _selectionKey.currentState?.selectableRegion.selectAll(),
@@ -228,19 +228,19 @@ class _PdfCommentaryPanelState extends State<PdfCommentaryPanel>
                       tabs: [
                         Tab(
                           child: Text(
-                            'מפרשים',
+                            AppLocalizations.of(context)?.t('auto.537') ?? 'מפרשים',
                             style: TextStyle(fontSize: fontSize),
                           ),
                         ),
                         Tab(
                           child: Text(
-                            'קישורים',
+                            AppLocalizations.of(context)?.t('auto.536') ?? 'קישורים',
                             style: TextStyle(fontSize: fontSize),
                           ),
                         ),
                         Tab(
                           child: Text(
-                            'הערות אישיות',
+                            AppLocalizations.of(context)?.t('auto.535') ?? 'הערות אישיות',
                             style: TextStyle(fontSize: fontSize),
                           ),
                         ),
@@ -359,7 +359,7 @@ class _PdfCommentaryPanelState extends State<PdfCommentaryPanel>
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'לא נמצאו מפרשים לדף זה',
+                AppLocalizations.of(context)?.t('auto.534') ?? 'לא נמצאו מפרשים לדף זה',
                 style: TextStyle(
                   fontSize: widget.fontSize * 0.9,
                   color: Colors.grey,
@@ -461,7 +461,7 @@ class _PdfCommentaryPanelState extends State<PdfCommentaryPanel>
             children: [
               Text(
                 hasCommentaryLinks
-                    ? 'לא נמצאו מפרשים מהנבחרים לדף זה'
+                    ? AppLocalizations.of(context)?.t('auto.533') ?? 'לא נמצאו מפרשים מהנבחרים לדף זה'
                     : 'לא נמצאו מפרשים לקטע הנבחר',
                 style: TextStyle(
                   fontSize: widget.fontSize * 0.9,
@@ -478,7 +478,7 @@ class _PdfCommentaryPanelState extends State<PdfCommentaryPanel>
                     });
                   },
                   icon: const Icon(FluentIcons.apps_list_24_regular),
-                  label: const Text('בחר מפרשים'),
+                  label: const Text(AppLocalizations.of(context)?.t('auto.532') ?? 'בחר מפרשים'),
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
@@ -631,7 +631,7 @@ class _PdfCommentaryPanelState extends State<PdfCommentaryPanel>
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            'לא נמצאו קישורים לדף זה',
+            AppLocalizations.of(context)?.t('auto.531') ?? 'לא נמצאו קישורים לדף זה',
             style: TextStyle(
               fontSize: widget.fontSize * 0.9,
               color: Colors.grey,
@@ -712,7 +712,7 @@ class _PdfCommentaryPanelState extends State<PdfCommentaryPanel>
                         debugPrint(
                             'Error loading link content: ${snapshot.error}');
                         debugPrint('Stack trace: ${snapshot.stackTrace}');
-                        return Text('שגיאה: ${snapshot.error}');
+                        return Text(AppLocalizations.of(context)?.t('auto.530') ?? 'שגיאה: ${snapshot.error}');
                       }
                       return BlocBuilder<SettingsBloc, SettingsState>(
                         builder: (context, settingsState) {

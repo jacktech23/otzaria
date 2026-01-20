@@ -44,6 +44,7 @@ class SettingsRepository {
   static const String keyDevChannel = 'key-dev-channel';
   static const String keyAlignTabsToRight = 'key-align-tabs-to-right';
   static const String keyEnableHtmlLinks = 'key-enable-html-links';
+  static const String keyLocale = 'key-locale';
 
   // Calendar Notification Settings
   static const String keyCalendarNotificationsEnabled =
@@ -192,6 +193,7 @@ class SettingsRepository {
         keyEnableHtmlLinks,
         defaultValue: true,
       ),
+      'locale': _loadLocale(),
 
       // Calendar Notification Settings
       'calendarNotificationsEnabled': _settings.getValue<bool>(
@@ -490,5 +492,19 @@ class SettingsRepository {
 
     // Mark as initialized
     await _settings.setValue('settings_initialized', true);
+  }
+
+  Locale _loadLocale() {
+    final localeString = _settings.getValue<String>(keyLocale, defaultValue: 'he-IL');
+    final parts = localeString.split('-');
+    if (parts.length == 2) {
+      return Locale(parts[0], parts[1]);
+    }
+    return const Locale('he', 'IL');
+  }
+
+  Future<void> updateLocale(Locale value) async {
+    final localeString = '${value.languageCode}-${value.countryCode ?? ''}';
+    await _settings.setValue(keyLocale, localeString);
   }
 }

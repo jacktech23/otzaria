@@ -19,7 +19,7 @@ class DiffViewer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('השוואה - $title'),
+        title: Text(AppLocalizations.of(context)?.t('auto.217') ?? 'השוואה - $title'),
         actions: [
           IconButton(
             icon: const Icon(FluentIcons.dismiss_24_regular),
@@ -44,7 +44,7 @@ class DiffViewer extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'מקור',
+                    AppLocalizations.of(context)?.t('auto.216') ?? 'מקור',
                     style: TextStyle(fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
@@ -88,7 +88,7 @@ class DiffViewer extends StatelessWidget {
                     ),
                   ),
                   child: const Text(
-                    'נערך',
+                    AppLocalizations.of(context)?.t('auto.215') ?? 'נערך',
                     style: TextStyle(fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),

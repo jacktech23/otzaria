@@ -122,7 +122,7 @@ class _CommentaryPaneTooltipState extends State<CommentaryPaneTooltip>
                     ],
                   ),
                   child: Text(
-                    'לחץ כאן למפרשים וקישורים ←',
+                    AppLocalizations.of(context)?.t('auto.12') ?? 'לחץ כאן למפרשים וקישורים ←',
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.onInverseSurface,
                       fontSize: 13,

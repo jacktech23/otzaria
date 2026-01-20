@@ -692,7 +692,7 @@ class _MeasurementConverterScreenState
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'המר מ:',
+                    AppLocalizations.of(context)?.t('auto.732') ?? 'המר מ:',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -725,7 +725,7 @@ class _MeasurementConverterScreenState
                   _convert();
                 });
               },
-              tooltip: 'החלף יחידות',
+              tooltip: AppLocalizations.of(context)?.t('auto.731') ?? 'החלף יחידות',
               style: IconButton.styleFrom(
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                 foregroundColor:
@@ -758,7 +758,7 @@ class _MeasurementConverterScreenState
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'המר ל:',
+                    AppLocalizations.of(context)?.t('auto.730') ?? 'המר ל:',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,

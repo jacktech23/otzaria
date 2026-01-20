@@ -292,7 +292,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'מחבר: ',
+                          text: AppLocalizations.of(context)?.t('auto.802') ?? 'מחבר: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(text: book.author),
@@ -310,7 +310,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'קטגוריה: ',
+                          text: AppLocalizations.of(context)?.t('auto.801') ?? 'קטגוריה: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(text: book.heCategories),
@@ -328,7 +328,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'תקופה: ',
+                          text: AppLocalizations.of(context)?.t('auto.800') ?? 'תקופה: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(text: book.heEra),
@@ -349,7 +349,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'חיבור: ',
+                          text: AppLocalizations.of(context)?.t('auto.799') ?? 'חיבור: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
@@ -379,7 +379,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'הוצאה לאור: ',
+                          text: AppLocalizations.of(context)?.t('auto.798') ?? 'הוצאה לאור: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
@@ -406,7 +406,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'שמות נוספים: ',
+                          text: AppLocalizations.of(context)?.t('auto.797') ?? 'שמות נוספים: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
@@ -428,7 +428,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'תיאור מקוצר על הספר: ',
+                          text: AppLocalizations.of(context)?.t('auto.796') ?? 'תיאור מקוצר על הספר: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(text: book.heShortDesc),
@@ -446,7 +446,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'תיאור הספר: ',
+                          text: AppLocalizations.of(context)?.t('auto.795') ?? 'תיאור הספר: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(text: book.heDesc),
@@ -462,7 +462,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('סגור'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.794') ?? 'סגור'),
           ),
         ],
       );
@@ -497,7 +497,7 @@ Widget _buildBookSourceSection(Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'מקור הספר: ',
+                          text: AppLocalizations.of(context)?.t('auto.793') ?? 'מקור הספר: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         WidgetSpan(
@@ -527,7 +527,7 @@ Widget _buildBookSourceSection(Book book) {
                       style: DefaultTextStyle.of(context).style,
                       children: [
                         const TextSpan(
-                          text: 'מקור הספר: ',
+                          text: AppLocalizations.of(context)?.t('auto.792') ?? 'מקור הספר: ',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         TextSpan(text: displayText),
@@ -543,7 +543,7 @@ Widget _buildBookSourceSection(Book book) {
                 style: TextStyle(fontSize: 14, color: Colors.black87),
                 children: [
                   TextSpan(
-                    text: 'זכויות יוצרים: ',
+                    text: AppLocalizations.of(context)?.t('auto.791') ?? 'זכויות יוצרים: ',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
@@ -598,7 +598,7 @@ void _showCategoryInfoDialog(BuildContext context, Category category) {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('סגור'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.790') ?? 'סגור'),
           ),
         ],
       );

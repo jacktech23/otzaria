@@ -79,7 +79,7 @@ class _FindRefDialogState extends State<FindRefDialog> {
             const SizedBox(width: 8),
             const Expanded(
               child: Text(
-                'אינדקס המקורות בתהליך בנייה. תוצאות החיפוש עלולות להיות חלקיות.',
+                AppLocalizations.of(context)?.t('auto.835') ?? 'אינדקס המקורות בתהליך בנייה. תוצאות החיפוש עלולות להיות חלקיות.',
                 textAlign: TextAlign.right,
                 style: TextStyle(color: Colors.black87),
               ),
@@ -101,7 +101,7 @@ class _FindRefDialogState extends State<FindRefDialog> {
 
     return AlertDialog(
       title: const Text(
-        'איתור מקורות',
+        AppLocalizations.of(context)?.t('auto.834') ?? 'איתור מקורות',
         style: TextStyle(fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),
@@ -147,7 +147,7 @@ class _FindRefDialogState extends State<FindRefDialog> {
                     autofocus: true,
                     decoration: InputDecoration(
                       hintText:
-                          'הקלד מקור מדוייק, לדוגמה: בראשית פרק א או שוע אוח יב   ',
+                          AppLocalizations.of(context)?.t('auto.833') ?? 'הקלד מקור מדוייק, לדוגמה: בראשית פרק א או שוע אוח יב   ',
                       suffixIcon: IconButton(
                         icon: const Icon(FluentIcons.dismiss_24_regular),
                         onPressed: () {
@@ -196,7 +196,7 @@ class _FindRefDialogState extends State<FindRefDialog> {
                         3) {
                       return const Center(
                         child: Text(
-                          'אין תוצאות',
+                          AppLocalizations.of(context)?.t('auto.832') ?? 'אין תוצאות',
                           style: TextStyle(fontSize: 16),
                         ),
                       );
@@ -256,7 +256,7 @@ class _FindRefDialogState extends State<FindRefDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text('סגור'),
+          child: const Text(AppLocalizations.of(context)?.t('auto.831') ?? 'סגור'),
         ),
       ],
     );

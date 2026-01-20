@@ -26,14 +26,14 @@ class ContextMenuUtils {
     return ctx.ContextMenu(
       entries: [
         ctx.MenuItem(
-          label: const Text('העתק'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.756') ?? 'העתק'),
           icon: const Icon(FluentIcons.copy_24_regular),
           enabled:
               savedSelectedText != null && savedSelectedText.trim().isNotEmpty,
           onSelected: (_) => onCopySelected(),
         ),
         ctx.MenuItem(
-          label: const Text('העתק את כל הפסקה'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.755') ?? 'העתק את כל הפסקה'),
           icon: const Icon(FluentIcons.document_copy_24_regular),
           onSelected: (_) => copyCommentaryParagraph(
             context: context,
@@ -43,7 +43,7 @@ class ContextMenuUtils {
         ),
         const ctx.MenuDivider(),
         ctx.MenuItem(
-          label: const Text('פתח ספר זה בחלון נפרד'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.754') ?? 'פתח ספר זה בחלון נפרד'),
           icon: const Icon(FluentIcons.open_24_regular),
           onSelected: (_) {
             openBookCallback(TextBookTab(

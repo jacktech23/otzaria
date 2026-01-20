@@ -526,7 +526,7 @@ class _TextSectionEditorDialogState extends State<TextSectionEditorDialog> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            '${_hasUnsavedChanges ? 'שינויים שלא נשמרו • ' : ''}עריכת טקסט - ${widget.bookId}',
+            '${_hasUnsavedChanges ? 'שינויים שלא נשמרו • ' : 'AppLocalizations.of(context)?.t('auto.214') ?? '}עריכת טקסט - ${widget.bookId}',
             style: const TextStyle(fontSize: 16),
           ),
           leading: IconButton(
@@ -537,12 +537,12 @@ class _TextSectionEditorDialogState extends State<TextSectionEditorDialog> {
             TextButton.icon(
               onPressed: _hasUnsavedChanges ? _save : null,
               icon: const Icon(FluentIcons.save_24_regular),
-              label: const Text('שמור'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.213') ?? 'שמור'),
             ),
             TextButton.icon(
               onPressed: _saveAndClose,
               icon: const Icon(FluentIcons.save_arrow_right_24_regular),
-              label: const Text('שמור וצא'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.212') ?? 'שמור וצא'),
             ),
           ],
         ),
@@ -563,7 +563,7 @@ class _TextSectionEditorDialogState extends State<TextSectionEditorDialog> {
                       ),
                     ),
                     child: const Text(
-                      'עריכה',
+                      AppLocalizations.of(context)?.t('auto.211') ?? 'עריכה',
                       style: TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
@@ -579,7 +579,7 @@ class _TextSectionEditorDialogState extends State<TextSectionEditorDialog> {
                       ),
                     ),
                     child: const Text(
-                      'תצוגה מקדימה',
+                      AppLocalizations.of(context)?.t('auto.210') ?? 'תצוגה מקדימה',
                       style: TextStyle(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ),
@@ -635,7 +635,7 @@ class _TextSectionEditorDialogState extends State<TextSectionEditorDialog> {
                         ),
                         decoration: const InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'התחל לכתוב כאן...',
+                          hintText: AppLocalizations.of(context)?.t('auto.209') ?? 'התחל לכתוב כאן...',
                           hintTextDirection: TextDirection.rtl,
                         ),
                         onChanged: (text) {

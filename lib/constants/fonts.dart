@@ -29,13 +29,13 @@ class AppFonts {
   /// רשימת הגופנים המובנים (מוטמעים באפליקציה / רשימת ברירת מחדל)
   /// הערה: לא כוללת גופני מערכת כלל; בדסקטופ הם נטענים/מסוננים אוטומטית.
   static const List<FontInfo> _bundledFonts = [
-    FontInfo(value: 'TaameyDavidCLM', label: 'דוד'),
-    FontInfo(value: 'FrankRuhlCLM', label: 'פרנק-רוהל'),
-    FontInfo(value: 'TaameyAshkenaz', label: 'טעמי אשכנז'),
-    FontInfo(value: 'KeterYG', label: 'כתר'),
-    FontInfo(value: 'Shofar', label: 'שופר'),
-    FontInfo(value: 'NotoSerifHebrew', label: 'נוטו'),
-    FontInfo(value: 'Tinos', label: 'טינוס'),
+    FontInfo(value: 'TaameyDavidCLM', label: AppLocalizations.of(context)?.t('auto.7') ?? 'דוד'),
+    FontInfo(value: 'FrankRuhlCLM', label: AppLocalizations.of(context)?.t('auto.6') ?? 'פרנק-רוהל'),
+    FontInfo(value: 'TaameyAshkenaz', label: AppLocalizations.of(context)?.t('auto.5') ?? 'טעמי אשכנז'),
+    FontInfo(value: 'KeterYG', label: AppLocalizations.of(context)?.t('auto.4') ?? 'כתר'),
+    FontInfo(value: 'Shofar', label: AppLocalizations.of(context)?.t('auto.3') ?? 'שופר'),
+    FontInfo(value: 'NotoSerifHebrew', label: AppLocalizations.of(context)?.t('auto.2') ?? 'נוטו'),
+    FontInfo(value: 'Tinos', label: AppLocalizations.of(context)?.t('auto.1') ?? 'טינוס'),
     FontInfo(value: 'NotoRashiHebrew', label: 'רש"י'),
     FontInfo(value: 'Rubik', label: 'רוביק'),
   ];

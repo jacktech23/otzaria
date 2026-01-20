@@ -35,7 +35,7 @@ class AdPopupDialog extends StatefulWidget {
       context: context,
       barrierDismissible: true,
       builder: (context) => const AdPopupDialog(
-        title: 'אוצריא מתגייסת לעזרת לומדי התורה',
+        title: AppLocalizations.of(context)?.t('auto.38') ?? 'אוצריא מתגייסת לעזרת לומדי התורה',
       ),
     );
   }
@@ -156,7 +156,7 @@ class _AdPopupDialogState extends State<AdPopupDialog>
                   child: IconButton(
                     onPressed: () => Navigator.of(context).pop(),
                     icon: const Icon(Icons.close),
-                    tooltip: 'סגור',
+                    tooltip: AppLocalizations.of(context)?.t('auto.37') ?? 'סגור',
                     style: IconButton.styleFrom(
                       backgroundColor: Colors.black.withValues(alpha: 0.1),
                       foregroundColor: Colors.black54,
@@ -347,7 +347,7 @@ class _AdPopupDialogState extends State<AdPopupDialog>
                   children: [
                     Icon(Icons.calendar_today, size: 20),
                     SizedBox(width: 12),
-                    Text('למשך שבוע'),
+                    Text(AppLocalizations.of(context)?.t('auto.36') ?? 'למשך שבוע'),
                   ],
                 ),
               ),
@@ -357,7 +357,7 @@ class _AdPopupDialogState extends State<AdPopupDialog>
                   children: [
                     Icon(Icons.calendar_month, size: 20),
                     SizedBox(width: 12),
-                    Text('למשך חודש'),
+                    Text(AppLocalizations.of(context)?.t('auto.35') ?? 'למשך חודש'),
                   ],
                 ),
               ),
@@ -367,7 +367,7 @@ class _AdPopupDialogState extends State<AdPopupDialog>
                   children: [
                     Icon(Icons.block, size: 20),
                     SizedBox(width: 12),
-                    Text('לעולם'),
+                    Text(AppLocalizations.of(context)?.t('auto.34') ?? 'לעולם'),
                   ],
                 ),
               ),
@@ -380,7 +380,7 @@ class _AdPopupDialogState extends State<AdPopupDialog>
                 side: BorderSide(color: Colors.grey.shade400),
               ),
               icon: const Icon(Icons.close, size: 18),
-              label: const Text('אל תציג שוב'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.33') ?? 'אל תציג שוב'),
             ),
           ),
         ),

@@ -80,7 +80,7 @@ class _CommentaryContentState extends State<CommentaryContent> {
           future: content,
           loadingWidget: _buildSkeletonLoading(context),
           errorBuilder: (context, error) => Center(
-                child: Text('שגיאה בטעינת הפרשן: $error'),
+                child: Text(AppLocalizations.of(context)?.t('auto.246') ?? 'שגיאה בטעינת הפרשן: $error'),
               ),
           builder: (context, data) {
             String text = data;

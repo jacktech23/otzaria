@@ -34,6 +34,7 @@ class SettingsState extends Equatable {
   final bool isOfflineMode;
   final bool alignTabsToRight;
   final bool enableHtmlLinks;
+  final Locale locale;
 
   const SettingsState({
     required this.isDarkMode,
@@ -68,6 +69,7 @@ class SettingsState extends Equatable {
     required this.isOfflineMode,
     required this.alignTabsToRight,
     required this.enableHtmlLinks,
+    required this.locale,
   });
 
   factory SettingsState.initial() {
@@ -105,6 +107,7 @@ class SettingsState extends Equatable {
       isOfflineMode: false,
       alignTabsToRight: false,
       enableHtmlLinks: true,
+      locale: const Locale('he', 'IL'),
     );
   }
 
@@ -141,6 +144,7 @@ class SettingsState extends Equatable {
     bool? isOfflineMode,
     bool? alignTabsToRight,
     bool? enableHtmlLinks,
+    Locale? locale,
   }) {
     return SettingsState(
       isDarkMode: isDarkMode ?? this.isDarkMode,
@@ -178,6 +182,7 @@ class SettingsState extends Equatable {
       isOfflineMode: isOfflineMode ?? this.isOfflineMode,
       alignTabsToRight: alignTabsToRight ?? this.alignTabsToRight,
       enableHtmlLinks: enableHtmlLinks ?? this.enableHtmlLinks,
+      locale: locale ?? this.locale,
     );
   }
 
@@ -215,5 +220,6 @@ class SettingsState extends Equatable {
         isOfflineMode,
         alignTabsToRight,
         enableHtmlLinks,
+        locale,
       ];
 }

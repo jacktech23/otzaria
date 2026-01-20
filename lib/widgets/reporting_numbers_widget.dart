@@ -34,7 +34,7 @@ class ReportingNumbersWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'נתוני הדיווח:',
+              AppLocalizations.of(context)?.t('auto.15') ?? 'נתוני הדיווח:',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -49,7 +49,7 @@ class ReportingNumbersWidget extends StatelessWidget {
               children: [
                 _buildCompactNumberItem(
                   context,
-                  'מספר גירסה',
+                  AppLocalizations.of(context)?.t('auto.14') ?? 'מספר גירסה',
                   libraryVersion,
                 ),
                 _buildCompactNumberItem(
@@ -139,7 +139,7 @@ class ReportingNumbersWidget extends StatelessWidget {
           children: [
             // 1. הכותרת שתוצג בצד ימין
             Text(
-              'קו אוצריא:',
+              AppLocalizations.of(context)?.t('auto.13') ?? 'קו אוצריא:',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),

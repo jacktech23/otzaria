@@ -114,21 +114,21 @@ class _TabbedCommentaryPanelState extends State<TabbedCommentaryPanel>
                             iconMargin: EdgeInsets.only(bottom: 2),
                             height: 48,
                             child:
-                                Text('מפרשים', style: TextStyle(fontSize: 12)),
+                                Text(AppLocalizations.of(context)?.t('auto.241') ?? 'מפרשים', style: TextStyle(fontSize: 12)),
                           ),
                           Tab(
                             icon: Icon(FluentIcons.link_24_regular, size: 18),
                             iconMargin: EdgeInsets.only(bottom: 2),
                             height: 48,
                             child:
-                                Text('קישורים', style: TextStyle(fontSize: 12)),
+                                Text(AppLocalizations.of(context)?.t('auto.240') ?? 'קישורים', style: TextStyle(fontSize: 12)),
                           ),
                           Tab(
                             icon: Icon(FluentIcons.note_24_regular, size: 18),
                             iconMargin: EdgeInsets.only(bottom: 2),
                             height: 48,
                             child:
-                                Text('הערות', style: TextStyle(fontSize: 12)),
+                                Text(AppLocalizations.of(context)?.t('auto.239') ?? 'הערות', style: TextStyle(fontSize: 12)),
                           ),
                         ],
                         labelColor: Theme.of(context).colorScheme.primary,

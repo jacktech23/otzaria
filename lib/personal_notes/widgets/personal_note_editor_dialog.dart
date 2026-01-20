@@ -62,16 +62,16 @@ class _PersonalNoteEditorDialogState extends State<PersonalNoteEditorDialog> {
     final result = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('אזהרה'),
-        content: const Text('ההערה לא נשמרה, לסגור?'),
+        title: const Text(AppLocalizations.of(context)?.t('auto.383') ?? 'אזהרה'),
+        content: const Text(AppLocalizations.of(context)?.t('auto.382') ?? 'ההערה לא נשמרה, לסגור?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('ביטול'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.381') ?? 'ביטול'),
           ),
           FilledButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('סגור'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.380') ?? 'סגור'),
           ),
         ],
       ),
@@ -228,7 +228,7 @@ class _PersonalNoteEditorDialogState extends State<PersonalNoteEditorDialog> {
                       autofocus: true,
                       keyboardType: TextInputType.multiline,
                       decoration: const InputDecoration(
-                        hintText: 'כתוב כאן\n(Alt+Enter לשמירה)',
+                        hintText: AppLocalizations.of(context)?.t('auto.379') ?? 'כתוב כאן\n(Alt+Enter לשמירה)',
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.all(4),
                       ),

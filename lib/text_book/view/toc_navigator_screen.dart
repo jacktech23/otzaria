@@ -544,7 +544,7 @@ class _TocViewerState extends State<TocViewer>
                       widget.focusNode.requestFocus();
                     },
                     decoration: InputDecoration(
-                      hintText: 'איתור כותרת...',
+                      hintText: AppLocalizations.of(context)?.t('auto.271') ?? 'איתור כותרת...',
                       prefixIcon: const Icon(FluentIcons.search_24_regular),
                       suffixIcon: searchController.text.isNotEmpty
                           ? IconButton(

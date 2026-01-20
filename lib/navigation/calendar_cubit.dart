@@ -392,7 +392,7 @@ class CalendarCubit extends Cubit<CalendarState> {
 
         await notificationService.scheduleNotification(
           id: id,
-          title: 'תזכורת: ${pref.displayName}',
+          title: AppLocalizations.of(context)?.t('auto.85') ?? 'תזכורת: ${pref.displayName}',
           body:
               'בעוד ${_formatMinutesBefore(pref.minutesBefore)} ${pref.displayName} ($timeStr)',
           eventDate: eventDt,

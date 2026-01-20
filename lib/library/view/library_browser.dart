@@ -1065,7 +1065,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
         ),
       ),
       icon: FluentIcons.arrow_sync_24_regular,
-      tooltip: 'סינכרון',
+      tooltip: AppLocalizations.of(context)?.t('auto.827') ?? 'סינכרון',
       onPressed: () {
         // הפעולה מטופלת ב-SyncIconButton
       },
@@ -1086,7 +1086,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.arrow_up_24_regular),
-          tooltip: 'חזרה לתיקיה הקודמת',
+          tooltip: AppLocalizations.of(context)?.t('auto.826') ?? 'חזרה לתיקיה הקודמת',
           onPressed: isAtRoot
               ? null
               : () {
@@ -1109,7 +1109,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
                 },
         ),
         icon: FluentIcons.arrow_up_24_regular,
-        tooltip: 'חזרה לתיקיה הקודמת',
+        tooltip: AppLocalizations.of(context)?.t('auto.825') ?? 'חזרה לתיקיה הקודמת',
         onPressed: isAtRoot
             ? null
             : () {
@@ -1136,7 +1136,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.home_24_regular),
-          tooltip: 'חזרה לתיקיה הראשית',
+          tooltip: AppLocalizations.of(context)?.t('auto.824') ?? 'חזרה לתיקיה הראשית',
           onPressed: isAtRoot
               ? null
               : () {
@@ -1154,7 +1154,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
                 },
         ),
         icon: FluentIcons.home_24_regular,
-        tooltip: 'חזרה לתיקיה הראשית',
+        tooltip: AppLocalizations.of(context)?.t('auto.823') ?? 'חזרה לתיקיה הראשית',
         onPressed: isAtRoot
             ? null
             : () {
@@ -1176,13 +1176,13 @@ class _LibraryBrowserState extends State<LibraryBrowser>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.arrow_clockwise_24_regular),
-          tooltip: 'טעינה מחדש של רשימת הספרים',
+          tooltip: AppLocalizations.of(context)?.t('auto.822') ?? 'טעינה מחדש של רשימת הספרים',
           onPressed: () {
             context.read<LibraryBloc>().add(RefreshLibrary());
           },
         ),
         icon: FluentIcons.arrow_clockwise_24_regular,
-        tooltip: 'טעינה מחדש של רשימת הספרים',
+        tooltip: AppLocalizations.of(context)?.t('auto.821') ?? 'טעינה מחדש של רשימת הספרים',
         onPressed: () {
           context.read<LibraryBloc>().add(RefreshLibrary());
         },
@@ -1193,12 +1193,12 @@ class _LibraryBrowserState extends State<LibraryBrowser>
         widget: IconButton(
           icon: const Icon(FluentIcons.history_24_regular),
           tooltip:
-              'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
+              AppLocalizations.of(context)?.t('auto.820') ?? 'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
           onPressed: () => _showHistoryDialog(context),
         ),
         icon: FluentIcons.history_24_regular,
         tooltip:
-            'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
+            AppLocalizations.of(context)?.t('auto.819') ?? 'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
         onPressed: () => _showHistoryDialog(context),
       ),
 
@@ -1207,12 +1207,12 @@ class _LibraryBrowserState extends State<LibraryBrowser>
         widget: IconButton(
           icon: const Icon(FluentIcons.bookmark_24_regular),
           tooltip:
-              'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
+              AppLocalizations.of(context)?.t('auto.818') ?? 'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
           onPressed: () => _showBookmarksDialog(context),
         ),
         icon: FluentIcons.bookmark_24_regular,
         tooltip:
-            'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
+            AppLocalizations.of(context)?.t('auto.817') ?? 'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
         onPressed: () => _showBookmarksDialog(context),
       ),
 
@@ -1225,7 +1225,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
           ),
         ),
         icon: FluentIcons.grid_24_regular,
-        tooltip: 'החלף שולחן עבודה',
+        tooltip: AppLocalizations.of(context)?.t('auto.816') ?? 'החלף שולחן עבודה',
         onPressed: () => _showSwitchWorkspaceDialog(context),
       ),
     ];
@@ -1245,7 +1245,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.arrow_up_24_regular),
-          tooltip: 'חזרה לתיקיה הקודמת',
+          tooltip: AppLocalizations.of(context)?.t('auto.815') ?? 'חזרה לתיקיה הקודמת',
           onPressed: isAtRoot
               ? null
               : () {
@@ -1268,7 +1268,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
                 },
         ),
         icon: FluentIcons.arrow_up_24_regular,
-        tooltip: 'חזרה לתיקיה הקודמת',
+        tooltip: AppLocalizations.of(context)?.t('auto.814') ?? 'חזרה לתיקיה הקודמת',
         onPressed: isAtRoot
             ? null
             : () {
@@ -1294,7 +1294,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.home_24_regular),
-          tooltip: 'חזרה לתיקיה הראשית',
+          tooltip: AppLocalizations.of(context)?.t('auto.813') ?? 'חזרה לתיקיה הראשית',
           onPressed: isAtRoot
               ? null
               : () {
@@ -1312,7 +1312,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
                 },
         ),
         icon: FluentIcons.home_24_regular,
-        tooltip: 'חזרה לתיקיה הראשית',
+        tooltip: AppLocalizations.of(context)?.t('auto.812') ?? 'חזרה לתיקיה הראשית',
         onPressed: isAtRoot
             ? null
             : () {
@@ -1332,12 +1332,12 @@ class _LibraryBrowserState extends State<LibraryBrowser>
         widget: IconButton(
           icon: const Icon(FluentIcons.history_24_regular),
           tooltip:
-              'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
+              AppLocalizations.of(context)?.t('auto.811') ?? 'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
           onPressed: () => _showHistoryDialog(context),
         ),
         icon: FluentIcons.history_24_regular,
         tooltip:
-            'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
+            AppLocalizations.of(context)?.t('auto.810') ?? 'הצג היסטוריה (${(Settings.getValue<String>('key-shortcut-open-history') ?? 'ctrl+h').toUpperCase()})',
         onPressed: () => _showHistoryDialog(context),
       ),
 
@@ -1345,12 +1345,12 @@ class _LibraryBrowserState extends State<LibraryBrowser>
         widget: IconButton(
           icon: const Icon(FluentIcons.bookmark_24_regular),
           tooltip:
-              'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
+              AppLocalizations.of(context)?.t('auto.809') ?? 'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
           onPressed: () => _showBookmarksDialog(context),
         ),
         icon: FluentIcons.bookmark_24_regular,
         tooltip:
-            'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
+            AppLocalizations.of(context)?.t('auto.808') ?? 'הצג סימניות (${(Settings.getValue<String>('key-shortcut-open-bookmarks') ?? 'ctrl+shift+b').toUpperCase()})',
         onPressed: () => _showBookmarksDialog(context),
       ),
 
@@ -1363,7 +1363,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
           ),
         ),
         icon: FluentIcons.grid_24_regular,
-        tooltip: 'החלף שולחן עבודה',
+        tooltip: AppLocalizations.of(context)?.t('auto.807') ?? 'החלף שולחן עבודה',
         onPressed: () => _showSwitchWorkspaceDialog(context),
       ),
 
@@ -1374,13 +1374,13 @@ class _LibraryBrowserState extends State<LibraryBrowser>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.arrow_clockwise_24_regular),
-          tooltip: 'טעינה מחדש של רשימת הספרים',
+          tooltip: AppLocalizations.of(context)?.t('auto.806') ?? 'טעינה מחדש של רשימת הספרים',
           onPressed: () {
             context.read<LibraryBloc>().add(RefreshLibrary());
           },
         ),
         icon: FluentIcons.arrow_clockwise_24_regular,
-        tooltip: 'טעינה מחדש של רשימת הספרים',
+        tooltip: AppLocalizations.of(context)?.t('auto.805') ?? 'טעינה מחדש של רשימת הספרים',
         onPressed: () {
           context.read<LibraryBloc>().add(RefreshLibrary());
         },
@@ -1389,7 +1389,7 @@ class _LibraryBrowserState extends State<LibraryBrowser>
   }
 }
 
-/// Widget שמציג טקסט "טוען ספרייה" עם שלוש נקודות מתחלפות
+/// Widget שמציג טקסט AppLocalizations.of(context)?.t('auto.804') ?? 'טוען ספרייה' עם שלוש נקודות מתחלפות
 class _LoadingDotsText extends StatefulWidget {
   const _LoadingDotsText();
 
@@ -1438,7 +1438,7 @@ class _LoadingDotsTextState extends State<_LoadingDotsText>
         final dotsString = '.' * dots + ' ' * (3 - dots);
 
         return Text(
-          'טוען ספרייה$dotsString',
+          AppLocalizations.of(context)?.t('auto.803') ?? 'טוען ספרייה$dotsString',
           style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,

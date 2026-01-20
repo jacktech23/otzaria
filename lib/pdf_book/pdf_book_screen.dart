@@ -441,7 +441,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
               ),
               leading: IconButton(
                 icon: const Icon(FluentIcons.navigation_24_regular),
-                tooltip: 'חיפוש וניווט',
+                tooltip: AppLocalizations.of(context)?.t('auto.529') ?? 'חיפוש וניווט',
                 onPressed: () {
                   widget.tab.showLeftPane.value =
                       !widget.tab.showLeftPane.value;
@@ -1086,7 +1086,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         widget: _buildTextButton(
             context, widget.tab.book, widget.tab.pdfViewerController),
         icon: FluentIcons.document_text_24_regular,
-        tooltip: 'פתח ספר במהדורת טקסט',
+        tooltip: AppLocalizations.of(context)?.t('auto.528') ?? 'פתח ספר במהדורת טקסט',
         onPressed: () => _handleTextButtonPress(context),
       ),
 
@@ -1094,11 +1094,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.zoom_in_24_regular),
-          tooltip: 'הגדל',
+          tooltip: AppLocalizations.of(context)?.t('auto.527') ?? 'הגדל',
           onPressed: _zoomIn,
         ),
         icon: FluentIcons.zoom_in_24_regular,
-        tooltip: 'הגדל',
+        tooltip: AppLocalizations.of(context)?.t('auto.526') ?? 'הגדל',
         onPressed: _zoomIn,
       ),
 
@@ -1106,11 +1106,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.zoom_out_24_regular),
-          tooltip: 'הקטן',
+          tooltip: AppLocalizations.of(context)?.t('auto.525') ?? 'הקטן',
           onPressed: _zoomOut,
         ),
         icon: FluentIcons.zoom_out_24_regular,
-        tooltip: 'הקטן',
+        tooltip: AppLocalizations.of(context)?.t('auto.524') ?? 'הקטן',
         onPressed: _zoomOut,
       ),
 
@@ -1118,11 +1118,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.search_24_regular),
-          tooltip: 'חיפוש',
+          tooltip: AppLocalizations.of(context)?.t('auto.523') ?? 'חיפוש',
           onPressed: _ensureSearchTabIsActive,
         ),
         icon: FluentIcons.search_24_regular,
-        tooltip: 'חיפוש',
+        tooltip: AppLocalizations.of(context)?.t('auto.522') ?? 'חיפוש',
         onPressed: _ensureSearchTabIsActive,
       ),
 
@@ -1132,12 +1132,12 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.arrow_previous_24_filled),
-            tooltip: 'תחילת הספר (CTRL + HOME)',
+            tooltip: AppLocalizations.of(context)?.t('auto.521') ?? 'תחילת הספר (CTRL + HOME)',
             onPressed: () =>
                 widget.tab.pdfViewerController.goToPage(pageNumber: 1),
           ),
           icon: FluentIcons.arrow_previous_24_filled,
-          tooltip: 'תחילת הספר (CTRL + HOME)',
+          tooltip: AppLocalizations.of(context)?.t('auto.520') ?? 'תחילת הספר (CTRL + HOME)',
           onPressed: () =>
               widget.tab.pdfViewerController.goToPage(pageNumber: 1),
         ),
@@ -1146,7 +1146,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.chevron_left_24_regular),
-            tooltip: 'הקודם',
+            tooltip: AppLocalizations.of(context)?.t('auto.519') ?? 'הקודם',
             onPressed: () {
               if (widget.tab.pdfViewerController.isReady) {
                 final currentPage =
@@ -1158,7 +1158,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
             },
           ),
           icon: FluentIcons.chevron_left_24_regular,
-          tooltip: 'הקודם',
+          tooltip: AppLocalizations.of(context)?.t('auto.518') ?? 'הקודם',
           onPressed: () {
             if (widget.tab.pdfViewerController.isReady) {
               final currentPage =
@@ -1174,7 +1174,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: PageNumberDisplay(controller: widget.tab.pdfViewerController),
           icon: FluentIcons.text_font_24_regular,
-          tooltip: 'מספר עמוד',
+          tooltip: AppLocalizations.of(context)?.t('auto.517') ?? 'מספר עמוד',
           onPressed: null, // לא ניתן ללחיצה
         ),
 
@@ -1192,10 +1192,10 @@ class _PdfBookScreenState extends State<PdfBookScreen>
               }
             },
             icon: const Icon(FluentIcons.chevron_right_24_regular),
-            tooltip: 'הבא',
+            tooltip: AppLocalizations.of(context)?.t('auto.516') ?? 'הבא',
           ),
           icon: FluentIcons.chevron_right_24_regular,
-          tooltip: 'הבא',
+          tooltip: AppLocalizations.of(context)?.t('auto.515') ?? 'הבא',
           onPressed: () {
             if (widget.tab.pdfViewerController.isReady) {
               final currentPage =
@@ -1212,12 +1212,12 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.arrow_next_24_filled),
-            tooltip: 'סוף הספר (CTRL + END)',
+            tooltip: AppLocalizations.of(context)?.t('auto.514') ?? 'סוף הספר (CTRL + END)',
             onPressed: () => widget.tab.pdfViewerController
                 .goToPage(pageNumber: widget.tab.pdfViewerController.pageCount),
           ),
           icon: FluentIcons.arrow_next_24_filled,
-          tooltip: 'סוף הספר (CTRL + END)',
+          tooltip: AppLocalizations.of(context)?.t('auto.513') ?? 'סוף הספר (CTRL + END)',
           onPressed: () => widget.tab.pdfViewerController
               .goToPage(pageNumber: widget.tab.pdfViewerController.pageCount),
         ),
@@ -1232,11 +1232,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.share_24_regular),
-          tooltip: 'העתק קישור לספר זה',
+          tooltip: AppLocalizations.of(context)?.t('auto.512') ?? 'העתק קישור לספר זה',
           onPressed: () => _shareCurrentPdfBook(context),
         ),
         icon: FluentIcons.share_24_regular,
-        tooltip: 'העתק קישור לספר זה',
+        tooltip: AppLocalizations.of(context)?.t('auto.511') ?? 'העתק קישור לספר זה',
         onPressed: () => _shareCurrentPdfBook(context),
       ),
 
@@ -1244,11 +1244,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.link_24_regular),
-          tooltip: 'העתק קישור לדף זה',
+          tooltip: AppLocalizations.of(context)?.t('auto.510') ?? 'העתק קישור לדף זה',
           onPressed: () => _shareCurrentPdfPage(context),
         ),
         icon: FluentIcons.link_24_regular,
-        tooltip: 'העתק קישור לדף זה',
+        tooltip: AppLocalizations.of(context)?.t('auto.509') ?? 'העתק קישור לדף זה',
         onPressed: () => _shareCurrentPdfPage(context),
       ),
 
@@ -1257,19 +1257,19 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.arrow_previous_24_filled),
-            tooltip: 'תחילת הספר (CTRL + HOME)',
+            tooltip: AppLocalizations.of(context)?.t('auto.508') ?? 'תחילת הספר (CTRL + HOME)',
             onPressed: () =>
                 widget.tab.pdfViewerController.goToPage(pageNumber: 1),
           ),
           icon: FluentIcons.arrow_previous_24_filled,
-          tooltip: 'תחילת הספר (CTRL + HOME)',
+          tooltip: AppLocalizations.of(context)?.t('auto.507') ?? 'תחילת הספר (CTRL + HOME)',
           onPressed: () =>
               widget.tab.pdfViewerController.goToPage(pageNumber: 1),
         ),
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.chevron_left_24_regular),
-            tooltip: 'הקודם',
+            tooltip: AppLocalizations.of(context)?.t('auto.506') ?? 'הקודם',
             onPressed: () {
               if (widget.tab.pdfViewerController.isReady) {
                 final currentPage =
@@ -1281,7 +1281,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
             },
           ),
           icon: FluentIcons.chevron_left_24_regular,
-          tooltip: 'הקודם',
+          tooltip: AppLocalizations.of(context)?.t('auto.505') ?? 'הקודם',
           onPressed: () {
             if (widget.tab.pdfViewerController.isReady) {
               final currentPage =
@@ -1305,10 +1305,10 @@ class _PdfBookScreenState extends State<PdfBookScreen>
               }
             },
             icon: const Icon(FluentIcons.chevron_right_24_regular),
-            tooltip: 'הבא',
+            tooltip: AppLocalizations.of(context)?.t('auto.504') ?? 'הבא',
           ),
           icon: FluentIcons.chevron_right_24_regular,
-          tooltip: 'הבא',
+          tooltip: AppLocalizations.of(context)?.t('auto.503') ?? 'הבא',
           onPressed: () {
             if (widget.tab.pdfViewerController.isReady) {
               final currentPage =
@@ -1323,12 +1323,12 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.arrow_next_24_filled),
-            tooltip: 'סוף הספר (CTRL + END)',
+            tooltip: AppLocalizations.of(context)?.t('auto.502') ?? 'סוף הספר (CTRL + END)',
             onPressed: () => widget.tab.pdfViewerController
                 .goToPage(pageNumber: widget.tab.pdfViewerController.pageCount),
           ),
           icon: FluentIcons.arrow_next_24_filled,
-          tooltip: 'סוף הספר (CTRL + END)',
+          tooltip: AppLocalizations.of(context)?.t('auto.501') ?? 'סוף הספר (CTRL + END)',
           onPressed: () => widget.tab.pdfViewerController
               .goToPage(pageNumber: widget.tab.pdfViewerController.pageCount),
         ),
@@ -1338,7 +1338,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.note_24_regular),
-          tooltip: 'הצג הערות אישיות',
+          tooltip: AppLocalizations.of(context)?.t('auto.500') ?? 'הצג הערות אישיות',
           onPressed: () {
             setState(() {
               _rightPaneInitialTabIndex = 2; // טאב הערות אישיות
@@ -1347,7 +1347,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
           },
         ),
         icon: FluentIcons.note_24_regular,
-        tooltip: 'הצג הערות אישיות',
+        tooltip: AppLocalizations.of(context)?.t('auto.499') ?? 'הצג הערות אישיות',
         onPressed: () {
           setState(() {
             _rightPaneInitialTabIndex = 2; // טאב הערות אישיות
@@ -1360,11 +1360,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.note_add_24_regular),
-          tooltip: 'הוסף הערה לעמוד זה',
+          tooltip: AppLocalizations.of(context)?.t('auto.498') ?? 'הוסף הערה לעמוד זה',
           onPressed: () => _handleAddNotePress(context),
         ),
         icon: FluentIcons.note_add_24_regular,
-        tooltip: 'הוסף הערה לעמוד זה',
+        tooltip: AppLocalizations.of(context)?.t('auto.497') ?? 'הוסף הערה לעמוד זה',
         onPressed: () => _handleAddNotePress(context),
       ),
 
@@ -1372,11 +1372,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
       ActionButtonData(
         widget: IconButton(
           icon: const Icon(FluentIcons.bookmark_add_24_regular),
-          tooltip: 'הוספת סימניה',
+          tooltip: AppLocalizations.of(context)?.t('auto.496') ?? 'הוספת סימניה',
           onPressed: () => _handleBookmarkPress(context),
         ),
         icon: FluentIcons.bookmark_add_24_regular,
-        tooltip: 'הוספת סימניה',
+        tooltip: AppLocalizations.of(context)?.t('auto.495') ?? 'הוספת סימניה',
         onPressed: () => _handleBookmarkPress(context),
       ),
 
@@ -1386,11 +1386,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.arrow_reset_24_regular),
-            tooltip: 'אפס הגדרות ספר זה',
+            tooltip: AppLocalizations.of(context)?.t('auto.494') ?? 'אפס הגדרות ספר זה',
             onPressed: () => _resetPerBookSettings(),
           ),
           icon: FluentIcons.arrow_reset_24_regular,
-          tooltip: 'אפס הגדרות ספר זה',
+          tooltip: AppLocalizations.of(context)?.t('auto.493') ?? 'אפס הגדרות ספר זה',
           onPressed: () => _resetPerBookSettings(),
         ),
 
@@ -1399,11 +1399,11 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: IconButton(
             icon: const Icon(FluentIcons.print_24_regular),
-            tooltip: 'הדפס',
+            tooltip: AppLocalizations.of(context)?.t('auto.492') ?? 'הדפס',
             onPressed: () => _handlePrintPress(context),
           ),
           icon: FluentIcons.print_24_regular,
-          tooltip: 'הדפס',
+          tooltip: AppLocalizations.of(context)?.t('auto.491') ?? 'הדפס',
           onPressed: () => _handlePrintPress(context),
         ),
 
@@ -1412,7 +1412,7 @@ class _PdfBookScreenState extends State<PdfBookScreen>
         ActionButtonData(
           widget: const SizedBox.shrink(), // לא נראה כי זה בתפריט
           icon: FluentIcons.more_horizontal_24_regular,
-          tooltip: 'פעולות נוספות',
+          tooltip: AppLocalizations.of(context)?.t('auto.490') ?? 'פעולות נוספות',
           onPressed: null, // לא ניתן ללחיצה - זה submenu
           submenuItems: [
             // איפוס הגדרות פר-ספר (מוצג רק כשההגדרה מופעלת)
@@ -1420,13 +1420,13 @@ class _PdfBookScreenState extends State<PdfBookScreen>
               ActionButtonData(
                 widget: const SizedBox.shrink(),
                 icon: FluentIcons.arrow_reset_24_regular,
-                tooltip: 'אפס הגדרות ספר זה',
+                tooltip: AppLocalizations.of(context)?.t('auto.489') ?? 'אפס הגדרות ספר זה',
                 onPressed: () => _resetPerBookSettings(),
               ),
             ActionButtonData(
               widget: const SizedBox.shrink(),
               icon: FluentIcons.print_24_regular,
-              tooltip: 'הדפס',
+              tooltip: AppLocalizations.of(context)?.t('auto.488') ?? 'הדפס',
               onPressed: () => _handlePrintPress(context),
             ),
           ],

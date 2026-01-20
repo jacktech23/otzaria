@@ -30,7 +30,7 @@ class SearchConfigurationDisplay extends StatelessWidget {
 
                 // הגדרות קיימות
                 Text('מרחק: ${config.distance}'),
-                Text('חיפוש מטושטש: ${config.fuzzy ? "מופעל" : "כבוי"}'),
+                Text('חיפוש מטושטש: ${config.fuzzy ? AppLocalizations.of(context)?.t('auto.429') ?? 'מופעל' : AppLocalizations.of(context)?.t('auto.428') ?? 'כבוי'}'),
                 Text('מספר תוצאות: ${config.numResults}'),
                 Text('סדר מיון: ${config.sortBy}'),
 
@@ -39,11 +39,11 @@ class SearchConfigurationDisplay extends StatelessWidget {
                 // הגדרות רגקס חדשות
                 Text('הגדרות רגקס:',
                     style: Theme.of(context).textTheme.titleSmall),
-                Text('רגקס מופעל: ${config.regexEnabled ? "כן" : "לא"}'),
-                Text('רגיש לאותיות: ${config.caseSensitive ? "כן" : "לא"}'),
-                Text('מרובה שורות: ${config.multiline ? "כן" : "לא"}'),
-                Text('נקודה כוללת הכל: ${config.dotAll ? "כן" : "לא"}'),
-                Text('יוניקוד: ${config.unicode ? "כן" : "לא"}'),
+                Text('רגקס מופעל: ${config.regexEnabled ? AppLocalizations.of(context)?.t('auto.427') ?? 'כן' : AppLocalizations.of(context)?.t('auto.426') ?? 'לא'}'),
+                Text('רגיש לאותיות: ${config.caseSensitive ? AppLocalizations.of(context)?.t('auto.425') ?? 'כן' : AppLocalizations.of(context)?.t('auto.424') ?? 'לא'}'),
+                Text('מרובה שורות: ${config.multiline ? AppLocalizations.of(context)?.t('auto.423') ?? 'כן' : AppLocalizations.of(context)?.t('auto.422') ?? 'לא'}'),
+                Text('נקודה כוללת הכל: ${config.dotAll ? AppLocalizations.of(context)?.t('auto.421') ?? 'כן' : AppLocalizations.of(context)?.t('auto.420') ?? 'לא'}'),
+                Text('יוניקוד: ${config.unicode ? AppLocalizations.of(context)?.t('auto.419') ?? 'כן' : AppLocalizations.of(context)?.t('auto.418') ?? 'לא'}'),
 
                 if (config.regexEnabled) ...[
                   const SizedBox(height: 8),
@@ -74,39 +74,39 @@ class RegexSettingsPanel extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('הגדרות רגקס:',
+                Text(AppLocalizations.of(context)?.t('auto.417') ?? 'הגדרות רגקס:',
                     style: Theme.of(context).textTheme.titleMedium),
                 SwitchListTile(
-                  title: const Text('הפעל חיפוש רגקס'),
+                  title: const Text(AppLocalizations.of(context)?.t('auto.416') ?? 'הפעל חיפוש רגקס'),
                   value: config.regexEnabled,
                   onChanged: (_) =>
                       context.read<SearchBloc>().add(ToggleRegex()),
                 ),
                 if (config.regexEnabled) ...[
                   SwitchListTile(
-                    title: const Text('רגיש לאותיות גדולות/קטנות'),
-                    subtitle: const Text('אם כבוי, A ו-a נחשבים זהים'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.415') ?? 'רגיש לאותיות גדולות/קטנות'),
+                    subtitle: const Text(AppLocalizations.of(context)?.t('auto.414') ?? 'אם כבוי, A ו-a נחשבים זהים'),
                     value: config.caseSensitive,
                     onChanged: (_) =>
                         context.read<SearchBloc>().add(ToggleCaseSensitive()),
                   ),
                   SwitchListTile(
-                    title: const Text('מצב מרובה שורות'),
-                    subtitle: const Text('^ ו-\$ מתייחסים לתחילת/סוף שורה'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.413') ?? 'מצב מרובה שורות'),
+                    subtitle: const Text(AppLocalizations.of(context)?.t('auto.412') ?? '^ ו-\$ מתייחסים לתחילת/סוף שורה'),
                     value: config.multiline,
                     onChanged: (_) =>
                         context.read<SearchBloc>().add(ToggleMultiline()),
                   ),
                   SwitchListTile(
-                    title: const Text('נקודה כוללת הכל'),
-                    subtitle: const Text('. כולל גם תווי שורה חדשה'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.411') ?? 'נקודה כוללת הכל'),
+                    subtitle: const Text(AppLocalizations.of(context)?.t('auto.410') ?? '. כולל גם תווי שורה חדשה'),
                     value: config.dotAll,
                     onChanged: (_) =>
                         context.read<SearchBloc>().add(ToggleDotAll()),
                   ),
                   SwitchListTile(
-                    title: const Text('תמיכה ביוניקוד'),
-                    subtitle: const Text('תמיכה מלאה בתווי יוניקוד'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.409') ?? 'תמיכה ביוניקוד'),
+                    subtitle: const Text(AppLocalizations.of(context)?.t('auto.408') ?? 'תמיכה מלאה בתווי יוניקוד'),
                     value: config.unicode,
                     onChanged: (_) =>
                         context.read<SearchBloc>().add(ToggleUnicode()),

@@ -109,11 +109,11 @@ class HistoryView extends StatelessWidget {
           },
           onClearAll: (ctx) {
             ctx.read<HistoryBloc>().add(ClearHistory());
-            UiSnack.show('כל ההיסטוריה נמחקה');
+            UiSnack.show(AppLocalizations.of(context)?.t('auto.70') ?? 'כל ההיסטוריה נמחקה');
           },
-          hintText: 'חפש בהיסטוריה...',
-          emptyText: 'אין היסטוריה',
-          notFoundText: 'לא נמצאו תוצאות',
+          hintText: AppLocalizations.of(context)?.t('auto.69') ?? 'חפש בהיסטוריה...',
+          emptyText: AppLocalizations.of(context)?.t('auto.68') ?? 'אין היסטוריה',
+          notFoundText: AppLocalizations.of(context)?.t('auto.67') ?? 'לא נמצאו תוצאות',
           clearAllText: 'מחק את כל ההיסטוריה',
           leadingIconBuilder: (item) =>
               _getLeadingIcon(item.book, item.isSearch),

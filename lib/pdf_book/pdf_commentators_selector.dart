@@ -200,7 +200,7 @@ class _PdfCommentatorsSelectorState extends State<PdfCommentatorsSelector> {
   Widget build(BuildContext context) {
     if (commentatorsList.isEmpty) {
       return const Center(
-        child: Text("אין מפרשים"),
+        child: Text(AppLocalizations.of(context)?.t('auto.545') ?? 'אין מפרשים'),
       );
     }
 
@@ -258,7 +258,7 @@ class _PdfCommentatorsSelectorState extends State<PdfCommentatorsSelector> {
                 child: RtlTextField(
                   controller: searchController,
                   decoration: InputDecoration(
-                    hintText: "סינון מפרשים...",
+                    hintText: AppLocalizations.of(context)?.t('auto.544') ?? 'סינון מפרשים...',
                     prefixIcon: const Icon(FluentIcons.search_24_regular),
                     suffixIcon: searchController.text.isNotEmpty
                         ? IconButton(
@@ -281,7 +281,7 @@ class _PdfCommentatorsSelectorState extends State<PdfCommentatorsSelector> {
               // כפתור הכל
               if (commentatorsList.isNotEmpty)
                 CheckboxListTile(
-                  title: const Text('הצג את כל המפרשים'),
+                  title: const Text(AppLocalizations.of(context)?.t('auto.543') ?? 'הצג את כל המפרשים'),
                   value: commentatorsList
                       .where((e) =>
                           !e.startsWith('__TITLE_') &&

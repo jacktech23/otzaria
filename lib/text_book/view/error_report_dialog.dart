@@ -843,7 +843,7 @@ class _RegularReportTabState extends State<RegularReportTab> {
             children: [
               TextButton(
                 onPressed: widget.onCancel,
-                child: const Text('ביטול'),
+                child: const Text(AppLocalizations.of(context)?.t('auto.356') ?? 'ביטול'),
               ),
               ElevatedButton.icon(
                 onPressed: canSubmit
@@ -858,9 +858,9 @@ class _RegularReportTabState extends State<RegularReportTab> {
                       }
                     : null,
                 icon: const Icon(FluentIcons.save_24_regular, size: 18),
-                label: const Text('לא מחובר לרשת? שמור לדיווח מאוחר'),
+                label: const Text(AppLocalizations.of(context)?.t('auto.355') ?? 'לא מחובר לרשת? שמור לדיווח מאוחר'),
               ),
-              // הכפתור "שלח בדוא"ל" מוסתר במצב אופליין
+              // הכפתור AppLocalizations.of(context)?.t('auto.354') ?? 'שלח בדוא'ל" מוסתר במצב אופליין
               if (!isOfflineMode)
                 ElevatedButton.icon(
                   onPressed: canSubmit
@@ -877,11 +877,11 @@ class _RegularReportTabState extends State<RegularReportTab> {
                   icon: const Icon(FluentIcons.mail_24_regular, size: 18),
                   label: const Text('שלח בדוא"ל'),
                 ),
-              // הכפתור "שלח ישירות לאוצריא" מוסתר במצב אופליין
+              // הכפתור AppLocalizations.of(context)?.t('auto.353') ?? 'שלח ישירות לאוצריא' מוסתר במצב אופליין
               if (!isPhoneDisabled && !isOfflineMode)
                 OutlinedButton(
                   onPressed: null,
-                  child: const Text('שלח ישירות לאוצריא (לא פעיל זמנית)'),
+                  child: const Text(AppLocalizations.of(context)?.t('auto.352') ?? 'שלח ישירות לאוצריא (לא פעיל זמנית)'),
                 ),
             ],
           ),

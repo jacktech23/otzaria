@@ -127,17 +127,17 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 hintText: _isHebrewToAramaic
-                    ? 'חפש מילה בעברית...'
-                    : 'חפש מילה בארמית...',
+                    ? AppLocalizations.of(context)?.t('auto.753') ?? 'חפש מילה בעברית...'
+                    : AppLocalizations.of(context)?.t('auto.752') ?? 'חפש מילה בארמית...',
                 labelText:
-                    _isHebrewToAramaic ? 'הזן מילה בעברית' : 'הזן מילה בארמית',
+                    _isHebrewToAramaic ? AppLocalizations.of(context)?.t('auto.751') ?? 'הזן מילה בעברית' : AppLocalizations.of(context)?.t('auto.750') ?? 'הזן מילה בארמית',
                 prefixIcon: Icon(
                   FluentIcons.search_24_regular,
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
-                        tooltip: 'נקה',
+                        tooltip: AppLocalizations.of(context)?.t('auto.749') ?? 'נקה',
                         icon: const Icon(FluentIcons.dismiss_24_regular),
                         onPressed: () {
                           _searchController.clear();
@@ -160,7 +160,7 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'עברית',
+            AppLocalizations.of(context)?.t('auto.748') ?? 'עברית',
             style: TextStyle(
               fontSize: 16,
               fontWeight:
@@ -178,7 +178,7 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
                   : FluentIcons.arrow_right_24_regular,
             ),
             onPressed: _toggleDirection,
-            tooltip: 'החלף כיוון',
+            tooltip: AppLocalizations.of(context)?.t('auto.747') ?? 'החלף כיוון',
             style: IconButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -186,7 +186,7 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
           ),
           const SizedBox(width: 12),
           Text(
-            'ארמית',
+            AppLocalizations.of(context)?.t('auto.746') ?? 'ארמית',
             style: TextStyle(
               fontSize: 16,
               fontWeight:
@@ -217,7 +217,7 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'הזן מילה לחיפוש במילון',
+              AppLocalizations.of(context)?.t('auto.745') ?? 'הזן מילה לחיפוש במילון',
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context)
@@ -246,7 +246,7 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'לא נמצאו תוצאות',
+              AppLocalizations.of(context)?.t('auto.744') ?? 'לא נמצאו תוצאות',
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(context)
@@ -291,7 +291,7 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    _isHebrewToAramaic ? 'עברית:' : 'ארמית:',
+                    _isHebrewToAramaic ? AppLocalizations.of(context)?.t('auto.743') ?? 'עברית:' : AppLocalizations.of(context)?.t('auto.742') ?? 'ארמית:',
                     style: TextStyle(
                       fontSize: 12,
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -323,7 +323,7 @@ class _AramaicDictionaryScreenState extends State<AramaicDictionaryScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    _isHebrewToAramaic ? 'ארמית:' : 'עברית:',
+                    _isHebrewToAramaic ? AppLocalizations.of(context)?.t('auto.741') ?? 'ארמית:' : AppLocalizations.of(context)?.t('auto.740') ?? 'עברית:',
                     style: TextStyle(
                       fontSize: 12,
                       color: Theme.of(context).colorScheme.onSurfaceVariant,

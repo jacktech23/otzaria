@@ -11,6 +11,7 @@ import 'calendar_widget.dart';
 import 'calendar_cubit.dart';
 import 'package:otzaria/personal_notes/view/personal_notes_screen.dart';
 import 'package:otzaria/settings/settings_repository.dart';
+import 'package:otzaria/l10n/app_localizations.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({super.key});
@@ -126,28 +127,28 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
                     destinations: [
                       NavigationRailDestination(
                         icon: const Icon(Icons.calendar_month_outlined),
-                        label: _buildCenteredLabel('לוח שנה'),
+                        label: _buildCenteredLabel(AppLocalizations.of(context)?.t('more.calendar') ?? AppLocalizations.of(context)?.t('auto.83') ?? 'לוח שנה'),
                       ),
                       NavigationRailDestination(
                         icon: const ImageIcon(
                             AssetImage('assets/icon/זכור ושמור.png')),
-                        label: _buildCenteredLabel('זכור ושמור'),
+                        label: _buildCenteredLabel(AppLocalizations.of(context)?.t('more.shamor_zachor') ?? AppLocalizations.of(context)?.t('auto.82') ?? 'זכור ושמור'),
                       ),
                       NavigationRailDestination(
                         icon: const Icon(Icons.straighten),
-                        label: _buildCenteredLabel('מדות ושיעורים'),
+                        label: _buildCenteredLabel(AppLocalizations.of(context)?.t('more.measurements') ?? AppLocalizations.of(context)?.t('auto.81') ?? 'מדות ושיעורים'),
                       ),
                       NavigationRailDestination(
                         icon: const Icon(FluentIcons.note_24_regular),
-                        label: _buildCenteredLabel('הערות אישיות'),
+                        label: _buildCenteredLabel(AppLocalizations.of(context)?.t('more.personal_notes') ?? AppLocalizations.of(context)?.t('auto.80') ?? 'הערות אישיות'),
                       ),
                       NavigationRailDestination(
                         icon: const Icon(FluentIcons.calculator_24_regular),
-                        label: _buildCenteredLabel('גימטריות'),
+                        label: _buildCenteredLabel(AppLocalizations.of(context)?.t('more.gematria') ?? AppLocalizations.of(context)?.t('auto.79') ?? 'גימטריות'),
                       ),
                       NavigationRailDestination(
                         icon: const Icon(FluentIcons.book_24_regular),
-                        label: _buildCenteredLabel('מילון ארמי'),
+                        label: _buildCenteredLabel(AppLocalizations.of(context)?.t('more.aramaic_dictionary') ?? AppLocalizations.of(context)?.t('auto.78') ?? 'מילון ארמי'),
                       ),
                     ],
                   ),
@@ -175,28 +176,28 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
               items: const [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calendar_month_outlined, size: 20),
-                  label: 'לוח שנה',
+                  label: AppLocalizations.of(context)?.t('auto.77') ?? 'לוח שנה',
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/icon/זכור ושמור.png'),
                       size: 20),
-                  label: 'זכור ושמור',
+                  label: AppLocalizations.of(context)?.t('auto.76') ?? 'זכור ושמור',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.straighten, size: 20),
-                  label: 'מדות',
+                  label: AppLocalizations.of(context)?.t('auto.75') ?? 'מדות',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(FluentIcons.note_24_regular, size: 20),
-                  label: 'הערות',
+                  label: AppLocalizations.of(context)?.t('auto.74') ?? 'הערות',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(FluentIcons.calculator_24_regular, size: 20),
-                  label: 'גימטריה',
+                  label: AppLocalizations.of(context)?.t('auto.73') ?? 'גימטריה',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(FluentIcons.book_24_regular, size: 20),
-                  label: 'מילון',
+                  label: AppLocalizations.of(context)?.t('auto.72') ?? 'מילון',
                 ),
               ],
             )
@@ -205,19 +206,20 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
   }
 
   String _getTitle(int index) {
+    final localizations = AppLocalizations.of(context);
     switch (index) {
       case 0:
-        return 'לוח שנה';
+        return localizations?.t('more.calendar') ?? 'לוח שנה';
       case 1:
         return _shamorZachorTitle;
       case 2:
-        return 'מדות ושיעורים';
+        return localizations?.t('more.measurements') ?? 'מדות ושיעורים';
       case 3:
-        return 'הערות אישיות';
+        return localizations?.t('more.personal_notes') ?? 'הערות אישיות';
       case 4:
-        return 'גימטריה';
+        return localizations?.t('more.gematria') ?? 'גימטריה';
       case 5:
-        return 'מילון ארמי-עברי';
+        return localizations?.t('more.aramaic_dictionary') ?? 'מילון ארמי-עברי';
       default:
         return 'כלים';
     }
@@ -229,7 +231,7 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: IconButton(
           icon: const Icon(FluentIcons.settings_24_regular),
-          tooltip: 'הגדרות',
+          tooltip: AppLocalizations.of(context)?.t('auto.71') ?? 'הגדרות',
           onPressed: onPressed,
           style: IconButton.styleFrom(
             foregroundColor: Theme.of(context).colorScheme.onSurfaceVariant,

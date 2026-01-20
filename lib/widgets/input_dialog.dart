@@ -23,7 +23,7 @@ class InputDialog extends StatefulWidget {
     this.hintText,
     this.initialValue = '',
     this.keyboardType,
-    this.cancelText = 'ביטול',
+    this.cancelText = AppLocalizations.of(context)?.t('auto.46') ?? 'ביטול',
     this.confirmText = 'שמור',
     this.confirmColor,
     this.obscureText = false,
@@ -153,7 +153,7 @@ Future<String?> showInputDialog({
   String? hintText,
   String initialValue = '',
   TextInputType? keyboardType,
-  String cancelText = 'ביטול',
+  String cancelText = AppLocalizations.of(context)?.t('auto.45') ?? 'ביטול',
   String confirmText = 'שמור',
   Color? confirmColor,
 }) {

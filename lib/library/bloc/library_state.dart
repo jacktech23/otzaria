@@ -27,7 +27,7 @@ class LibraryState extends Equatable {
     // יצירת ספרייה ראשונית עם כל הקטגוריות הידועות
     final placeholderCategories = [
       Category(
-          title: 'תנך',
+          title: AppLocalizations.of(context)?.t('auto.772') ?? 'תנך',
           description: '',
           shortDescription: '',
           order: 1,
@@ -35,7 +35,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'משנה',
+          title: AppLocalizations.of(context)?.t('auto.771') ?? 'משנה',
           description: '',
           shortDescription: '',
           order: 2,
@@ -43,7 +43,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'תלמוד בבלי',
+          title: AppLocalizations.of(context)?.t('auto.770') ?? 'תלמוד בבלי',
           description: '',
           shortDescription: '',
           order: 3,
@@ -51,7 +51,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'תלמוד ירושלמי',
+          title: AppLocalizations.of(context)?.t('auto.769') ?? 'תלמוד ירושלמי',
           description: '',
           shortDescription: '',
           order: 4,
@@ -59,7 +59,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'תוספתא',
+          title: AppLocalizations.of(context)?.t('auto.768') ?? 'תוספתא',
           description: '',
           shortDescription: '',
           order: 5,
@@ -67,7 +67,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'מדרש',
+          title: AppLocalizations.of(context)?.t('auto.767') ?? 'מדרש',
           description: '',
           shortDescription: '',
           order: 6,
@@ -75,7 +75,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'הלכה',
+          title: AppLocalizations.of(context)?.t('auto.766') ?? 'הלכה',
           description: '',
           shortDescription: '',
           order: 7,
@@ -83,7 +83,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'קבלה',
+          title: AppLocalizations.of(context)?.t('auto.765') ?? 'קבלה',
           description: '',
           shortDescription: '',
           order: 8,
@@ -91,7 +91,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'סדר התפילה',
+          title: AppLocalizations.of(context)?.t('auto.764') ?? 'סדר התפילה',
           description: '',
           shortDescription: '',
           order: 9,
@@ -99,7 +99,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'מחשבת ישראל',
+          title: AppLocalizations.of(context)?.t('auto.763') ?? 'מחשבת ישראל',
           description: '',
           shortDescription: '',
           order: 10,
@@ -107,7 +107,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'חסידות',
+          title: AppLocalizations.of(context)?.t('auto.762') ?? 'חסידות',
           description: '',
           shortDescription: '',
           order: 11,
@@ -115,7 +115,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'ספרי מוסר',
+          title: AppLocalizations.of(context)?.t('auto.761') ?? 'ספרי מוסר',
           description: '',
           shortDescription: '',
           order: 12,
@@ -123,7 +123,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'שות',
+          title: AppLocalizations.of(context)?.t('auto.760') ?? 'שות',
           description: '',
           shortDescription: '',
           order: 13,
@@ -131,7 +131,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'ספרות עזר',
+          title: AppLocalizations.of(context)?.t('auto.759') ?? 'ספרות עזר',
           description: '',
           shortDescription: '',
           order: 14,
@@ -139,7 +139,7 @@ class LibraryState extends Equatable {
           books: [],
           parent: null),
       Category(
-          title: 'לימוד יומי',
+          title: AppLocalizations.of(context)?.t('auto.758') ?? 'לימוד יומי',
           description: '',
           shortDescription: '',
           order: 16,

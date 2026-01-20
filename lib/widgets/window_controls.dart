@@ -69,7 +69,7 @@ class _WindowControlsState extends State<WindowControls> with WindowListener {
             IconButton(
               onPressed: () => windowManager.minimize(),
               icon: const Icon(FluentIcons.subtract_24_regular),
-              tooltip: 'מזער',
+              tooltip: AppLocalizations.of(context)?.t('auto.20') ?? 'מזער',
             ),
             IconButton(
               onPressed: () async {
@@ -80,12 +80,12 @@ class _WindowControlsState extends State<WindowControls> with WindowListener {
               icon: Icon(settingsState.isFullscreen
                   ? FluentIcons.full_screen_minimize_24_regular
                   : FluentIcons.full_screen_maximize_24_regular),
-              tooltip: settingsState.isFullscreen ? 'צא ממסך מלא' : 'מסך מלא',
+              tooltip: settingsState.isFullscreen ? AppLocalizations.of(context)?.t('auto.19') ?? 'צא ממסך מלא' : AppLocalizations.of(context)?.t('auto.18') ?? 'מסך מלא',
             ),
             IconButton(
               onPressed: () => windowManager.close(),
               icon: const Icon(FluentIcons.dismiss_24_regular),
-              tooltip: 'סגור',
+              tooltip: AppLocalizations.of(context)?.t('auto.17') ?? 'סגור',
             ),
           ],
         );

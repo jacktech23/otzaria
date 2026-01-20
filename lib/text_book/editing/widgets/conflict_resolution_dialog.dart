@@ -33,7 +33,7 @@ class _ConflictResolutionDialogState extends State<ConflictResolutionDialog> {
         ),
       },
       child: AlertDialog(
-        title: const Text('קונפליקט בעריכה'),
+        title: const Text(AppLocalizations.of(context)?.t('auto.230') ?? 'קונפליקט בעריכה'),
         content: SizedBox(
           width: double.maxFinite,
           height: 400,
@@ -48,25 +48,25 @@ class _ConflictResolutionDialogState extends State<ConflictResolutionDialog> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  'הטקסט המקורי השתנה מאז שערכת אותו. בחר כיצד לפתור את הקונפליקט:',
+                  AppLocalizations.of(context)?.t('auto.229') ?? 'הטקסט המקורי השתנה מאז שערכת אותו. בחר כיצד לפתור את הקונפליקט:',
                   style: TextStyle(fontSize: 14),
                 ),
                 const SizedBox(height: 16),
 
                 // Resolution options
                 const RadioListTile<String>(
-                  title: Text('שמור את העריכה שלי'),
-                  subtitle: Text('התעלם מהשינויים במקור'),
+                  title: Text(AppLocalizations.of(context)?.t('auto.228') ?? 'שמור את העריכה שלי'),
+                  subtitle: Text(AppLocalizations.of(context)?.t('auto.227') ?? 'התעלם מהשינויים במקור'),
                   value: 'keep_override',
                 ),
                 const RadioListTile<String>(
-                  title: Text('השתמש בגרסה החדשה'),
-                  subtitle: Text('בטל את העריכה שלי'),
+                  title: Text(AppLocalizations.of(context)?.t('auto.226') ?? 'השתמש בגרסה החדשה'),
+                  subtitle: Text(AppLocalizations.of(context)?.t('auto.225') ?? 'בטל את העריכה שלי'),
                   value: 'use_new_source',
                 ),
                 const RadioListTile<String>(
-                  title: Text('שמור בנפרד'),
-                  subtitle: Text('שמור את העריכה שלי כגרסה נפרדת'),
+                  title: Text(AppLocalizations.of(context)?.t('auto.224') ?? 'שמור בנפרד'),
+                  subtitle: Text(AppLocalizations.of(context)?.t('auto.223') ?? 'שמור את העריכה שלי כגרסה נפרדת'),
                   value: 'save_separate',
                 ),
 
@@ -89,7 +89,7 @@ class _ConflictResolutionDialogState extends State<ConflictResolutionDialog> {
                                     color: Colors.grey.withValues(alpha: 0.3)),
                               ),
                               child: const Text(
-                                'מקור ישן',
+                                AppLocalizations.of(context)?.t('auto.222') ?? 'מקור ישן',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 12),
                                 textAlign: TextAlign.center,
@@ -131,7 +131,7 @@ class _ConflictResolutionDialogState extends State<ConflictResolutionDialog> {
                                     color: Colors.blue.withValues(alpha: 0.3)),
                               ),
                               child: const Text(
-                                'העריכה שלי',
+                                AppLocalizations.of(context)?.t('auto.221') ?? 'העריכה שלי',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 12),
                                 textAlign: TextAlign.center,
@@ -173,7 +173,7 @@ class _ConflictResolutionDialogState extends State<ConflictResolutionDialog> {
                                     color: Colors.green.withValues(alpha: 0.3)),
                               ),
                               child: const Text(
-                                'מקור חדש',
+                                AppLocalizations.of(context)?.t('auto.220') ?? 'מקור חדש',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 12),
                                 textAlign: TextAlign.center,
@@ -209,14 +209,14 @@ class _ConflictResolutionDialogState extends State<ConflictResolutionDialog> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('ביטול'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.219') ?? 'ביטול'),
           ),
           ElevatedButton(
             onPressed: () {
               widget.onResolve(_selectedResolution);
               Navigator.of(context).pop();
             },
-            child: const Text('פתור קונפליקט'),
+            child: const Text(AppLocalizations.of(context)?.t('auto.218') ?? 'פתור קונפליקט'),
           ),
         ],
       ),

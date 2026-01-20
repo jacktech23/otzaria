@@ -31,7 +31,7 @@ class AppFutureBuilder<T> extends StatelessWidget {
           }
           return Center(
             child: Text(
-              'שגיאה: ${snapshot.error}',
+              AppLocalizations.of(context)?.t('auto.11') ?? 'שגיאה: ${snapshot.error}',
               style: TextStyle(color: Theme.of(context).colorScheme.error),
             ),
           );

@@ -24,7 +24,7 @@ class PreviewRenderer {
       return Container(
         padding: const EdgeInsets.all(16),
         child: Text(
-          'תצוגה מקדימה תופיע כאן...',
+          AppLocalizations.of(context)?.t('auto.231') ?? 'תצוגה מקדימה תופיע כאן...',
           style: textStyle.copyWith(
             color: Colors.grey,
             fontStyle: FontStyle.italic,

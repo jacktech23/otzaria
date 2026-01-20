@@ -229,7 +229,7 @@ class GematriaSearchScreenState extends State<GematriaSearchScreen> {
       if (mounted) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text('שגיאה בחיפוש: $e')));
+        ).showSnackBar(SnackBar(content: Text(AppLocalizations.of(context)?.t('auto.739') ?? 'שגיאה בחיפוש: $e')));
       }
     }
   }
@@ -272,7 +272,7 @@ class GematriaSearchScreenState extends State<GematriaSearchScreen> {
             ),
           ),
           Text(
-            'ערך גימטריה: $_lastGematriaValue',
+            AppLocalizations.of(context)?.t('auto.738') ?? 'ערך גימטריה: $_lastGematriaValue',
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -310,8 +310,8 @@ class GematriaSearchScreenState extends State<GematriaSearchScreen> {
               textAlign: TextAlign.right,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
-                hintText: 'חפש גימטריה...',
-                labelText: 'לחיפוש, הכנס אותיות או מספר של ערך החיפוש',
+                hintText: AppLocalizations.of(context)?.t('auto.737') ?? 'חפש גימטריה...',
+                labelText: AppLocalizations.of(context)?.t('auto.736') ?? 'לחיפוש, הכנס אותיות או מספר של ערך החיפוש',
                 prefixIcon: IconButton(
                   icon: const Icon(FluentIcons.search_24_regular),
                   onPressed: _performSearch,
@@ -319,7 +319,7 @@ class GematriaSearchScreenState extends State<GematriaSearchScreen> {
                 ),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
-                        tooltip: 'נקה',
+                        tooltip: AppLocalizations.of(context)?.t('auto.735') ?? 'נקה',
                         icon: const Icon(FluentIcons.dismiss_24_regular),
                         onPressed: () {
                           _searchController.clear();
@@ -360,7 +360,7 @@ class GematriaSearchScreenState extends State<GematriaSearchScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'לא נמצאו תוצאות',
+              AppLocalizations.of(context)?.t('auto.734') ?? 'לא נמצאו תוצאות',
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(
@@ -387,7 +387,7 @@ class GematriaSearchScreenState extends State<GematriaSearchScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'הזן ערך לחיפוש גימטריה',
+              AppLocalizations.of(context)?.t('auto.733') ?? 'הזן ערך לחיפוש גימטריה',
               style: TextStyle(
                 fontSize: 18,
                 color: Theme.of(

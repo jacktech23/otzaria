@@ -97,13 +97,13 @@ class _PersonalNotesManagerScreenState
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'אירעה שגיאה בעת טעינת רשימת ההערות:\n${_booksError!}',
+              AppLocalizations.of(context)?.t('auto.407') ?? 'אירעה שגיאה בעת טעינת רשימת ההערות:\n${_booksError!}',
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
             FilledButton(
               onPressed: _loadBooks,
-              child: const Text('נסה שוב'),
+              child: const Text(AppLocalizations.of(context)?.t('auto.406') ?? 'נסה שוב'),
             ),
           ],
         ),
@@ -115,11 +115,11 @@ class _PersonalNotesManagerScreenState
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('לא נמצאו הערות אישיות'),
+            const Text(AppLocalizations.of(context)?.t('auto.405') ?? 'לא נמצאו הערות אישיות'),
             const SizedBox(height: 12),
             FilledButton(
               onPressed: _loadBooks,
-              child: const Text('רענון'),
+              child: const Text(AppLocalizations.of(context)?.t('auto.404') ?? 'רענון'),
             ),
           ],
         ),
@@ -188,7 +188,7 @@ class _PersonalNotesManagerScreenState
         children: [
           // לחצן סגירה/פתיחה של חלונית הניווט
           IconButton(
-            tooltip: _isNavigationVisible ? 'הסתר ניווט' : 'הצג ניווט',
+            tooltip: _isNavigationVisible ? AppLocalizations.of(context)?.t('auto.403') ?? 'הסתר ניווט' : AppLocalizations.of(context)?.t('auto.402') ?? 'הצג ניווט',
             onPressed: () {
               setState(() {
                 _isNavigationVisible = !_isNavigationVisible;
@@ -202,7 +202,7 @@ class _PersonalNotesManagerScreenState
             child: RtlTextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: 'חפש בהערות...',
+                hintText: AppLocalizations.of(context)?.t('auto.401') ?? 'חפש בהערות...',
                 prefixIcon: const Icon(FluentIcons.search_24_regular),
                 suffixIcon: _searchQuery.isNotEmpty
                     ? IconButton(
@@ -230,7 +230,7 @@ class _PersonalNotesManagerScreenState
           const SizedBox(width: 8),
           // לחצן ריענון
           IconButton(
-            tooltip: 'רענן',
+            tooltip: AppLocalizations.of(context)?.t('auto.400') ?? 'רענן',
             onPressed: _loadBooks,
             icon: const Icon(FluentIcons.arrow_clockwise_24_regular),
           ),
@@ -265,7 +265,7 @@ class _PersonalNotesManagerScreenState
           children: [
             Column(
               children: [
-                // Root "הערות אישיות" folder
+                // Root AppLocalizations.of(context)?.t('auto.399') ?? 'הערות אישיות' folder
                 InkWell(
                   onTap: () => _onFilterChanged(null),
                   child: Container(
@@ -301,7 +301,7 @@ class _PersonalNotesManagerScreenState
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            'הערות אישיות',
+                            AppLocalizations.of(context)?.t('auto.398') ?? 'הערות אישיות',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
@@ -430,7 +430,7 @@ class _PersonalNotesManagerScreenState
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                'הערות ללא מיקום',
+                AppLocalizations.of(context)?.t('auto.397') ?? 'הערות ללא מיקום',
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
@@ -729,7 +729,7 @@ class _PersonalNotesManagerScreenState
 
     if (displayNotes.isEmpty) {
       return const Center(
-        child: Text('אין הערות להצגה'),
+        child: Text(AppLocalizations.of(context)?.t('auto.396') ?? 'אין הערות להצגה'),
       );
     }
 
@@ -870,7 +870,7 @@ class _PersonalNotesManagerScreenState
                   children: [
                     Expanded(
                       child: Text(
-                        isMissing ? 'הערה ללא מיקום' : note.title,
+                        isMissing ? AppLocalizations.of(context)?.t('auto.395') ?? 'הערה ללא מיקום' : note.title,
                         style:
                             Theme.of(context).textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
@@ -884,7 +884,7 @@ class _PersonalNotesManagerScreenState
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          tooltip: 'עריכה',
+                          tooltip: AppLocalizations.of(context)?.t('auto.394') ?? 'עריכה',
                           icon:
                               const Icon(FluentIcons.edit_24_regular, size: 18),
                           onPressed: () => _editNote(note),
@@ -896,7 +896,7 @@ class _PersonalNotesManagerScreenState
                         ),
                         if (isMissing) ...[
                           IconButton(
-                            tooltip: 'מיקום מחדש',
+                            tooltip: AppLocalizations.of(context)?.t('auto.393') ?? 'מיקום מחדש',
                             icon: const Icon(FluentIcons.location_24_regular,
                                 size: 18),
                             onPressed: () => _repositionMissing(note),
@@ -908,7 +908,7 @@ class _PersonalNotesManagerScreenState
                           ),
                         ],
                         IconButton(
-                          tooltip: 'מחיקה',
+                          tooltip: AppLocalizations.of(context)?.t('auto.392') ?? 'מחיקה',
                           icon: const Icon(FluentIcons.delete_24_regular,
                               size: 18),
                           onPressed: () => _deleteNote(note),
@@ -938,7 +938,7 @@ class _PersonalNotesManagerScreenState
                   Padding(
                     padding: const EdgeInsets.only(bottom: 24),
                     child: Text(
-                      'שורה קודמת: ${note.lastKnownLineNumber}',
+                      AppLocalizations.of(context)?.t('auto.391') ?? 'שורה קודמת: ${note.lastKnownLineNumber}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -970,7 +970,7 @@ class _PersonalNotesManagerScreenState
     final result = await showDialog<String>(
       context: context,
       builder: (context) => PersonalNoteEditorDialog(
-        title: 'ערוך הערה',
+        title: AppLocalizations.of(context)?.t('auto.390') ?? 'ערוך הערה',
         controller: controller,
         referenceText: note.displayTitle,
         icon: FluentIcons.edit_24_regular,
@@ -998,9 +998,9 @@ class _PersonalNotesManagerScreenState
   Future<void> _deleteNote(PersonalNote note) async {
     final shouldDelete = await showConfirmationDialog(
       context: context,
-      title: 'מחיקת הערה',
-      content: 'האם למחוק את ההערה לצמיתות?',
-      confirmText: 'מחק',
+      title: AppLocalizations.of(context)?.t('auto.389') ?? 'מחיקת הערה',
+      content: AppLocalizations.of(context)?.t('auto.388') ?? 'האם למחוק את ההערה לצמיתות?',
+      confirmText: AppLocalizations.of(context)?.t('auto.387') ?? 'מחק',
       isDangerous: true,
     );
 
@@ -1019,11 +1019,11 @@ class _PersonalNotesManagerScreenState
   Future<void> _repositionMissing(PersonalNote note) async {
     final result = await showInputDialog(
       context: context,
-      title: 'מיקום מחדש של הערה',
+      title: AppLocalizations.of(context)?.t('auto.386') ?? 'מיקום מחדש של הערה',
       subtitle: note.lastKnownLineNumber != null
-          ? 'שורה קודמת: ${note.lastKnownLineNumber}'
+          ? AppLocalizations.of(context)?.t('auto.385') ?? 'שורה קודמת: ${note.lastKnownLineNumber}'
           : null,
-      labelText: 'מספר שורה חדש',
+      labelText: AppLocalizations.of(context)?.t('auto.384') ?? 'מספר שורה חדש',
       initialValue: (note.lastKnownLineNumber ?? '').toString(),
       keyboardType: TextInputType.number,
     );

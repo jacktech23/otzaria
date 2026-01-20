@@ -19,7 +19,7 @@ void showReadingSettingsDialog(BuildContext context) {
       builder: (context, settingsState) {
         return AlertDialog(
           title: const Text(
-            'הגדרות תצוגת הספרים',
+            AppLocalizations.of(context)?.t('auto.696') ?? 'הגדרות תצוגת הספרים',
             style: TextStyle(fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
@@ -40,7 +40,7 @@ void showReadingSettingsDialog(BuildContext context) {
                           Theme.of(context).colorScheme.surfaceContainerHighest,
                     ),
                     child: const Text(
-                      'הגדרות גופן ועיצוב',
+                      AppLocalizations.of(context)?.t('auto.695') ?? 'הגדרות גופן ועיצוב',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       textAlign: TextAlign.start,
@@ -70,7 +70,7 @@ void showReadingSettingsDialog(BuildContext context) {
                                       const SizedBox(width: 12),
                                       Expanded(
                                         child: Text(
-                                          'גודל גופן הספר',
+                                          AppLocalizations.of(context)?.t('auto.694') ?? 'גודל גופן הספר',
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleMedium,
@@ -113,7 +113,7 @@ void showReadingSettingsDialog(BuildContext context) {
                           child: StatefulBuilder(
                             builder: (context, setState) {
                               return _FontSelector(
-                                label: 'גופן טקסט',
+                                label: AppLocalizations.of(context)?.t('auto.693') ?? 'גופן טקסט',
                                 icon: FluentIcons.text_font_24_regular,
                                 value: settingsState.fontFamily,
                                 onChanged: (value) {
@@ -154,7 +154,7 @@ void showReadingSettingsDialog(BuildContext context) {
                                       const SizedBox(width: 12),
                                       Expanded(
                                         child: Text(
-                                          'גודל גופן מפרשים וקישורים',
+                                          AppLocalizations.of(context)?.t('auto.692') ?? 'גודל גופן מפרשים וקישורים',
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleMedium,
@@ -198,7 +198,7 @@ void showReadingSettingsDialog(BuildContext context) {
                           child: StatefulBuilder(
                             builder: (context, setState) {
                               return _FontSelector(
-                                label: 'גופן מפרשים',
+                                label: AppLocalizations.of(context)?.t('auto.691') ?? 'גופן מפרשים',
                                 icon: FluentIcons.book_24_regular,
                                 value: settingsState.commentatorsFontFamily,
                                 onChanged: (value) {
@@ -251,10 +251,10 @@ void showReadingSettingsDialog(BuildContext context) {
                           ListTile(
                             leading: const Icon(
                                 FluentIcons.text_align_justify_24_regular),
-                            title: const Text('רוחב הטקסט'),
+                            title: const Text(AppLocalizations.of(context)?.t('auto.690') ?? 'רוחב הטקסט'),
                             subtitle: Text(
                               currentLevel == 0
-                                  ? 'הטקסט ימלא את כל הרוחב הזמין'
+                                  ? AppLocalizations.of(context)?.t('auto.689') ?? 'הטקסט ימלא את כל הרוחב הזמין'
                                   : 'הטקסט יהיה צר יותר ומרוכז במסך',
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
@@ -309,7 +309,7 @@ void showReadingSettingsDialog(BuildContext context) {
                           Theme.of(context).colorScheme.surfaceContainerHighest,
                     ),
                     child: const Text(
-                      'הסרת ניקוד וטעמים',
+                      AppLocalizations.of(context)?.t('auto.688') ?? 'הסרת ניקוד וטעמים',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       textAlign: TextAlign.start,
@@ -318,9 +318,9 @@ void showReadingSettingsDialog(BuildContext context) {
 
                   // הצגת טעמי המקרא
                   SwitchListTile(
-                    title: const Text('הצגת טעמי המקרא'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.687') ?? 'הצגת טעמי המקרא'),
                     subtitle: Text(settingsState.showTeamim
-                        ? 'המקרא יוצג עם טעמים'
+                        ? AppLocalizations.of(context)?.t('auto.686') ?? 'המקרא יוצג עם טעמים'
                         : 'המקרא יוצג ללא טעמים'),
                     value: settingsState.showTeamim,
                     onChanged: (value) {
@@ -331,9 +331,9 @@ void showReadingSettingsDialog(BuildContext context) {
 
                   // הסרת ניקוד כברירת מחדל
                   SwitchListTile(
-                    title: const Text('הסרת ניקוד כברירת מחדל'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.685') ?? 'הסרת ניקוד כברירת מחדל'),
                     subtitle: Text(settingsState.defaultRemoveNikud
-                        ? 'הניקוד יוסר כברירת מחדל'
+                        ? AppLocalizations.of(context)?.t('auto.684') ?? 'הניקוד יוסר כברירת מחדל'
                         : 'הניקוד יוצג כברירת מחדל'),
                     value: settingsState.defaultRemoveNikud,
                     onChanged: (value) {

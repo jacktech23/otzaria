@@ -186,7 +186,7 @@ class _SplitedViewScreenState extends State<SplitedViewScreen> {
     return ContextMenu(
       entries: [
         MenuItem(
-          label: const Text('העתק'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.264') ?? 'העתק'),
           icon: const Icon(FluentIcons.copy_24_regular),
           enabled: _savedSelectedText != null &&
               _savedSelectedText!.trim().isNotEmpty,
@@ -197,18 +197,18 @@ class _SplitedViewScreenState extends State<SplitedViewScreen> {
           ),
         ),
         MenuItem(
-            label: const Text('חיפוש'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.263') ?? 'חיפוש'),
             onSelected: (_) => widget.openLeftPaneTab(1)),
         const MenuDivider(),
         MenuItem(
-          label: const Text('בחר את כל הטקסט'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.262') ?? 'בחר את כל הטקסט'),
           onSelected: (_) =>
               _selectionKey.currentState?.selectableRegion.selectAll(),
         ),
         const MenuDivider(),
         // שיתוף קישור לספר
         MenuItem(
-          label: const Text('העתק קישור לספר זה'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.261') ?? 'העתק קישור לספר זה'),
           icon: const Icon(FluentIcons.share_24_regular),
           onSelected: (_) => _shareBookLink(),
         ),

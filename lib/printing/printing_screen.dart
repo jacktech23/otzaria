@@ -366,7 +366,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                 alignment: pw.Alignment.bottomCenter,
                 margin: const pw.EdgeInsets.only(top: 1.0 * PdfPageFormat.cm),
                 child: pw.Text(
-                    'עמוד ${context.pageNumber} מתוך ${context.pagesCount} - הודפס מתוכנת אוצריא',
+                    AppLocalizations.of(context)?.t('auto.891') ?? 'עמוד ${context.pageNumber} מתוך ${context.pagesCount} - הודפס מתוכנת אוצריא',
                     style: pw.Theme.of(context)
                         .defaultTextStyle
                         .copyWith(color: PdfColors.grey)));
@@ -386,7 +386,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                         left: 8,
                       ),
                       child: pw.Text(
-                        title ?? 'מפרשים',
+                        title ?? AppLocalizations.of(context)?.t('auto.890') ?? 'מפרשים',
                         style: pw.TextStyle(
                           fontSize: max(10.0, fontSize * 0.9),
                           fontWeight: pw.FontWeight.bold,
@@ -422,7 +422,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                         left: 8,
                       ),
                       child: pw.Text(
-                        title ?? 'הערות אישיות',
+                        title ?? AppLocalizations.of(context)?.t('auto.889') ?? 'הערות אישיות',
                         style: pw.TextStyle(
                           fontSize: max(10.0, fontSize * 0.9),
                           fontWeight: pw.FontWeight.bold,
@@ -611,20 +611,20 @@ class _PrintingScreenState extends State<PrintingScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('הדפסה'),
+        title: const Text(AppLocalizations.of(context)?.t('auto.888') ?? 'הדפסה'),
         centerTitle: true,
         actions: [
           OutlinedButton.icon(
             onPressed: () async {
               final path = await FilePicker.platform.saveFile(
-                  dialogTitle: "שמירת קובץ PDF", allowedExtensions: ['pdf']);
+                  dialogTitle: AppLocalizations.of(context)?.t('auto.887') ?? 'שמירת קובץ PDF', allowedExtensions: ['pdf']);
               if (path != null) {
                 final file = File('$path.pdf');
                 await file.writeAsBytes(await pdf);
               }
             },
             icon: const Icon(FluentIcons.save_24_regular),
-            label: const Text('שמירה'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.886') ?? 'שמירה'),
           ),
           const SizedBox(width: 8),
           FilledButton.icon(
@@ -636,7 +636,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
               );
             },
             icon: const Icon(FluentIcons.print_24_regular),
-            label: const Text('הדפסה'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.885') ?? 'הדפסה'),
           ),
           const SizedBox(width: 16),
         ],
@@ -666,14 +666,14 @@ class _PrintingScreenState extends State<PrintingScreen> {
                       children: [
                         _buildSectionCard(
                           context: context,
-                          title: 'תצוגה מקדימה',
+                          title: AppLocalizations.of(context)?.t('auto.884') ?? 'תצוגה מקדימה',
                           icon: FluentIcons.eye_24_regular,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _buildDropdownRow(
                                 context: context,
-                                label: 'מעבר לדף',
+                                label: AppLocalizations.of(context)?.t('auto.883') ?? 'מעבר לדף',
                                 child: SizedBox(
                                   height: 40,
                                   child: PageNumberDisplay(
@@ -682,7 +682,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               ),
                               const SizedBox(height: 12),
                               SwitchListTile(
-                                title: const Text('תצוגה מוקטנת של כל הדפים'),
+                                title: const Text(AppLocalizations.of(context)?.t('auto.882') ?? 'תצוגה מוקטנת של כל הדפים'),
                                 dense: true,
                                 contentPadding: EdgeInsets.zero,
                                 value: _showThumbnails,
@@ -698,13 +698,13 @@ class _PrintingScreenState extends State<PrintingScreen> {
                         const SizedBox(height: 12),
                         _buildSectionCard(
                           context: context,
-                          title: 'הגדרות דף',
+                          title: AppLocalizations.of(context)?.t('auto.881') ?? 'הגדרות דף',
                           icon: FluentIcons.options_24_regular,
                           child: Column(
                             children: [
                               _buildDropdownRow(
                                 context: context,
-                                label: 'גודל דף',
+                                label: AppLocalizations.of(context)?.t('auto.880') ?? 'גודל דף',
                                 child: DropdownButton<PdfPageFormat>(
                                   value: format,
                                   isExpanded: true,
@@ -730,7 +730,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               const SizedBox(height: 12),
                               _buildDropdownRow(
                                 context: context,
-                                label: 'כיוון',
+                                label: AppLocalizations.of(context)?.t('auto.879') ?? 'כיוון',
                                 child: DropdownButton<pw.PageOrientation>(
                                   value: orientation,
                                   isExpanded: true,
@@ -744,11 +744,11 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                   items: const [
                                     DropdownMenuItem(
                                       value: pw.PageOrientation.portrait,
-                                      child: Text('לאורך'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.878') ?? 'לאורך'),
                                     ),
                                     DropdownMenuItem(
                                       value: pw.PageOrientation.landscape,
-                                      child: Text('לרוחב'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.877') ?? 'לרוחב'),
                                     ),
                                   ],
                                 ),
@@ -756,7 +756,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               const SizedBox(height: 12),
                               _buildDropdownRow(
                                 context: context,
-                                label: 'עמודים בגליון',
+                                label: AppLocalizations.of(context)?.t('auto.876') ?? 'עמודים בגליון',
                                 child: DropdownButton<int>(
                                   value: _pagesPerSheet,
                                   isExpanded: true,
@@ -771,15 +771,15 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                   items: const [
                                     DropdownMenuItem(
                                       value: 1,
-                                      child: Text('1 (רגיל)'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.875') ?? '1 (רגיל)'),
                                     ),
                                     DropdownMenuItem(
                                       value: 2,
-                                      child: Text('2 (יישור לימין)'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.874') ?? '2 (יישור לימין)'),
                                     ),
                                     DropdownMenuItem(
                                       value: 4,
-                                      child: Text('4 (יישור לימין)'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.873') ?? '4 (יישור לימין)'),
                                     ),
                                   ],
                                 ),
@@ -852,7 +852,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                     ),
                                     const SizedBox(height: 16),
                                     Text(
-                                      'מכין תצוגה מקדימה...',
+                                      AppLocalizations.of(context)?.t('auto.872') ?? 'מכין תצוגה מקדימה...',
                                       style: TextStyle(
                                         color: colorScheme.onSurfaceVariant,
                                       ),
@@ -913,14 +913,14 @@ class _PrintingScreenState extends State<PrintingScreen> {
                         // ניווט ותצוגה מקדימה
                         _buildSectionCard(
                           context: context,
-                          title: 'תצוגה מקדימה',
+                          title: AppLocalizations.of(context)?.t('auto.871') ?? 'תצוגה מקדימה',
                           icon: FluentIcons.eye_24_regular,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _buildDropdownRow(
                                 context: context,
-                                label: 'מעבר לדף',
+                                label: AppLocalizations.of(context)?.t('auto.870') ?? 'מעבר לדף',
                                 child: SizedBox(
                                   height: 40,
                                   child: PageNumberDisplay(
@@ -929,7 +929,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               ),
                               const SizedBox(height: 12),
                               SwitchListTile(
-                                title: const Text('תצוגה מוקטנת של כל הדפים'),
+                                title: const Text(AppLocalizations.of(context)?.t('auto.869') ?? 'תצוגה מוקטנת של כל הדפים'),
                                 dense: true,
                                 contentPadding: EdgeInsets.zero,
                                 value: _showThumbnails,
@@ -942,7 +942,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               const SizedBox(height: 8),
                               if (!isCustomPdfMode) ...[
                                 SwitchListTile(
-                                  title: const Text('כלול מפרשים'),
+                                  title: const Text(AppLocalizations.of(context)?.t('auto.868') ?? 'כלול מפרשים'),
                                   dense: true,
                                   contentPadding: EdgeInsets.zero,
                                   value: _includeCommentaries,
@@ -953,7 +953,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                   },
                                 ),
                                 SwitchListTile(
-                                  title: const Text('כלול הערות אישיות'),
+                                  title: const Text(AppLocalizations.of(context)?.t('auto.867') ?? 'כלול הערות אישיות'),
                                   dense: true,
                                   contentPadding: EdgeInsets.zero,
                                   value: _includePersonalNotes,
@@ -975,7 +975,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                         // כותרת טווח הדפסה
                         _buildSectionCard(
                           context: context,
-                          title: 'טווח הדפסה',
+                          title: AppLocalizations.of(context)?.t('auto.866') ?? 'טווח הדפסה',
                           icon: FluentIcons.document_page_number_24_regular,
                           child: Column(
                             children: [
@@ -990,7 +990,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                           segments: const [
                                             ButtonSegment<bool>(
                                               value: true,
-                                              label: Text('כותרות'),
+                                              label: Text(AppLocalizations.of(context)?.t('auto.865') ?? 'כותרות'),
                                               icon: Icon(
                                                   FluentIcons
                                                       .text_bullet_list_24_regular,
@@ -998,7 +998,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                             ),
                                             ButtonSegment<bool>(
                                               value: false,
-                                              label: Text('שורות'),
+                                              label: Text(AppLocalizations.of(context)?.t('auto.864') ?? 'שורות'),
                                               icon: Icon(
                                                   FluentIcons
                                                       .text_number_list_ltr_24_regular,
@@ -1034,14 +1034,14 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'שורה ${startLine + 1}',
+                                      AppLocalizations.of(context)?.t('auto.863') ?? 'שורה ${startLine + 1}',
                                       style: TextStyle(
                                         color: colorScheme.onSurfaceVariant,
                                         fontSize: 12,
                                       ),
                                     ),
                                     Text(
-                                      'שורה ${endLine + 1}',
+                                      AppLocalizations.of(context)?.t('auto.862') ?? 'שורה ${endLine + 1}',
                                       style: TextStyle(
                                         color: colorScheme.onSurfaceVariant,
                                         fontSize: 12,
@@ -1062,7 +1062,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                   },
                                 ),
                                 Text(
-                                  '${endLine - startLine} שורות נבחרו מתוך $totalLines',
+                                  AppLocalizations.of(context)?.t('auto.861') ?? '${endLine - startLine} שורות נבחרו מתוך $totalLines',
                                   style: TextStyle(
                                     color: colorScheme.primary,
                                     fontSize: 12,
@@ -1075,7 +1075,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               if (_isHeaderMode && _flatHeaders.isNotEmpty) ...[
                                 _buildDropdownRow(
                                   context: context,
-                                  label: 'מ-',
+                                  label: AppLocalizations.of(context)?.t('auto.860') ?? 'מ-',
                                   child: DropdownButton<int>(
                                     value: _startHeaderIndex,
                                     isExpanded: true,
@@ -1110,7 +1110,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                 const SizedBox(height: 12),
                                 _buildDropdownRow(
                                   context: context,
-                                  label: 'עד-',
+                                  label: AppLocalizations.of(context)?.t('auto.859') ?? 'עד-',
                                   child: DropdownButton<int>(
                                     value: _endHeaderIndex,
                                     isExpanded: true,
@@ -1160,14 +1160,14 @@ class _PrintingScreenState extends State<PrintingScreen> {
                         // הגדרות טקסט
                         _buildSectionCard(
                           context: context,
-                          title: 'הגדרות טקסט',
+                          title: AppLocalizations.of(context)?.t('auto.858') ?? 'הגדרות טקסט',
                           icon: FluentIcons.text_font_24_regular,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _buildSliderRow(
                                 context: context,
-                                label: 'גודל גופן',
+                                label: AppLocalizations.of(context)?.t('auto.857') ?? 'גודל גופן',
                                 value: fontSize,
                                 min: 10,
                                 max: 50,
@@ -1184,7 +1184,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                   SizedBox(
                                     width: 80,
                                     child: Text(
-                                      'גופן',
+                                      AppLocalizations.of(context)?.t('auto.856') ?? 'גופן',
                                       style: TextStyle(
                                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                                         fontSize: 13,
@@ -1204,7 +1204,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
 
                                         final result = await showSelectionDialog<String>(
                                           context: context,
-                                          title: 'בחירת גופן להדפסה',
+                                          title: AppLocalizations.of(context)?.t('auto.855') ?? 'בחירת גופן להדפסה',
                                           items: fontItems,
                                           initialValue: fontName,
                                           searchHint: 'חיפוש גופן',
@@ -1242,7 +1242,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               const SizedBox(height: 16),
                               // הגדרות ניקוד וטעמים
                               SwitchListTile(
-                                title: const Text('הדפסה עם ניקוד'),
+                                title: const Text(AppLocalizations.of(context)?.t('auto.854') ?? 'הדפסה עם ניקוד'),
                                 dense: true,
                                 contentPadding: EdgeInsets.zero,
                                 value: !_removeNikud,
@@ -1253,7 +1253,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                 },
                               ),
                               SwitchListTile(
-                                title: const Text('הדפסה עם טעמים'),
+                                title: const Text(AppLocalizations.of(context)?.t('auto.853') ?? 'הדפסה עם טעמים'),
                                 dense: true,
                                 contentPadding: EdgeInsets.zero,
                                 value: !_removeTaamim,
@@ -1271,14 +1271,14 @@ class _PrintingScreenState extends State<PrintingScreen> {
                         // הגדרות עמוד
                         _buildSectionCard(
                           context: context,
-                          title: 'הגדרות עמוד',
+                          title: AppLocalizations.of(context)?.t('auto.852') ?? 'הגדרות עמוד',
                           icon: FluentIcons.document_24_regular,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _buildSliderRow(
                                 context: context,
-                                label: 'שוליים',
+                                label: AppLocalizations.of(context)?.t('auto.851') ?? 'שוליים',
                                 value: pageMargin,
                                 min: 10,
                                 max: 100,
@@ -1292,7 +1292,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               const SizedBox(height: 16),
                               _buildDropdownRow(
                                 context: context,
-                                label: 'גודל עמוד',
+                                label: AppLocalizations.of(context)?.t('auto.850') ?? 'גודל עמוד',
                                 child: DropdownButton<PdfPageFormat>(
                                   value: format,
                                   isExpanded: true,
@@ -1315,7 +1315,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               const SizedBox(height: 12),
                               _buildDropdownRow(
                                 context: context,
-                                label: 'כיוון',
+                                label: AppLocalizations.of(context)?.t('auto.849') ?? 'כיוון',
                                 child: DropdownButton<pw.PageOrientation>(
                                   value: orientation,
                                   isExpanded: true,
@@ -1328,11 +1328,11 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                   items: const [
                                     DropdownMenuItem(
                                       value: pw.PageOrientation.portrait,
-                                      child: Text('לאורך'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.848') ?? 'לאורך'),
                                     ),
                                     DropdownMenuItem(
                                       value: pw.PageOrientation.landscape,
-                                      child: Text('לרוחב'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.847') ?? 'לרוחב'),
                                     ),
                                   ],
                                 ),
@@ -1340,7 +1340,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                               const SizedBox(height: 12),
                               _buildDropdownRow(
                                 context: context,
-                                label: 'עמודים בגליון',
+                                label: AppLocalizations.of(context)?.t('auto.846') ?? 'עמודים בגליון',
                                 child: DropdownButton<int>(
                                   value: _pagesPerSheet,
                                   isExpanded: true,
@@ -1355,15 +1355,15 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                   items: const [
                                     DropdownMenuItem(
                                       value: 1,
-                                      child: Text('1 (רגיל)'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.845') ?? '1 (רגיל)'),
                                     ),
                                     DropdownMenuItem(
                                       value: 2,
-                                      child: Text('2 (יישור לימין)'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.844') ?? '2 (יישור לימין)'),
                                     ),
                                     DropdownMenuItem(
                                       value: 4,
-                                      child: Text('4 (יישור לימין)'),
+                                      child: Text(AppLocalizations.of(context)?.t('auto.843') ?? '4 (יישור לימין)'),
                                     ),
                                   ],
                                 ),
@@ -1435,7 +1435,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                                     ),
                                     const SizedBox(height: 16),
                                     Text(
-                                      'מכין תצוגה מקדימה...',
+                                      AppLocalizations.of(context)?.t('auto.842') ?? 'מכין תצוגה מקדימה...',
                                       style: TextStyle(
                                         color: colorScheme.onSurfaceVariant,
                                       ),
@@ -1479,7 +1479,7 @@ class _PrintingScreenState extends State<PrintingScreen> {
                 CircularProgressIndicator(color: colorScheme.primary),
                 const SizedBox(height: 16),
                 Text(
-                  'טוען נתונים...',
+                  AppLocalizations.of(context)?.t('auto.841') ?? 'טוען נתונים...',
                   style: TextStyle(color: colorScheme.onSurfaceVariant),
                 ),
               ],

@@ -174,7 +174,7 @@ class _SearchEditPanelState extends State<SearchEditPanel> {
     if (query.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('נא להזין טקסט לחיפוש'),
+          content: Text(AppLocalizations.of(context)?.t('auto.443') ?? 'נא להזין טקסט לחיפוש'),
           duration: Duration(seconds: 2),
         ),
       );
@@ -260,7 +260,7 @@ class _SearchEditPanelState extends State<SearchEditPanel> {
               Row(
                 children: [
                   Text(
-                    'מצב חיפוש:',
+                    AppLocalizations.of(context)?.t('auto.442') ?? 'מצב חיפוש:',
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -273,7 +273,7 @@ class _SearchEditPanelState extends State<SearchEditPanel> {
                   // מרווח כללי - רק אם אין מרווחים מותאמים אישית
                   if (widget.tab.spacingValues.isEmpty && !state.fuzzy) ...[
                     Text(
-                      'מרווח כללי בין מילים:',
+                      AppLocalizations.of(context)?.t('auto.441') ?? 'מרווח כללי בין מילים:',
                       style: TextStyle(
                         fontSize: 14,
                         color: Theme.of(context)
@@ -329,7 +329,7 @@ class _SearchEditPanelState extends State<SearchEditPanel> {
                       controller: widget.tab.queryController,
                       focusNode: widget.tab.searchFieldFocusNode,
                       decoration: InputDecoration(
-                        hintText: 'הזן טקסט לחיפוש...',
+                        hintText: AppLocalizations.of(context)?.t('auto.440') ?? 'הזן טקסט לחיפוש...',
                         border: const OutlineInputBorder(),
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: 16,
@@ -351,7 +351,7 @@ class _SearchEditPanelState extends State<SearchEditPanel> {
                   ElevatedButton.icon(
                     onPressed: _performSearch,
                     icon: const Icon(FluentIcons.search_24_regular),
-                    label: const Text('חפש'),
+                    label: const Text(AppLocalizations.of(context)?.t('auto.439') ?? 'חפש'),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
@@ -364,7 +364,7 @@ class _SearchEditPanelState extends State<SearchEditPanel> {
                   IconButton(
                     icon: const Icon(FluentIcons.dismiss_24_regular),
                     onPressed: widget.onClose,
-                    tooltip: 'סגור',
+                    tooltip: AppLocalizations.of(context)?.t('auto.438') ?? 'סגור',
                   ),
                 ],
               ),
@@ -382,7 +382,7 @@ class _SearchEditPanelState extends State<SearchEditPanel> {
                   child: Padding(
                     padding: const EdgeInsets.all(32.0),
                     child: Text(
-                      'אפשרויות מתקדמות זמינות רק במצב "חיפוש מתקדם"',
+                      'אפשרויות מתקדמות זמינות רק במצב AppLocalizations.of(context)?.t('auto.437') ?? 'חיפוש מתקדם'',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey.shade600,

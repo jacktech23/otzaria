@@ -116,7 +116,7 @@ class OtzarBookDialog extends StatelessWidget {
         if (canLaunchLocally && bookExists)
           ElevatedButton.icon(
             icon: const Icon(FluentIcons.desktop_24_regular),
-            label: const Text('פתח מקומית'),
+            label: const Text(AppLocalizations.of(context)?.t('auto.789') ?? 'פתח מקומית'),
             onPressed: () {
               Navigator.of(context).pop();
               OtzarUtils.launchOtzarLocal(book.id);
@@ -128,7 +128,7 @@ class OtzarBookDialog extends StatelessWidget {
           ),
         ElevatedButton.icon(
           icon: const Icon(FluentIcons.open_24_regular),
-          label: const Text('פתח באתר'),
+          label: const Text(AppLocalizations.of(context)?.t('auto.788') ?? 'פתח באתר'),
           onPressed: () async {
             final errorColor = Theme.of(context).colorScheme.error;
             Navigator.of(context).pop();
@@ -149,7 +149,7 @@ class OtzarBookDialog extends StatelessWidget {
           style: TextButton.styleFrom(
             foregroundColor: Theme.of(context).colorScheme.secondary,
           ),
-          child: const Text('סגור'),
+          child: const Text(AppLocalizations.of(context)?.t('auto.787') ?? 'סגור'),
         ),
       ],
     );

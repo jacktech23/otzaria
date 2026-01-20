@@ -61,7 +61,7 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
       bloc: widget.calendarCubit,
       builder: (context, state) {
         return AlertDialog(
-          title: const Text('הגדרות לוח שנה'),
+          title: const Text(AppLocalizations.of(context)?.t('auto.673') ?? 'הגדרות לוח שנה'),
           content: SizedBox(
             width: 400,
             child: SingleChildScrollView(
@@ -70,7 +70,7 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'סוג לוח:',
+                    AppLocalizations.of(context)?.t('auto.672') ?? 'סוג לוח:',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   RadioGroup<CalendarType>(
@@ -84,15 +84,15 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
                       mainAxisSize: MainAxisSize.min,
                       children: const [
                         RadioListTile<CalendarType>(
-                          title: Text('לוח עברי'),
+                          title: Text(AppLocalizations.of(context)?.t('auto.671') ?? 'לוח עברי'),
                           value: CalendarType.hebrew,
                         ),
                         RadioListTile<CalendarType>(
-                          title: Text('לוח לועזי'),
+                          title: Text(AppLocalizations.of(context)?.t('auto.670') ?? 'לוח לועזי'),
                           value: CalendarType.gregorian,
                         ),
                         RadioListTile<CalendarType>(
-                          title: Text('לוח משולב'),
+                          title: Text(AppLocalizations.of(context)?.t('auto.669') ?? 'לוח משולב'),
                           value: CalendarType.combined,
                         ),
                       ],
@@ -105,7 +105,7 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'עיר:',
+                        AppLocalizations.of(context)?.t('auto.668') ?? 'עיר:',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
@@ -156,11 +156,11 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
                   const Divider(),
                   const SizedBox(height: 16),
                   const Text(
-                    'התראות:',
+                    AppLocalizations.of(context)?.t('auto.667') ?? 'התראות:',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   SwitchListTile(
-                    title: const Text('הפעל התראות על אירועים'),
+                    title: const Text(AppLocalizations.of(context)?.t('auto.666') ?? 'הפעל התראות על אירועים'),
                     value: state.calendarNotificationsEnabled,
                     onChanged: (value) {
                       widget.calendarCubit
@@ -174,7 +174,7 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SwitchListTile(
-                            title: const Text('השמע צליל בהתראה'),
+                            title: const Text(AppLocalizations.of(context)?.t('auto.665') ?? 'השמע צליל בהתראה'),
                             value: state.calendarNotificationSound,
                             onChanged: (value) {
                               widget.calendarCubit
@@ -183,16 +183,16 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
                           ),
                           DropdownButtonFormField<int>(
                             decoration: const InputDecoration(
-                              labelText: 'זמן תזכורת לפני האירוע',
+                              labelText: AppLocalizations.of(context)?.t('auto.664') ?? 'זמן תזכורת לפני האירוע',
                             ),
                             initialValue: state.calendarNotificationTime,
                             items: const [
-                              DropdownMenuItem(value: 60, child: Text('שעה')),
+                              DropdownMenuItem(value: 60, child: Text(AppLocalizations.of(context)?.t('auto.663') ?? 'שעה')),
                               DropdownMenuItem(
-                                  value: 720, child: Text('12 שעות')),
-                              DropdownMenuItem(value: 1440, child: Text('יום')),
+                                  value: 720, child: Text(AppLocalizations.of(context)?.t('auto.662') ?? '12 שעות')),
+                              DropdownMenuItem(value: 1440, child: Text(AppLocalizations.of(context)?.t('auto.661') ?? 'יום')),
                               DropdownMenuItem(
-                                  value: 2880, child: Text('יומיים')),
+                                  value: 2880, child: Text(AppLocalizations.of(context)?.t('auto.660') ?? 'יומיים')),
                             ],
                             onChanged: (value) {
                               if (value != null) {
@@ -212,7 +212,7 @@ class _CalendarSettingsDialogState extends State<_CalendarSettingsDialog> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('סגור'),
+              child: const Text(AppLocalizations.of(context)?.t('auto.659') ?? 'סגור'),
             ),
           ],
         );
@@ -319,7 +319,7 @@ class _CitySearchWidgetState extends State<_CitySearchWidget> {
               controller: _searchController,
               autofocus: true,
               decoration: const InputDecoration(
-                hintText: 'הקלד שם עיר...',
+                hintText: AppLocalizations.of(context)?.t('auto.658') ?? 'הקלד שם עיר...',
                 prefixIcon: Icon(FluentIcons.search_24_regular),
                 border: OutlineInputBorder(),
                 isDense: true,
@@ -330,7 +330,7 @@ class _CitySearchWidgetState extends State<_CitySearchWidget> {
           SizedBox(
             height: 300,
             child: _filteredCities.isEmpty
-                ? const Center(child: Text('לא נמצאו ערים'))
+                ? const Center(child: Text(AppLocalizations.of(context)?.t('auto.657') ?? 'לא נמצאו ערים'))
                 : ListView(children: items),
           ),
         ],

@@ -46,7 +46,7 @@ class _SearchOptionsDropdownState extends State<SearchOptionsDropdown> {
     return IconButton(
       icon: Icon(
           _isExpanded ? FluentIcons.chevron_up_24_regular : FluentIcons.chevron_down_24_regular),
-      tooltip: 'אפשרויות חיפוש',
+      tooltip: AppLocalizations.of(context)?.t('auto.481') ?? 'אפשרויות חיפוש',
       onPressed: _toggleExpanded,
     );
   }

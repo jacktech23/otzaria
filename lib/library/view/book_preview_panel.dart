@@ -106,7 +106,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
             ),
             const SizedBox(height: 16),
             Text(
-              'בחר ספר לתצוגה מקדימה',
+              AppLocalizations.of(context)?.t('auto.786') ?? 'בחר ספר לתצוגה מקדימה',
               style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context)
@@ -145,7 +145,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
             ),
             const SizedBox(height: 8),
             Text(
-              'ספר חיצוני - לחץ פעמיים לפתיחה',
+              AppLocalizations.of(context)?.t('auto.785') ?? 'ספר חיצוני - לחץ פעמיים לפתיחה',
               style: TextStyle(
                 fontSize: 14,
                 color: Theme.of(context)
@@ -159,7 +159,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
             ElevatedButton.icon(
               onPressed: () => widget.onOpenInReader?.call(0),
               icon: const Icon(FluentIcons.open_24_regular),
-              label: const Text('פתח בעיון'),
+              label: const Text(AppLocalizations.of(context)?.t('auto.784') ?? 'פתח בעיון'),
             ),
           ],
         ),
@@ -232,7 +232,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                   // כפתור הגדלה
                   IconButton(
                     icon: const Icon(FluentIcons.zoom_in_24_regular, size: 20),
-                    tooltip: 'הגדל',
+                    tooltip: AppLocalizations.of(context)?.t('auto.783') ?? 'הגדל',
                     onPressed: () => _pdfController?.zoomUp(),
                     padding: const EdgeInsets.all(8),
                     constraints: const BoxConstraints(
@@ -243,7 +243,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                   // כפתור הקטנה
                   IconButton(
                     icon: const Icon(FluentIcons.zoom_out_24_regular, size: 20),
-                    tooltip: 'הקטן',
+                    tooltip: AppLocalizations.of(context)?.t('auto.782') ?? 'הקטן',
                     onPressed: () => _pdfController?.zoomDown(),
                     padding: const EdgeInsets.all(8),
                     constraints: const BoxConstraints(
@@ -260,7 +260,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                   // כפתור פתיחה בעיון
                   IconButton(
                     icon: const Icon(FluentIcons.open_24_regular, size: 20),
-                    tooltip: 'פתח בעיון (או לחץ פעמיים על הספר)',
+                    tooltip: AppLocalizations.of(context)?.t('auto.781') ?? 'פתח בעיון (או לחץ פעמיים על הספר)',
                     onPressed: () {
                       // שליחת העמוד הנוכחי ב-PDF
                       int currentPage = 1;
@@ -287,7 +287,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                     IconButton(
                       icon:
                           const Icon(FluentIcons.dismiss_24_regular, size: 20),
-                      tooltip: 'הסתר תצוגה מקדימה',
+                      tooltip: AppLocalizations.of(context)?.t('auto.780') ?? 'הסתר תצוגה מקדימה',
                       onPressed: widget.onClose,
                       padding: const EdgeInsets.all(8),
                       constraints: const BoxConstraints(
@@ -336,7 +336,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
 
                   if (state is TextBookError) {
                     return Center(
-                      child: Text('שגיאה: ${state.message}'),
+                      child: Text(AppLocalizations.of(context)?.t('auto.779') ?? 'שגיאה: ${state.message}'),
                     );
                   }
 
@@ -384,7 +384,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                 // כפתור הגדלת טקסט
                 IconButton(
                   icon: const Icon(FluentIcons.zoom_in_24_regular, size: 20),
-                  tooltip: 'הגדל טקסט',
+                  tooltip: AppLocalizations.of(context)?.t('auto.778') ?? 'הגדל טקסט',
                   onPressed: () {
                     setState(() {
                       _fontSize = (_fontSize + 2).clamp(10.0, 50.0);
@@ -403,7 +403,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                 // כפתור הקטנת טקסט
                 IconButton(
                   icon: const Icon(FluentIcons.zoom_out_24_regular, size: 20),
-                  tooltip: 'הקטן טקסט',
+                  tooltip: AppLocalizations.of(context)?.t('auto.777') ?? 'הקטן טקסט',
                   onPressed: () {
                     setState(() {
                       _fontSize = (_fontSize - 2).clamp(10.0, 50.0);
@@ -428,7 +428,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                 // כפתור פתיחה בעיון
                 IconButton(
                   icon: const Icon(FluentIcons.open_24_regular, size: 20),
-                  tooltip: 'פתח בעיון (או לחץ פעמיים על הספר)',
+                  tooltip: AppLocalizations.of(context)?.t('auto.776') ?? 'פתח בעיון (או לחץ פעמיים על הספר)',
                   onPressed: () {
                     // שליחת האינדקס הנוכחי של הספר (אם יש)
                     widget.onOpenInReader?.call(_currentTextTab?.index ?? 0);
@@ -450,7 +450,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                 if (widget.onClose != null)
                   IconButton(
                     icon: const Icon(FluentIcons.dismiss_24_regular, size: 20),
-                    tooltip: 'הסתר תצוגה מקדימה',
+                    tooltip: AppLocalizations.of(context)?.t('auto.775') ?? 'הסתר תצוגה מקדימה',
                     onPressed: widget.onClose,
                     padding: const EdgeInsets.all(8),
                     constraints: const BoxConstraints(
@@ -476,7 +476,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // כותרת רמה 1 (כמו "פרק א")
+            // כותרת רמה 1 (כמו AppLocalizations.of(context)?.t('auto.774') ?? 'פרק א')
             Align(
               alignment: Alignment.centerRight,
               child: Padding(
@@ -484,7 +484,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
                 child: _SkeletonLine(width: 0.25, height: 36, color: baseColor),
               ),
             ),
-            // כותרת רמה 2 (כמו "משנה א")
+            // כותרת רמה 2 (כמו AppLocalizations.of(context)?.t('auto.773') ?? 'משנה א')
             Align(
               alignment: Alignment.centerRight,
               child: Padding(
