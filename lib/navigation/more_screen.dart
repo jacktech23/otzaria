@@ -173,30 +173,30 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
               type: BottomNavigationBarType.fixed,
               selectedFontSize: 11,
               unselectedFontSize: 10,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.calendar_month_outlined, size: 20),
+                  icon: const Icon(Icons.calendar_month_outlined, size: 20),
                   label: AppLocalizations.of(context)?.t('auto.77') ?? 'לוח שנה',
                 ),
                 BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage('assets/icon/זכור ושמור.png'),
+                  icon: const ImageIcon(AssetImage('assets/icon/זכור ושמור.png'),
                       size: 20),
                   label: AppLocalizations.of(context)?.t('auto.76') ?? 'זכור ושמור',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.straighten, size: 20),
+                  icon: const Icon(Icons.straighten, size: 20),
                   label: AppLocalizations.of(context)?.t('auto.75') ?? 'מדות',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(FluentIcons.note_24_regular, size: 20),
+                  icon: const Icon(FluentIcons.note_24_regular, size: 20),
                   label: AppLocalizations.of(context)?.t('auto.74') ?? 'הערות',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(FluentIcons.calculator_24_regular, size: 20),
+                  icon: const Icon(FluentIcons.calculator_24_regular, size: 20),
                   label: AppLocalizations.of(context)?.t('auto.73') ?? 'גימטריה',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(FluentIcons.book_24_regular, size: 20),
+                  icon: const Icon(FluentIcons.book_24_regular, size: 20),
                   label: AppLocalizations.of(context)?.t('auto.72') ?? 'מילון',
                 ),
               ],

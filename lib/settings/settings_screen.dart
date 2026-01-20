@@ -790,12 +790,12 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                           final selectedLocale = await showDialog<Locale>(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: const Text(AppLocalizations.of(context)?.t('auto.588') ?? 'בחר שפה'),
+                              title: Text(AppLocalizations.of(context)?.t('auto.588') ?? 'בחר שפה'),
                               content: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   ListTile(
-                                    title: const Text(AppLocalizations.of(context)?.t('auto.587') ?? 'עברית'),
+                                    title: Text(AppLocalizations.of(context)?.t('auto.587') ?? 'עברית'),
                                     leading: const Icon(Icons.language),
                                     onTap: () => Navigator.of(context).pop(const Locale('he', 'IL')),
                                   ),
@@ -836,14 +836,14 @@ class _MySettingsScreenState extends State<MySettingsScreen>
                                 context: context,
                                 barrierDismissible: false,
                                 builder: (context) => AlertDialog(
-                                        title: const Text(AppLocalizations.of(context)?.t('auto.582') ?? 'ההגדרות אופסו'),
+                                        title: Text(AppLocalizations.of(context)?.t('auto.582') ?? 'ההגדרות אופסו'),
                                         content: const Text(
                                             AppLocalizations.of(context)?.t('auto.581') ?? 'יש לסגור ולהפעיל מחדש את התוכנה כדי שהשינויים יכנסו לתוקף.'),
                                         actions: [
                                           TextButton(
                                               onPressed: () => exit(0),
                                               child:
-                                                  const Text(AppLocalizations.of(context)?.t('auto.580') ?? 'סגור את התוכנה'))
+                                                  Text(AppLocalizations.of(context)?.t('auto.580') ?? 'סגור את התוכנה'))
                                         ]));
                           }
                         },
@@ -1283,8 +1283,8 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
         context: context,
         barrierDismissible: false,
         builder: (context) => AlertDialog(
-          title: const Text(AppLocalizations.of(context)?.t('auto.576') ?? 'השחזור הושלם'),
-          content: const Text(AppLocalizations.of(context)?.t('auto.575') ?? 'הנתונים שוחזרו בהצלחה. יש להפעיל מחדש את התוכנה.'),
+          title: Text(AppLocalizations.of(context)?.t('auto.576') ?? 'השחזור הושלם'),
+          content: Text(AppLocalizations.of(context)?.t('auto.575') ?? 'הנתונים שוחזרו בהצלחה. יש להפעיל מחדש את התוכנה.'),
           actions: [
             TextButton(
               onPressed: () {
@@ -1294,7 +1294,7 @@ class _BackupSettingsSectionState extends State<_BackupSettingsSection> {
                   windowManager.close();
                 }
               },
-              child: const Text(AppLocalizations.of(context)?.t('auto.574') ?? 'סגור את התוכנה'),
+              child: Text(AppLocalizations.of(context)?.t('auto.574') ?? 'סגור את התוכנה'),
             ),
           ],
         ),

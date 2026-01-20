@@ -462,7 +462,7 @@ void _showBookInfoDialog(BuildContext context, Book book) {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text(AppLocalizations.of(context)?.t('auto.794') ?? 'סגור'),
+            child: Text(AppLocalizations.of(context)?.t('auto.794') ?? 'סגור'),
           ),
         ],
       );
@@ -598,7 +598,7 @@ void _showCategoryInfoDialog(BuildContext context, Category category) {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text(AppLocalizations.of(context)?.t('auto.790') ?? 'סגור'),
+            child: Text(AppLocalizations.of(context)?.t('auto.790') ?? 'סגור'),
           ),
         ],
       );

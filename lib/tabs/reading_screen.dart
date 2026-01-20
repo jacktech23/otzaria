@@ -178,7 +178,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                     ),
                     titleSpacing: 0,
                     centerTitle: true,
-                    title: const Text(AppLocalizations.of(context)?.t('auto.65') ?? 'עיון'),
+                    title: Text(AppLocalizations.of(context)?.t('auto.65') ?? 'עיון'),
                     actions: [
                       // כפתור מסך מלא
                       BlocBuilder<SettingsBloc, SettingsState>(
@@ -232,7 +232,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                                   );
                             },
                             icon: const Icon(FluentIcons.library_24_regular),
-                            label: const Text(AppLocalizations.of(context)?.t('auto.61') ?? 'דפדף בספרייה'),
+                            label: Text(AppLocalizations.of(context)?.t('auto.61') ?? 'דפדף בספרייה'),
                           ),
                         ),
                       ],

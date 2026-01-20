@@ -159,7 +159,7 @@ class _BookPreviewPanelState extends State<BookPreviewPanel> {
             ElevatedButton.icon(
               onPressed: () => widget.onOpenInReader?.call(0),
               icon: const Icon(FluentIcons.open_24_regular),
-              label: const Text(AppLocalizations.of(context)?.t('auto.784') ?? 'פתח בעיון'),
+              label: Text(AppLocalizations.of(context)?.t('auto.784') ?? 'פתח בעיון'),
             ),
           ],
         ),

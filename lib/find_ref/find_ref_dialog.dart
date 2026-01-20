@@ -256,7 +256,7 @@ class _FindRefDialogState extends State<FindRefDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text(AppLocalizations.of(context)?.t('auto.831') ?? 'סגור'),
+          child: Text(AppLocalizations.of(context)?.t('auto.831') ?? 'סגור'),
         ),
       ],
     );

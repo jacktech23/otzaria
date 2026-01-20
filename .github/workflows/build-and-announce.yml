@@ -24,7 +24,7 @@ jobs:
     runs-on: windows-2022
     # env:
     #   RUSTUP_HOME: ${{ github.workspace }}\.rustup
-    #   CARGO_HOME:  ${{ github.workspace }}\.cargo
+    #   CARGO_HOME: ${{ github.workspace }}\.cargo
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -108,7 +108,7 @@ jobs:
           $commitMessage = "${{ github.event.head_commit.message }}"
           $commitMessage = $commitMessage.Split([Environment]::NewLine)[0].Trim()
           Write-Host "Commit message: $commitMessage"
-          
+
           # בדיקה אם ההודעה היא גרסה במבנה X.Y.Z (מספרים בלבד עם נקודות)
           if ($commitMessage -match '^\d+\.\d+\.\d+$') {
             Write-Host "✓ Commit message is a version tag: $commitMessage"
@@ -124,26 +124,26 @@ jobs:
         run: |
           Write-Host "Downloading library ZIP for full installer from Y-PLONI/otzaria-library..."
           $ErrorActionPreference = "Stop"
-          
+
           try {
             # קבלת מידע על ה-release האחרון דרך GitHub API
             $latestRelease = Invoke-RestMethod -Uri "https://api.github.com/repos/Y-PLONI/otzaria-library/releases/latest"
             $zipAsset = $latestRelease.assets | Where-Object { $_.name -eq "otzaria_latest.zip" }
-            
+
             if (-not $zipAsset) {
               Write-Host "::error::Could not find otzaria_latest.zip in latest release"
               exit 1
             }
-            
+
             Write-Host "Library version: $($latestRelease.tag_name)"
             Write-Host "Downloading from: $($zipAsset.browser_download_url)"
             Write-Host "Size: $([math]::Round($zipAsset.size / 1MB, 2)) MB"
-            
+
             # הורדת הקובץ עם תמיכה בקבצים גדולים
             $ProgressPreference = 'SilentlyContinue'  # מאיץ את ההורדה
             Invoke-WebRequest -Uri $zipAsset.browser_download_url -OutFile "otzaria_latest.zip" -UseBasicParsing
             Write-Host "Library ZIP downloaded successfully"
-            
+
             # חילוץ הקבצים לתיקיית installer\library_files
             Write-Host "Extracting library files to installer\library_files..."
             if (Test-Path "installer\library_files") {
@@ -152,7 +152,7 @@ jobs:
             New-Item -ItemType Directory -Path "installer\library_files" -Force | Out-Null
             Expand-Archive -Path "otzaria_latest.zip" -DestinationPath "installer\library_files" -Force
             Write-Host "Library files extracted successfully"
-            
+
             # מחיקת קובץ ה-ZIP לפינוי מקום
             Remove-Item -Path "otzaria_latest.zip" -Force
             Write-Host "Cleaned up ZIP file"
@@ -184,14 +184,14 @@ jobs:
           if ("${{ steps.check_version.outputs.is_version }}" -eq "true") {
             Write-Host "Building FULL installer with library and VC++ Redistributable (version tag detected)..."
             & "$env:ISCC" installer\otzaria_full.iss
-            
+
             # ניקוי קבצי הספרייה המחולצים לאחר בניית ה-FULL installer
             Write-Host "Cleaning up extracted library files to free disk space..."
             if (Test-Path "installer\library_files") {
               Remove-Item -Path "installer\library_files" -Recurse -Force
               Write-Host "Library files cleaned up successfully"
             }
-            
+
             Write-Host "Building REGULAR installer (without VC++ Redistributable)..."
             & "$env:ISCC" installer\otzaria.iss
           } else {
@@ -222,7 +222,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RUSTUP_HOME: ${{ github.workspace }}/.rustup
-      CARGO_HOME:  ${{ github.workspace }}/.cargo
+      CARGO_HOME: ${{ github.workspace }}/.cargo
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -252,7 +252,7 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-
-      
+
       - name: Install Linux build dependencies
         run: |
           sudo apt-get update -y
@@ -263,10 +263,10 @@ jobs:
           if ! command -v cargo >/dev/null 2>&1; then
             sudo apt-get install -y rustc cargo
           fi
-      
+
       - name: Install flutter_distributor
         run: dart pub global activate flutter_distributor
-      
+
       - name: Build Flutter Linux app (with retry)
         run: |
           set -e
@@ -284,7 +284,7 @@ jobs:
             echo "::error::flutter build linux failed after 3 attempts"
             exit 1
           fi
-      
+
       - name: Build and Patch Linux DEB package
         shell: bash
         run: |
@@ -321,12 +321,12 @@ jobs:
           # 4. בנה את חבילת ה-deb מחדש מהקבצים המתוקנים
           DEB_DIR=$(dirname "$CONTROL_FILE" | xargs dirname)
           DEB_OUTPUT_FILE="dist/$(basename "$DEB_DIR" | sed 's/-linux_deb$//')-linux.deb"
-          
+
           echo "Re-packaging from directory: $DEB_DIR into $DEB_OUTPUT_FILE"
           dpkg-deb --build --root-owner-group "$DEB_DIR" "$DEB_OUTPUT_FILE"
 
           echo "Successfully patched and rebuilt the .deb package."
-        
+
       - name: Build and Patch Linux RPM package
         shell: bash
         run: |
@@ -356,12 +356,12 @@ jobs:
           # 4. בנה את חבילת ה-rpm מחדש, תוך שימוש בנתיב מוחלט
           RPM_TOP_DIR_REL=$(dirname "$SPEC_FILE" | xargs dirname)
           RPM_TOP_DIR_ABS="$(pwd)/$RPM_TOP_DIR_REL"
-          
+
           echo "Re-packaging using absolute top directory: $RPM_TOP_DIR_ABS"
           rpmbuild --define "_topdir $RPM_TOP_DIR_ABS" -bb "$SPEC_FILE"
 
           echo "Successfully patched and rebuilt the .rpm package."
-      
+
       - name: Find and prepare Linux packages
         id: find_packages
         run: |
@@ -377,21 +377,21 @@ jobs:
           fi
           mkdir -p linux-build
           cp -r build/linux/x64/release/bundle/* linux-build/
-      
+
       - name: Upload Linux DEB package
         if: steps.find_packages.outputs.deb_file != ''
         uses: actions/upload-artifact@v4
         with:
           name: otzaria-linux-deb
           path: ${{ steps.find_packages.outputs.deb_file }}
-          
+
       - name: Upload Linux RPM package
         if: steps.find_packages.outputs.rpm_file != ''
         uses: actions/upload-artifact@v4
         with:
           name: otzaria-linux-rpm
           path: ${{ steps.find_packages.outputs.rpm_file }}
-       
+
       - name: Upload linux build (raw)
         uses: actions/upload-artifact@v4
         with:
@@ -422,9 +422,9 @@ jobs:
         with:
           flutter-version: '3.35.7'
           cache: false  # השבתת cache כדי למנוע בעיות מקום
-      
+
       - run: sudo apt install ninja-build
-      
+
       - name: Build Android APK
         run: |
           flutter pub get
@@ -434,13 +434,13 @@ jobs:
           rm -rf build/app/.transforms || true
           echo "Disk space after intermediate cleanup:"
           df -h
-      
+
       - name: Upload apk
         uses: actions/upload-artifact@v4
         with:
           name: otzaria-android.apk
           path: build/app/outputs/flutter-apk/app-release.apk
-      
+
       - name: Final cleanup
         if: always()
         run: |
@@ -456,7 +456,7 @@ jobs:
     env:
       # אחסון יציב בתוך ה-workspace כדי למנוע תקלות rename של rustup
       RUSTUP_HOME: ${{ github.workspace }}/.rustup
-      CARGO_HOME:  ${{ github.workspace }}/.cargo
+      CARGO_HOME: ${{ github.workspace }}/.cargo
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -512,11 +512,11 @@ jobs:
           if ! command -v create-dmg &> /dev/null; then
             brew install create-dmg
           fi
-          
+
           APP_NAME="otzaria"
           APP_PATH="build/macos/Build/Products/Release/${APP_NAME}.app"
           DMG_NAME="${APP_NAME}-macos.dmg"
-          
+
           # Create DMG with drag-to-Applications shortcut
           create-dmg \
             --volname "Otzaria Installer" \
@@ -546,24 +546,24 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-      
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-      
+
       - name: Get version from pubspec.yaml
         id: version
         run: |
           VERSION=$(grep '^version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          
+
           # Validate semver format
           if ! echo "$VERSION" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$'; then
             echo "::error::Version '$VERSION' is not valid semver format"
             exit 1
           fi
-          
+
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "tag=$VERSION" >> $GITHUB_OUTPUT
             echo "prerelease=false" >> $GITHUB_OUTPUT
@@ -586,12 +586,12 @@ jobs:
       - name: Organize release files
         run: |
           mkdir -p release-files
-          
+
           # Windows installer
           if [ -d "artifacts/otzaria-windows-installer" ]; then
             cp artifacts/otzaria-windows-installer/*.exe release-files/ || true
           fi
-          
+
           # Windows ZIP
           if [ -d "artifacts/otzaria-windows-zip" ]; then
             cp artifacts/otzaria-windows-zip/*.zip release-files/ || true
@@ -606,33 +606,33 @@ jobs:
           if [ -d "artifacts/otzaria-linux-deb" ]; then
             cp artifacts/otzaria-linux-deb/*.deb release-files/ || true
           fi
-          
-          # Linux RPM package  
+
+          # Linux RPM package
           if [ -d "artifacts/otzaria-linux-rpm" ]; then
             cp artifacts/otzaria-linux-rpm/*.rpm release-files/ || true
           fi
-          
+
           # Linux raw build (fallback)
           if [ -d "artifacts/otzaria-linux-raw" ] && [ ! -f release-files/*.deb ]; then
             cd artifacts/otzaria-linux-raw
             zip -r ../../release-files/otzaria-linux-raw.zip *
             cd ../..
           fi
-          
+
           # Android APK
           if [ -d "artifacts/otzaria-android.apk" ]; then
             cp artifacts/otzaria-android.apk/*.apk release-files/ || true
           fi
-          
+
           # macOS DMG
           if [ -d "artifacts/otzaria-macos.dmg" ]; then
             cp artifacts/otzaria-macos.dmg/*.dmg release-files/ || true
           fi
-          
+
           # List files for debugging
           echo "Release files:"
           ls -la release-files/
-      
+
       - name: Create Release
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         uses: softprops/action-gh-release@v1
@@ -648,7 +648,7 @@ jobs:
             ענף: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
   create_pr_prerelease:
     if: "!cancelled() && github.event_name == 'pull_request'"
     needs: [build_windows, build_linux, build_android, build_macos]
@@ -657,24 +657,24 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-      
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-      
+
       - name: Get version from pubspec.yaml
         id: version
         run: |
           VERSION=$(grep '^version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          
+
           # Validate semver format
           if ! echo "$VERSION" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$'; then
             echo "::error::Version '$VERSION' is not valid semver format"
             exit 1
           fi
-          
+
           # Use proper semver pre-release format with dots instead of hyphens for PR builds
           echo "tag=$VERSION+${{ github.event.number }}.${{ github.run_number }}" >> $GITHUB_OUTPUT
           echo "title=Otzaria $VERSION - PR #${{ github.event.number }} Preview" >> $GITHUB_OUTPUT
@@ -686,43 +686,43 @@ jobs:
       - name: Organize release files
         run: |
           mkdir -p release-files
-          
+
           # Windows installer
           if [ -d "artifacts/otzaria-windows-installer" ]; then
             cp artifacts/otzaria-windows-installer/*.exe release-files/ || true
           fi
-          
+
           # Linux DEB package
           if [ -d "artifacts/otzaria-linux-deb" ]; then
             cp artifacts/otzaria-linux-deb/*.deb release-files/ || true
           fi
-          
-          # Linux RPM package  
+
+          # Linux RPM package
           if [ -d "artifacts/otzaria-linux-rpm" ]; then
             cp artifacts/otzaria-linux-rpm/*.rpm release-files/ || true
           fi
-          
+
           # Linux raw build (fallback)
           if [ -d "artifacts/otzaria-linux-raw" ] && [ ! -f release-files/*.deb ]; then
             cd artifacts/otzaria-linux-raw
             zip -r ../../release-files/otzaria-linux-raw.zip *
             cd ../..
           fi
-          
+
           # Android APK
           if [ -d "artifacts/otzaria-android.apk" ]; then
             cp artifacts/otzaria-android.apk/*.apk release-files/ || true
           fi
-          
+
           # macOS DMG
           if [ -d "artifacts/otzaria-macos.dmg" ]; then
             cp artifacts/otzaria-macos.dmg/*.dmg release-files/ || true
           fi
-          
+
           # List files for debugging
           echo "Release files:"
           ls -la release-files/
-      
+
       - name: Create PR Pre-release
         uses: softprops/action-gh-release@v1
         with:
@@ -734,16 +734,16 @@ jobs:
           body: |
             ## 🔄 בניית תצוגה מקדימה ל-PR #${{ github.event.number }}
             **זו בנייה לבדיקת שינויי PR לפני מיזוג.**
-            
+
             ### מידע על ה-PR:
             - **כותרת PR**: ${{ github.event.pull_request.title }}
             - **מחבר PR**: @${{ github.event.pull_request.user.login }}
             - **מספר PR**: #${{ github.event.number }}
             - **ענף**: `${{ github.head_ref }}` → `${{ github.base_ref }}`
-            
+
             ### תיאור PR:
             ${{ github.event.pull_request.body }}
-            
+
             ---
             נבנה מcommit: ${{ github.sha }} - ${{ steps.commit.outputs.message }}
         env:
@@ -776,7 +776,7 @@ jobs:
           set -euo pipefail
           CURRENT_TAG="${{ github.event.release.tag_name }}"
           git fetch --tags --force
-          
+
           # מצא את התג הקודם (הכי עדכני שהוא לא התג הנוכחי)
           PREV_TAG=$(git for-each-ref --sort=-creatordate --format '%(refname:strip=2)' refs/tags | grep -v "^$CURRENT_TAG$" | head -n1 || true)
 
@@ -805,9 +805,9 @@ jobs:
       - name: Run announcement script (Mitmachim + Yemot)
         env:
           # פרטי ה-Release נלקחים מאירוע ה-Webhook של GitHub
-          RELEASE_TAG:  ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
           RELEASE_NAME: ${{ github.event.release.name }}
-          RELEASE_URL:  ${{ github.event.release.html_url }}
+          RELEASE_URL: ${{ github.event.release.html_url }}
           GITHUB_EVENT_PATH: ${{ github.event_path }} # חיוני כדי שהסקריפט ימצא את קבצי ההורדה
 
           # הרכבת גוף ההודעה: התיאור מה-Release + רשימת הקומיטים שיצרנו
@@ -818,8 +818,8 @@ jobs:
             ${{ steps.changelog.outputs.commits }}
 
           # סודות להתחברות לשירותים החיצוניים
-          USER_NAME:  ${{ secrets.USER_NAME }}
-          PASSWORD:   ${{ secrets.PASSWORD }}
+          USER_NAME: ${{ secrets.USER_NAME }}
+          PASSWORD:  ${{ secrets.PASSWORD }}
           TOKEN_YEMOT: ${{ secrets.TOKEN_YEMOT }}
         run: |
           python webhooks/main.py
