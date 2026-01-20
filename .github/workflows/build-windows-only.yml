@@ -1,0 +1,386 @@
+name: "Build Windows Only"
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - MTDB+dev
+
+  # pull_request:
+  #   types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+  # טריגר לפרסום בלבד
+  release:
+    types: [published, prereleased]
+
+jobs:
+  build_windows:
+    if: github.event_name != 'release'
+    runs-on: windows-2022
+    # env:
+    #   RUSTUP_HOME: ${{ github.workspace }}\.rustup
+    #   CARGO_HOME:  ${{ github.workspace }}\.cargo
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.7'
+          cache: true
+
+      # - name: Install Rust (stable)
+      #   uses: dtolnay/rust-toolchain@stable
+
+      # - name: Cache cargo registry and git
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       ${{ env.CARGO_HOME }}\registry
+      #       ${{ env.CARGO_HOME }}\git
+      #     key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-cargo-
+
+      # - name: Add cargo to PATH & verify toolchain
+      #   shell: pwsh
+      #   run: |
+      #     "$env:CARGO_HOME\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+      #     rustc -Vv
+      #     cargo -V
+      #     rustup show
+
+      - name: Install Inno Setup (project script + fallback)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if (Test-Path .\installer\install_inno_setup.ps1) {
+            Write-Host "Running local installer script..."
+            .\installer\install_inno_setup.ps1
+          } else {
+            Write-Host "Local installer script not found, skipping."
+          }
+          if (-not (Get-Command iscc -ErrorAction SilentlyContinue)) {
+            if (Get-Command winget -ErrorAction SilentlyContinue) {
+              Write-Host "Installing Inno Setup via winget..."
+              winget install -e --id JRSoftware.InnoSetup --silent --accept-package-agreements --accept-source-agreements
+            } else {
+              Write-Host "winget not found, installing via Chocolatey..."
+              choco install innosetup -y --no-progress
+            }
+          }
+          $iscc = (Get-ChildItem "C:\Program Files*\Inno Setup*\ISCC.exe" -Recurse -ErrorAction SilentlyContinue |
+                   Select-Object -First 1 -ExpandProperty FullName)
+          if (-not $iscc) { throw "ISCC.exe not found after installation" }
+          "ISCC=$iscc" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host "ISCC resolved to: $iscc"
+
+      - name: Build Flutter Windows app
+        shell: pwsh
+        run: |
+          # flutter pub get
+          flutter build windows --release
+
+      - name: Zip Windows build
+        shell: pwsh
+        run: |
+          $relDir = Get-ChildItem -Directory build\windows |
+                    Where-Object { Test-Path "$($_.FullName)\runner\Release" } |
+                    Select-Object -First 1 -ExpandProperty FullName
+          if (-not $relDir) { throw 'Release directory not found' }
+          Compress-Archive -Path "$relDir\runner\Release\*" -DestinationPath otzaria-windows.zip
+
+      - name: Build MSIX package
+        shell: pwsh
+        run: |
+          dart run msix:create --install-certificate false
+
+      - name: Check if commit message is a version tag
+        id: check_version
+        shell: pwsh
+        run: |
+          $commitMessage = "${{ github.event.head_commit.message }}"
+          $commitMessage = $commitMessage.Split([Environment]::NewLine)[0].Trim()
+          Write-Host "Commit message: $commitMessage"
+
+          # בדיקה אם ההודעה היא גרסה במבנה X.Y.Z (מספרים בלבד עם נקודות)
+          if ($commitMessage -match '^\d+\.\d+\.\d+$') {
+            Write-Host "✓ Commit message is a version tag: $commitMessage"
+            echo "is_version=true" >> $env:GITHUB_OUTPUT
+          } else {
+            Write-Host "✗ Commit message is not a version tag"
+            echo "is_version=false" >> $env:GITHUB_OUTPUT
+          }
+
+      - name: Download library ZIP for full installer (version tags only)
+        if: steps.check_version.outputs.is_version == 'true'
+        shell: pwsh
+        run: |
+          Write-Host "Downloading library ZIP for full installer from Y-PLONI/otzaria-library..."
+          $ErrorActionPreference = "Stop"
+
+          try {
+            # קבלת מידע על ה-release האחרון דרך GitHub API
+            $latestRelease = Invoke-RestMethod -Uri "https://api.github.com/repos/Y-PLONI/otzaria-library/releases/latest"
+            $zipAsset = $latestRelease.assets | Where-Object { $_.name -eq "otzaria_latest.zip" }
+
+            if (-not $zipAsset) {
+              Write-Host "::error::Could not find otzaria_latest.zip in latest release"
+              exit 1
+            }
+
+            Write-Host "Library version: $($latestRelease.tag_name)"
+            Write-Host "Downloading from: $($zipAsset.browser_download_url)"
+            Write-Host "Size: $([math]::Round($zipAsset.size / 1MB, 2)) MB"
+
+            # הורדת הקובץ עם תמיכה בקבצים גדולים
+            $ProgressPreference = 'SilentlyContinue'  # מאיץ את ההורדה
+            Invoke-WebRequest -Uri $zipAsset.browser_download_url -OutFile "otzaria_latest.zip" -UseBasicParsing
+            Write-Host "Library ZIP downloaded successfully"
+
+            # חילוץ הקבצים לתיקיית installer\library_files
+            Write-Host "Extracting library files to installer\library_files..."
+            if (Test-Path "installer\library_files") {
+              Remove-Item -Path "installer\library_files" -Recurse -Force
+            }
+            New-Item -ItemType Directory -Path "installer\library_files" -Force | Out-Null
+            Expand-Archive -Path "otzaria_latest.zip" -DestinationPath "installer\library_files" -Force
+            Write-Host "Library files extracted successfully"
+
+            # מחיקת קובץ ה-ZIP לפינוי מקום
+            Remove-Item -Path "otzaria_latest.zip" -Force
+            Write-Host "Cleaned up ZIP file"
+          }
+          catch {
+            Write-Host "::error::Failed to download library: $_"
+            exit 1
+          }
+
+      - name: Download Visual C++ Redistributable for full installer (version tags only)
+        if: steps.check_version.outputs.is_version == 'true'
+        shell: pwsh
+        run: |
+          Write-Host "Downloading Visual C++ Redistributable for full installer..."
+          $latestRelease = Invoke-RestMethod -Uri "https://api.github.com/repos/abbodi1406/vcredist/releases/latest"
+          $asset = $latestRelease.assets | Where-Object { $_.name -eq "VisualCppRedist_AIO_x86_x64.exe" }
+          if (-not $asset) {
+            Write-Host "::error::Could not find VisualCppRedist_AIO_x86_x64.exe in latest release"
+            exit 1
+          }
+          Write-Host "Downloading from: $($asset.browser_download_url)"
+          Write-Host "Size: $([math]::Round($asset.size / 1MB, 2)) MB"
+          Invoke-WebRequest -Uri $asset.browser_download_url -OutFile "installer\VisualCppRedist_AIO_x86_x64.exe"
+          Write-Host "Visual C++ Redistributable downloaded successfully"
+
+      - name: Build Inno Setup installer
+        shell: pwsh
+        run: |
+          if ("${{ steps.check_version.outputs.is_version }}" -eq "true") {
+            Write-Host "Building FULL installer with library and VC++ Redistributable (version tag detected)..."
+            & "$env:ISCC" installer\otzaria_full.iss
+
+            # ניקוי קבצי הספרייה המחולצים לאחר בניית ה-FULL installer
+            Write-Host "Cleaning up extracted library files to free disk space..."
+            if (Test-Path "installer\library_files") {
+              Remove-Item -Path "installer\library_files" -Recurse -Force
+              Write-Host "Library files cleaned up successfully"
+            }
+
+            Write-Host "Building REGULAR installer (without VC++ Redistributable)..."
+            & "$env:ISCC" installer\otzaria.iss
+          } else {
+            Write-Host "Building regular installer only (not a version tag)..."
+            & "$env:ISCC" installer\otzaria.iss
+          }
+
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: otzaria-windows-installer
+          path: installer/otzaria-*-windows*.exe
+
+      - name: Upload Windows ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: otzaria-windows-zip
+          path: otzaria-windows.zip
+
+      - name: Upload Windows MSIX
+        uses: actions/upload-artifact@v4
+        with:
+          name: otzaria.msix
+          path: build/windows/x64/runner/release/*.msix
+
+  create_release:
+    if: "!cancelled() && github.event_name != 'release'"
+    needs: [build_windows]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Get version from pubspec.yaml
+        id: version
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+          # Validate semver format
+          if ! echo "$VERSION" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$'; then
+            echo "::error::Version '$VERSION' is not valid semver format"
+            exit 1
+          fi
+
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "tag=$VERSION" >> $GITHUB_OUTPUT
+            echo "prerelease=false" >> $GITHUB_OUTPUT
+            echo "title=Otzaria $VERSION (Windows Only)" >> $GITHUB_OUTPUT
+          else
+            # Use proper semver pre-release format with dots instead of hyphens
+            BRANCH_NAME="${{ github.ref_name }}"
+            # Replace any invalid characters in branch name for semver
+            CLEAN_BRANCH=$(echo "$BRANCH_NAME" | sed 's/[^A-Za-z0-9.-]/-/g')
+            echo "tag=$VERSION+${{ github.run_number }}" >> $GITHUB_OUTPUT
+            echo "prerelease=true" >> $GITHUB_OUTPUT
+            echo "title=Otzaria $VERSION (Windows Only - Preview from ${{ github.ref_name }})" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get commit message
+        id: commit
+        run: echo "message=$(git log -1 --pretty=%s)" >> $GITHUB_OUTPUT
+
+      - name: Organize release files
+        run: |
+          mkdir -p release-files
+
+          # Windows installer
+          if [ -d "artifacts/otzaria-windows-installer" ]; then
+            cp artifacts/otzaria-windows-installer/*.exe release-files/ || true
+          fi
+
+          # Windows ZIP
+          if [ -d "artifacts/otzaria-windows-zip" ]; then
+            cp artifacts/otzaria-windows-zip/*.zip release-files/ || true
+          fi
+
+          # Windows MSIX
+          if [ -d "artifacts/otzaria.msix" ]; then
+            cp artifacts/otzaria.msix/*.msix release-files/ || true
+          fi
+
+          # List files for debugging
+          echo "Release files:"
+          ls -la release-files/
+
+      - name: Create Release
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GH_RELEASE_TOKEN }}
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.title }}
+          prerelease: ${{ steps.version.outputs.prerelease }}
+          files: release-files/*
+          body: |
+            ## שינויים בגרסה זו (Windows Only)
+            נבנה מcommit: ${{ github.sha }} - ${{ steps.commit.outputs.message }}
+            ענף: ${{ github.ref_name }}
+
+            **זו בנייה של Windows בלבד**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  create_pr_prerelease:
+    if: "!cancelled() && github.event_name == 'pull_request'"
+    needs: [build_windows]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Get version from pubspec.yaml
+        id: version
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+          # Validate semver format
+          if ! echo "$VERSION" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$'; then
+            echo "::error::Version '$VERSION' is not valid semver format"
+            exit 1
+          fi
+
+          # Use proper semver pre-release format with dots instead of hyphens for PR builds
+          echo "tag=$VERSION+${{ github.event.number }}.${{ github.run_number }}" >> $GITHUB_OUTPUT
+          echo "title=Otzaria $VERSION - PR #${{ github.event.number }} Preview (Windows Only)" >> $GITHUB_OUTPUT
+
+      - name: Get commit message
+        id: commit
+        run: echo "message=$(git log -1 --pretty=%s)" >> $GITHUB_OUTPUT
+
+      - name: Organize release files
+        run: |
+          mkdir -p release-files
+
+          # Windows installer
+          if [ -d "artifacts/otzaria-windows-installer" ]; then
+            cp artifacts/otzaria-windows-installer/*.exe release-files/ || true
+          fi
+
+          # Windows ZIP
+          if [ -d "artifacts/otzaria-windows-zip" ]; then
+            cp artifacts/otzaria-windows-zip/*.zip release-files/ || true
+          fi
+
+          # Windows MSIX
+          if [ -d "artifacts/otzaria.msix" ]; then
+            cp artifacts/otzaria.msix/*.msix release-files/ || true
+          fi
+
+          # List files for debugging
+          echo "Release files:"
+          ls -la release-files/
+
+      - name: Create PR Pre-release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GH_RELEASE_TOKEN }}
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.title }}
+          prerelease: true
+          files: release-files/*
+          body: |
+            ## 🔄 בניית תצוגה מקדימה ל-PR #${{ github.event.number }} (Windows Only)
+            **זו בנייה לבדיקת שינויי PR לפני מיזוג. Windows בלבד.**
+
+            ### מידע על ה-PR:
+            - **כותרת PR**: ${{ github.event.pull_request.title }}
+            - **מחבר PR**: @${{ github.event.pull_request.user.login }}
+            - **מספר PR**: #${{ github.event.number }}
+            - **ענף**: `${{ github.head_ref }}` → `${{ github.base_ref }}`
+
+            ### תיאור PR:
+            ${{ github.event.pull_request.body }}
+
+            ---
+            נבנה מcommit: ${{ github.sha }} - ${{ steps.commit.outputs.message }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
